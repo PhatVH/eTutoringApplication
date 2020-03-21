@@ -1,0 +1,176 @@
+*{
+  padding:  0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 18pt;
+}
+
+.title-main h4, .title-main fa-icon{
+  color: #129EAF;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.title-main{
+
+  font-family: 'Baloo Da 2', cursive;
+}
+
+.title-right fa-icon{
+  padding-left: 5px;
+}
+
+.containerMain{
+  width: 100%;
+  padding: 0vh 0vw;
+}
+
+.title-main{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.title-main::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #129EAF;
+
+}
+
+.content{
+  display: inline-block;
+  margin: 20px 0px;
+  line-height: 30px;
+  padding: 0 25px;
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-right: 35px;
+  padding-right: 35px;
+  box-sizing: border-box;
+}
+
+.content fa-icon{
+  color: #6e6e6e;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  transform: translateY(20%);
+}
+
+span.name-user{
+  color: #000;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+/* Set a style for all buttons */
+button {
+  width: 48.5%;
+  margin-left: 1%;
+}
+/* Extra styles for the cancel button */
+.container {
+  padding: 16px;
+}
+.containerModal {
+  padding: 25px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  line-height: 30px;
+  padding: 0 25px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+  .button {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .button {
+    width: 100%;
+  }
+}
