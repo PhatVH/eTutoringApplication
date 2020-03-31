@@ -3,4 +3,5 @@ export class Student {
   name: string;
   email: string;
   pass: string;
+  selected: boolean;
 }

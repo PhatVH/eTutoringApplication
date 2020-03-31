@@ -123,4 +123,13 @@ export class AllocateComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
       console.log(`hhaha`);
   }
+  CheckAllOptions() {
+    // tslint:disable-next-line:triple-equals
+  //   if (this.students.every(val => val.selected == true)) {
+  //     this.students.forEach(val => { val.selected = false; });
+  //   } else {
+  //     this.students.forEach(val => { val.selected = true; });
+  //   }
+    console.log(`${JSON.stringify(this.students)}`);
+  }
 }

@@ -4,70 +4,57 @@
       "id": 1,
       "name": "TamBT",
       "email": "tambt@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 2,
       "name": "ThamLT",
       "email": "thamlt@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 3,
       "name": "Ha Nt",
       "email": "hantt@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 4,
       "name": "Duy TV",
       "email": "duytv@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 5,
       "name": "Quyen DT",
       "email": "quyendt@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 6,
       "name": "Phat VH",
       "email": "phatvh@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 7,
       "name": "Tam BT",
       "email": "tambt@gmail.com",
-      "pass": "tam12"
+      "pass": "tam12",
+      "selected": false
     },
     {
       "id": 8,
       "name": "ThamLT",
       "email": "thamlt@gmail.com",
-      "pass": "tam12"
-    },
-    {
-      "id": 9,
-      "name": "Ha Nt",
-      "email": "hantt@gmail.com",
-      "pass": "tam12"
-    },
-    {
-      "name": "thêm mới",
-      "releaseYear": "123",
-      "id": 10
-    },
-    {
-      "name": "thêm mới",
-      "releaseYear": "123",
-      "id": 11
-    },
-    {
-      "name": "thêm mới",
-      "releaseYear": "123",
-      "id": 12
+      "pass": "tam12",
+      "selected": false
     }
   ],
   "classes": [

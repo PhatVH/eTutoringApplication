@@ -15,6 +15,14 @@ import {TutorService} from './tutor.service';
 import { AllocateAddComponent } from './allocate-add/allocate-add.component';
 import { AllocateRemoveComponent } from './allocate-remove/allocate-remove.component';
 import { EventComponent } from './event/event.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ManageSectionComponent } from './manage-section/manage-section.component';
+import { ReportComponent } from './report/report.component';
+import { ContactComponent } from './contact/contact.component';
+import { ForewordComponent } from './table/foreword.component';
+import { OurServicesComponent } from './our-services/our-services.component';
+import {ChartsModule} from 'ng2-charts';
+import {CountdownModule} from 'ng2-date-countdown';
 
 
 @NgModule({
@@ -26,7 +34,13 @@ import { EventComponent } from './event/event.component';
     LoginComponent,
     AllocateAddComponent,
     AllocateRemoveComponent,
-    EventComponent
+    EventComponent,
+    AboutUsComponent,
+    ManageSectionComponent,
+    ReportComponent,
+    ContactComponent,
+    ForewordComponent,
+    OurServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +48,9 @@ import { EventComponent } from './event/event.component';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule,
+    CountdownModule
   ],
   providers: [
     StudentService,

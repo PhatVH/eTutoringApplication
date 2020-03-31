@@ -119,8 +119,8 @@
       <div class="containerModal">
         <div class="title-main">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="selectAllStudent">
-            <label class="custom-control-label" for="selectAllStudent"><h4>Select All</h4></label>
+            <input type="checkbox" class="custom-control-input" id="selectAllStudent" (change)="CheckAllOptions()">
+            <label class="custom-control-label" for="selectAllStudent"  ><h4>Select All</h4></label>
           </div>
           <div class="title-right">
           <input #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)" />
@@ -129,7 +129,7 @@
         </div>
         <div class="container"  *ngFor="let eachStudent of students$ | async">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}" (change)="studentChange($event)">
+            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}"  [(ngModel)]="eachStudent.selected" (change)="studentChange($event)">
             <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.name}}-{{eachStudent.email}}</h4></label>
           </div>
         </div>
