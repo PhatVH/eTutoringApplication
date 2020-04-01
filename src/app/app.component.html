@@ -1,2 +1,60 @@
 
-<div>sua</div>
+<!DOCTYPE html>
+<html>
+
+<body>
+	<!-- /List Student -->
+	<div class="new_arrivals_agile_w3ls_info">
+		<div class="container">
+			<h3 class="wthree_text_info">List <span>Students</span></h3>
+			<div id="horizontalTab">
+				<app-list-student></app-list-student>
+			</div>
+		</div>
+	</div>
+	<div class="new_arrivals_agile_w3ls_info">
+		<div class="container">
+			<h3 class="wthree_text_info"> <span>BLOGS</span></h3>
+			<div id="horizontalTab">
+				<app-list-blog></app-list-blog>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<!-- //js -->
+	<script src="js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links -->
+	<!-- cart-js -->
+	<script src="js/minicart.min.js"></script>
+
+	<!-- //script for responsive tabs -->
+	<!-- stats -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+
+</html>
