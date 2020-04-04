@@ -19,7 +19,7 @@
   <div class="tutor">
     <div class="title-main">
       <h4>Tutor</h4>
-      <fa-icon [icon]="faUserPlus" onclick="document.getElementById('tutor').style.display='block'"></fa-icon>
+      <fa-icon [icon]="faUserPlus" (click)="searchTutorAllocate(searchTutor.value)" onclick="document.getElementById('tutor').style.display='block'"></fa-icon>
     </div>
     <div *ngIf="selectTutor" class="content">
       <div *ngFor="let eachName of selectTutor" class="user">
@@ -32,7 +32,7 @@
   <div class="classes">
     <div class="title-main">
       <h4>Class</h4>
-      <fa-icon [icon]="faUserPlus" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
+      <fa-icon [icon]="faUserPlus" (click)="searchClassAllocate(searchTutor.value)" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
     </div>
     <div *ngIf="selectClass" class="content">
       <div  *ngFor="let eachName of selectClass" class="user">
@@ -45,7 +45,7 @@
   <div class="student">
     <div class="title-main">
       <h4>Students</h4>
-      <fa-icon [icon]="faUserPlus" onclick="document.getElementById('student').style.display='block'"></fa-icon>
+      <fa-icon [icon]="faUserPlus" (click)="searchStudentAllocate(searchTutor.value)" onclick="document.getElementById('student').style.display='block'"></fa-icon>
     </div>
     <div *ngIf="selectStudent" class="content">
       <div  *ngFor="let eachName of selectStudent" class="user">
@@ -62,10 +62,10 @@
       </div>
       <div class="containerModal">
         <div class="title-main">
-            <label><h4>Select Tutor</h4></label>
+          <label><h4>Select Tutor</h4></label>
           <div class="title-right">
-          <input #searchTutor (keyup)="searchTutorAllocate(searchTutor.value)" />
-          <fa-icon [icon]="faSearch"></fa-icon>
+            <input #searchTutor class="selectTutor" (keyup)="searchTutorAllocate(searchTutor.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
           </div>
         </div>
         <div class="container"  *ngFor="let eachTutor of tutors$ | async">
@@ -90,7 +90,7 @@
       </div>
       <div class="containerModal">
         <div class="title-main">
-            <label><h4>Select Class</h4></label>
+          <label><h4>Select Class</h4></label>
           <div class="title-right">
             <input #searchClass (keyup)="searchClassAllocate(searchClass.value)" />
             <fa-icon [icon]="faSearch"></fa-icon>
@@ -119,17 +119,17 @@
       <div class="containerModal">
         <div class="title-main">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="selectAllStudent" (change)="CheckAllOptions()">
-            <label class="custom-control-label" for="selectAllStudent"  ><h4>Select All</h4></label>
+            <input type="checkbox" class="custom-control-input" id="selectAllStudent">
+            <label class="custom-control-label" for="selectAllStudent"><h4>Select All</h4></label>
           </div>
           <div class="title-right">
-          <input #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)" />
-          <fa-icon [icon]="faSearch"></fa-icon>
+            <input #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
           </div>
         </div>
         <div class="container"  *ngFor="let eachStudent of students$ | async">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}"  [(ngModel)]="eachStudent.selected" (change)="studentChange($event)">
+            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}" (change)="studentChange($event)">
             <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.name}}-{{eachStudent.email}}</h4></label>
           </div>
         </div>
