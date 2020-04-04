@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   result: string;
 
   ngOnInit(): void {
+    this.getDataType();
   }
   getAllTutor(): void {
     this.tutorService.getTutors().subscribe(
@@ -28,28 +29,30 @@ export class LoginComponent implements OnInit {
   onSubmitForm(user: string, pass: string) {
     // tslint:disable-next-line:triple-equals
     if (user == '' || pass == '') {
-      console.log(`roonxg`);
       this.result = 'aaa';
     }
     this.result = null;
     this.classService.getLogin(user, pass).subscribe(
       userRecieve => {this.user = userRecieve;
-                      console.log(this.user);
-                      if (this.user.type == 1) {
-                        sessionStorage.setItem('type', this.user.type);
-                        this.router.navigate(['/dashboard']);
-                      }
+        // tslint:disable-next-line:triple-equals
+                      sessionStorage.setItem('typeUser', this.user[0].type);
+                      this.router.navigate(['/dashboard']);
+                      console.log('login component :' + this.user[0].type);
 
       }
     );
-    console.log(user, pass);
   }
   isUserLoggedIn() {
-    const type = sessionStorage.getItem('type');
+    const typeUser = sessionStorage.getItem('typeUser');
+    return !(typeUser === null);
   }
 
   logOut() {
-    sessionStorage.removeItem('type');
+    sessionStorage.removeItem('typeUser');
+  }
+  getDataType(): string {
+    const typeUser = sessionStorage.getItem('typeUser');
+    return typeUser;
   }
   constructor(private studentService: StudentService,
               private tutorService: TutorService,

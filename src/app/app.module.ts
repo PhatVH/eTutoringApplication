@@ -23,6 +23,7 @@ import { ForewordComponent } from './table/foreword.component';
 import { OurServicesComponent } from './our-services/our-services.component';
 import {ChartsModule} from 'ng2-charts';
 import {CountdownModule} from 'ng2-date-countdown';
+import {AuthGaurdService} from './auth-gaurd.service';
 
 
 @NgModule({
@@ -55,7 +56,9 @@ import {CountdownModule} from 'ng2-date-countdown';
   providers: [
     StudentService,
     ClassService,
-    TutorService
+    TutorService,
+    AuthGaurdService,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
