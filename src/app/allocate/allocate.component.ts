@@ -64,7 +64,7 @@ export class AllocateComponent implements OnInit {
     this.searchClass.next(searchClass);
   }
   searchStudentAllocate(searchStudent: string): void {
-    console.log(`searchedString = ${searchStudent}`);
+    console.log(`search nhập từ bàn phím student = ${searchStudent}`);
     this.searchStudent.next(searchStudent);
   }
 
