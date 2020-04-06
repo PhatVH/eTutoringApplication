@@ -1,0 +1,16 @@
+.btn {
+  background-color: #c81300;
+  color: white;
+  font-size: 25px;
+}
+.btn:hover{
+  font-size: 28px;
+  color: white;
+}
+.allocate {
+  text-align: right;
+}
+.container {
+  width: 100%;
+  max-width: 80%;
+}

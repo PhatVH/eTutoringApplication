@@ -1,0 +1,116 @@
+{"user": [
+  {
+    "id": 1,
+    "name": "staff",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": 1,
+    "selected": false
+  },
+  {
+    "id": 1,
+    "name": "tutor",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": 2,
+    "selected": false
+  },
+  {
+    "id": 1,
+    "name": "student",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": 3,
+    "selected": false
+  }
+],
+  "students": [
+    {
+      "id": 1,
+      "name": "TamBT",
+      "email": "tambt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 2,
+      "name": "ThamLT",
+      "email": "thamlt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 3,
+      "name": "Ha Nt",
+      "email": "hantt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 4,
+      "name": "Duy TV",
+      "email": "duytv@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 5,
+      "name": "Quyen DT",
+      "email": "quyendt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 6,
+      "name": "Phat VH",
+      "email": "phatvh@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 7,
+      "name": "Tam BT",
+      "email": "tambt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    },
+    {
+      "id": 8,
+      "name": "ThamLT",
+      "email": "thamlt@gmail.com",
+      "pass": "tam12",
+      "selected": false
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "class1"
+    },
+    {
+      "id": 2,
+      "name": "class2"
+    },
+    {
+      "id": 3,
+      "name": "class3"
+    }
+  ],
+  "tutors": [
+    {
+      "id": 1,
+      "name": "tutor1",
+      "pass": "tam12"
+    },
+    {
+      "id": 2,
+      "name": "tutor2",
+      "pass": "tam12"
+    },
+    {
+      "id": 3,
+      "name": "tutor3",
+      "pass": "tam12"
+    }
+  ]
+}

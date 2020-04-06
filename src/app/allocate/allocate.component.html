@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!--    Font Google     -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Noto+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="containerMain">
+  <div class="tutor">
+    <div class="title-main">
+      <h4>Tutor</h4>
+      <fa-icon [icon]="faUserPlus" (click)="searchTutorAllocate(searchTutor.value)" onclick="document.getElementById('tutor').style.display='block'"></fa-icon>
+    </div>
+    <div *ngIf="selectTutor" class="content">
+      <div *ngFor="let eachName of selectTutor" class="user">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <span class="name-user">{{eachName}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="classes">
+    <div class="title-main">
+      <h4>Class</h4>
+      <fa-icon [icon]="faUserPlus" (click)="searchClassAllocate(searchTutor.value)" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
+    </div>
+    <div *ngIf="selectClass" class="content">
+      <div  *ngFor="let eachName of selectClass" class="user">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <span class="name-user">{{eachName}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="student">
+    <div class="title-main">
+      <h4>Students</h4>
+      <fa-icon [icon]="faUserPlus" (click)="searchStudentAllocate(searchTutor.value)" onclick="document.getElementById('student').style.display='block'"></fa-icon>
+    </div>
+    <div *ngIf="selectStudent" class="content">
+      <div  *ngFor="let eachName of selectStudent" class="user">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <span class="name-user">{{eachName}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="tutor" class="modal">
+    <form #frmAllocateTutor="ngForm" (ngSubmit)="onSubmitFormAllocateTutor(frmAllocateTutor.value)" class="modal-content animate">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('tutor').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="containerModal">
+        <div class="title-main">
+          <label><h4>Select Tutor</h4></label>
+          <div class="title-right">
+            <input #searchTutor class="selectTutor" (keyup)="searchTutorAllocate(searchTutor.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+        </div>
+        <div class="container"  *ngFor="let eachTutor of tutors$ | async">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="tutor" id="{{eachTutor.id}}tutor" value= "{{eachTutor.id}}" (change)="tutorChange($event)">
+            <label class="custom-control-label" for="{{eachTutor.id}}tutor"><h4>{{eachTutor.id}}-{{eachTutor.name}}</h4></label>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <button type="button" onclick="document.getElementById('tutor').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('tutor').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div id="classes" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('classes').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="containerModal">
+        <div class="title-main">
+          <label><h4>Select Class</h4></label>
+          <div class="title-right">
+            <input #searchClass (keyup)="searchClassAllocate(searchClass.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+        </div>
+        <div class="container"  *ngFor="let eachClass of clases$ | async">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="class" id="{{eachClass.id}}class" value= "{{eachClass.id}}" (change)="classChange($event)">
+            <label class="custom-control-label" for="{{eachClass.id}}class"><h4>{{eachClass.id}}-{{eachClass.name}}</h4></label>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <button type="button" onclick="document.getElementById('classes').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('classes').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div id="student" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('student').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="containerModal">
+        <div class="title-main">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="selectAllStudent">
+            <label class="custom-control-label" for="selectAllStudent"><h4>Select All</h4></label>
+          </div>
+          <div class="title-right">
+            <input #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+        </div>
+        <div class="container"  *ngFor="let eachStudent of students$ | async">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}" (change)="studentChange($event)">
+            <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.name}}-{{eachStudent.email}}</h4></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <button type="button" onclick="document.getElementById('student').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('student').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Get the modal
+  var tutor = document.getElementById('tutor');
+  var classes = document.getElementById('classes');
+  var student = document.getElementById('student');
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == tutor || event.target == classes || event.target == student) {
+      tutor.style.display = "none";
+      classes.style.display = "none";
+      student.style.display = "none";
+    }
+  }
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,69 @@
+#mySidenav a {
+  position: absolute;
+  z-index: 2;
+  left: -165px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 220px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#dashboardStd {
+  top: 10px;
+  background-color: #4CAF50;
+}
+
+#dashboardTutor {
+  top: 75px;
+  background-color: #2196F3;
+}
+
+#allocate {
+  top: 140px;
+  background-color: #ff230d;
+}
+
+#reallocate {
+  top: 205px;
+  background-color: #484848
+}
+
+#manageCourse {
+  top: 270px;
+  background-color: rgb(248, 198, 0)
+}
+
+#manageClasses {
+  top: 335px;
+  background-color: #ac37ff
+}
+
+#report {
+  top: 400px;
+  background-color: #ff8720
+}
+@media(max-width:992px) {
+  .sidenav {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  #mySidenav a {
+    width:220px ;
+    position: static;
+    padding: 5px;
+    margin: 5px;
+    width: 140px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+  }
+}
