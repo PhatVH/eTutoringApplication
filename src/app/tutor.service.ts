@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Tutor} from '../models/Tutor';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
+import {Constant} from '../models/Constant';
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 @Injectable({
   providedIn: 'root'

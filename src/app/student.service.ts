@@ -26,14 +26,14 @@ export class StudentService {
   }
 
   searchStudent(typeString: string): Observable<Student[]> {
-    if (!typeString) {
-      return this.http.get<Student[]>(Constant.studentsURL).pipe(
-        tap(recieve => console.log(`recieve student Search: ${JSON.stringify(recieve)}`)),
-        catchError(error => of([]))
+    if (!typeString.trim()) {
+      return this.http.get(`${Constant.studentsURL}`).pipe(
+        tap(recieve => console.log(`recieve students: ${JSON.stringify(recieve)}`)),
+        catchError(error => of(null))
       );
     }
     return this.http.get(`${Constant.studentsURL}?name_like=${typeString}`).pipe(
-      tap(recieve => console.log(`recieve students: ${JSON.stringify(recieve)}`)),
+      tap(recieve => console.log(`recieve students allocate: ${JSON.stringify(recieve)}`)),
       catchError(error => of(null))
     );
   }

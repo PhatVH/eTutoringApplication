@@ -10,6 +10,8 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactComponent} from './contact/contact.component';
 import {ReportComponent} from './report/report.component';
 import {AuthGaurdService} from './auth-gaurd.service';
+import {ChatComponent} from './chat/chat.component';
+import {ArrangeMeetingComponent} from './arrange-meeting/arrange-meeting.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: 'event', component: EventComponent, canActivate: [AuthGaurdService]},
   {path: 'aboutUs', component: AboutUsComponent, canActivate: [AuthGaurdService]},
   {path: 'contact', component: ContactComponent, canActivate: [AuthGaurdService]},
-  {path: 'report', component: ReportComponent, canActivate: [AuthGaurdService]}
+  {path: 'report', component: ReportComponent, canActivate: [AuthGaurdService]},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGaurdService]},
+  {path: 'arrageMeeting', component: ArrangeMeetingComponent, canActivate: [AuthGaurdService]}
 ];
 
 @NgModule({
