@@ -51,7 +51,10 @@ import { ClockComponent } from './clock/clock.component';
     ListBlogComponent,
     HeaderComponent,
     FooterComponent,
-    ClockComponent
+    ClockComponent,
+    OurServicesComponent,
+    ListStudentComponent,
+    ListBlogComponent
   ],
   imports: [
     BrowserModule,
