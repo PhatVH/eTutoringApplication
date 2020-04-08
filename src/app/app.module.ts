@@ -25,8 +25,6 @@ import {ChartsModule} from 'ng2-charts';
 import {CountdownModule} from 'ng2-date-countdown';
 import {AuthGaurdService} from './auth-gaurd.service';
 
-import { ListStudentComponent } from './list-student/list-student.component';
-import { ListBlogComponent } from './list-blog/list-blog.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +42,6 @@ import { ListBlogComponent } from './list-blog/list-blog.component';
     ContactComponent,
     ForewordComponent,
     OurServicesComponent
-    ListStudentComponent,
-    ListBlogComponent
   ],
   imports: [
     BrowserModule,
