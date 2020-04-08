@@ -27,6 +27,9 @@ import {AuthGaurdService} from './auth-gaurd.service';
 
 import { ListStudentComponent } from './list-student/list-student.component';
 import { ListBlogComponent } from './list-blog/list-blog.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { ListBlogComponent } from './list-blog/list-blog.component';
     ForewordComponent,
     OurServicesComponent
     ListStudentComponent,
-    ListBlogComponent
+    ListBlogComponent,
+    HeaderComponent,
+    FooterComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
