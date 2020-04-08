@@ -25,11 +25,6 @@ import {ChartsModule} from 'ng2-charts';
 import {CountdownModule} from 'ng2-date-countdown';
 import {AuthGaurdService} from './auth-gaurd.service';
 
-import { ListStudentComponent } from './list-student/list-student.component';
-import { ListBlogComponent } from './list-blog/list-blog.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -46,12 +41,7 @@ import { ClockComponent } from './clock/clock.component';
     ReportComponent,
     ContactComponent,
     ForewordComponent,
-    OurServicesComponent,
-    ListStudentComponent,
-    ListBlogComponent,
-    HeaderComponent,
-    FooterComponent,
-    ClockComponent
+    OurServicesComponent
   ],
   imports: [
     BrowserModule,
