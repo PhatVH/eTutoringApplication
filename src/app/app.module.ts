@@ -24,6 +24,13 @@ import { OurServicesComponent } from './our-services/our-services.component';
 import {ChartsModule} from 'ng2-charts';
 import {CountdownModule} from 'ng2-date-countdown';
 import {AuthGaurdService} from './auth-gaurd.service';
+import { ChatComponent } from './chat/chat.component';
+import { ArrangeMeetingComponent } from './arrange-meeting/arrange-meeting.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {FlatpickrModule} from 'angularx-flatpickr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ListStudentComponent } from './list-student/list-student.component';
 import { ListBlogComponent } from './list-blog/list-blog.component';
@@ -54,7 +61,9 @@ import { ClockComponent } from './clock/clock.component';
     ClockComponent,
     OurServicesComponent,
     ListStudentComponent,
-    ListBlogComponent
+    ListBlogComponent,
+    ChatComponent,
+    ArrangeMeetingComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,11 @@ import { ClockComponent } from './clock/clock.component';
     FontAwesomeModule,
     ReactiveFormsModule,
     ChartsModule,
-    CountdownModule
+    CountdownModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     StudentService,
