@@ -37,6 +37,9 @@ import { ListBlogComponent } from './list-blog/list-blog.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClockComponent } from './clock/clock.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { ClockComponent } from './clock/clock.component';
     ListStudentComponent,
     ListBlogComponent,
     ChatComponent,
-    ArrangeMeetingComponent
+    ArrangeMeetingComponent,
+    CarouselComponent,
+    HomepageComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

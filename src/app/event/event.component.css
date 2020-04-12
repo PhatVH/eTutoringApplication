@@ -1,104 +1,5 @@
 
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-dl,
-dt,
-dd,
-ol,
-nav ul,
-nav li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
 
 ol,
 ul {
@@ -392,7 +293,7 @@ h2 span {
   text-align: center;
   padding: 3.5vw;
 }
-div#simply-countdown-losange {
+#simply-countdown-losange {
   background: rgba(0, 0, 0, 0.51);
   max-width: 54%;
   margin: 0 5vw;
@@ -440,9 +341,7 @@ div#simply-countdown-losange {
   .w3l-agile {
     max-width: 50%;
   }
-  div#simply-countdown-losange {
-    max-width: 64%;
-  }
+
 }
 
 @media(max-width: 1080px) {
@@ -455,9 +354,7 @@ div#simply-countdown-losange {
   h2 {
     font-size: 2.5vw;
   }
-  div#simply-countdown-losange {
-    max-width: 72%;
-  }
+ 
   .sub-main-w3 p {
     font-size: 18px;
   }
@@ -467,9 +364,7 @@ div#simply-countdown-losange {
 }
 
 @media(max-width: 900px) {
-  div#simply-countdown-losange {
-    max-width: 80%;
-  }
+  
   /deep/ .measurements-number {
     font-size: 56px;
   }
@@ -537,9 +432,7 @@ div#simply-countdown-losange {
   .w3l-agile {
     max-width: 80%;
   }
-  div#simply-countdown-losange {
-    max-width: 90%;
-  }
+  
   .sub-main-w3 p {
     margin-bottom: 3vw;
   }

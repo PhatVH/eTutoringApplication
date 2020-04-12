@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       userRecieve => {this.user = userRecieve;
         // tslint:disable-next-line:triple-equals
                       sessionStorage.setItem('typeUser', this.user[0].type);
-                      this.router.navigate(['/dashboard']);
+                      this.router.navigate(['/home']);
                       console.log('login component :' + this.user[0].type);
 
       }

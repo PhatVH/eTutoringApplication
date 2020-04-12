@@ -12,6 +12,10 @@ import {ReportComponent} from './report/report.component';
 import {AuthGaurdService} from './auth-gaurd.service';
 import {ChatComponent} from './chat/chat.component';
 import {ArrangeMeetingComponent} from './arrange-meeting/arrange-meeting.component';
+import {ListBlogComponent } from './list-blog/list-blog.component';
+import { ManageSectionComponent } from './manage-section/manage-section.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 const routes: Routes = [
@@ -26,7 +30,12 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent, canActivate: [AuthGaurdService]},
   {path: 'report', component: ReportComponent, canActivate: [AuthGaurdService]},
   {path: 'chat', component: ChatComponent, canActivate: [AuthGaurdService]},
-  {path: 'arrageMeeting', component: ArrangeMeetingComponent, canActivate: [AuthGaurdService]}
+  {path: 'arrageMeeting', component: ArrangeMeetingComponent, canActivate: [AuthGaurdService]},
+  {path: 'blog', component: BlogComponent, canActivate: [AuthGaurdService]},
+  {path: 'manage-section', component: ManageSectionComponent, canActivate: [AuthGaurdService]},
+  {path: 'home', component: HomepageComponent, canActivate: [AuthGaurdService]}
+
+  
 ];
 
 @NgModule({
