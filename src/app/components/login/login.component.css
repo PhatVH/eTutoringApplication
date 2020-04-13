@@ -96,9 +96,13 @@ body {
   width: 82%;
   color: #fff;
   font-weight: 400;
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Gotu', sans-serif;
   letter-spacing: 1px;
+  
 }
+input[type=email]::-webkit-input-placeholder { /* Safari, Chrome(, Opera?) */
+  color:none;
+ }
 .sub-main-w3 {
   position: relative;
   width: 23%;
@@ -481,4 +485,26 @@ span.icon1, span.icon2{
     padding: 2.2em 0 1.4em;
   }
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: white;
+    }
+}
+
+@-webkit-keyframes autofill {
+    100% {
+        background: transparent;
+        color: white;
+    }
+}
+
 /*--//responsive--*/

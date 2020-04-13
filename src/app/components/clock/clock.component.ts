@@ -17,10 +17,10 @@ export class ClockComponent implements OnInit {
 
 
   rtClock: any;
-  hours: any;
-  minutes: any;
-  seconds: any;
-  amPm: any;
+  hours: any = 1;
+  minutes: any = 1;
+  seconds: any = 1;
+  amPm: any = '';
 
   realtimeClock() {
     this.rtClock = new Date();
