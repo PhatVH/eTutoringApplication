@@ -1,0 +1,66 @@
+
+
+<!--Header-->
+<div class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="" class="navbar-branch">
+            <img src="./assets/images/logo.png" alt="" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto" *ngIf="loginComponent.isUserLoggedIn()==false">
+            <li class="nav-item">
+              <a href="" class="nav-link " routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="login()">Login</a>
+            </li>
+          </ul>
+
+            <ul class="navbar-nav ml-auto" *ngIf="loginComponent.isUserLoggedIn()==true">
+                <li class="nav-item">
+                    <a href="" class="nav-link " routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" routerLink="/dashboard" >Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" routerLink="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" routerLink="/blog">Blog</a>
+                </li>
+              <li class="nav-item dropdown" *ngIf="loginComponent.user.type=='staff'">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownManage" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/table">Manage Student</a>
+                  <a class="dropdown-item" routerLink="/table">Manage Tutor</a>
+                  <a class="dropdown-item" routerLink="/allocate">Allocate</a>
+                  <a class="dropdown-item" routerLink="/Reallocate">Reallocate</a>
+                </div>
+              </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{user.name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/errorPage">Setting</a>
+                        <a class="dropdown-item" routerLink="/errorPage">Profile</a>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+    </div>
+</div>

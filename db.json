@@ -4,7 +4,7 @@
     "name": "staff",
     "email": "tambt@gmail.com",
     "pass": "1234",
-    "type": 1,
+    "type": "staff",
     "selected": false
   },
   {
@@ -12,7 +12,7 @@
     "name": "tutor",
     "email": "tambt@gmail.com",
     "pass": "1234",
-    "type": 2,
+    "type": "tutor",
     "selected": false
   },
   {
@@ -20,7 +20,7 @@
     "name": "student",
     "email": "tambt@gmail.com",
     "pass": "1234",
-    "type": 3,
+    "type": "student",
     "selected": false
   }
 ],

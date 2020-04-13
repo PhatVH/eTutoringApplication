@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div *ngIf="user.type == 'staff'">
+  <app-report></app-report>
+</div>
+
+<div *ngIf="user.type == 'student'">
+  <app-chat></app-chat>
+</div>
+
+<div *ngIf="user.type == 'tutor'">
+  <app-chat></app-chat>
+</div>
+
+<app-footer></app-footer>
+
