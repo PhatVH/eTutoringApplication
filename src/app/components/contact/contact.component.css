@@ -37,13 +37,12 @@ div#contact p {
   margin-bottom: 1em;
   width: 37%;
 }
-div#contact h3 {
-  text-align: left;
-}
+
+
 .w3layouts-list {
-  margin-top: 3em;
-  background: #f4792c;
+  background: #000000cf;
 }
+
 .li {
   text-align: center;
 }
