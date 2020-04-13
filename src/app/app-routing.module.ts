@@ -16,6 +16,7 @@ import { ManageSectionComponent } from './components/manage-section/manage-secti
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { BlogComponent } from './components/blog/blog.component';
 import {ManageStudentComponent} from './components/manage-student/manage-student.component';
+import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent, canActivate: [AuthGaurdService]},
   {path: 'manage-section', component: ManageSectionComponent},
   {path: 'home', component: HomepageComponent},
-  {path: 'table', component: ManageStudentComponent},
+  {path: 'manageStudent', component: ManageStudentComponent},
+  {path: 'manageTutor', component: ManageTutorComponent},
 
 
 ];

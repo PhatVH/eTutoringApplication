@@ -1,11 +1,18 @@
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.css" />
 <app-header></app-header>
+<div class="container-fluid">
 <form class="mt-5 ml-2 mr-2 mb-5">
-  <div class="form-group form-inline">
-    Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
-    <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+  <div class="row">
+  <div class="col-md-6 m-0">
+    <div class="form-group form-inline">
+      Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+      <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+    </div>
+  </div>
+  <div class="col-md-6 my-auto">
+    <p class="m-0 text-right">Click on title to sort data</p>
+  </div>
   </div>
 
   <table class="table table-striped">
@@ -43,4 +50,5 @@
   </div>
 
 </form>
+</div>
 <app-footer></app-footer>

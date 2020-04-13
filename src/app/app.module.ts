@@ -30,7 +30,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FlatpickrModule} from 'angularx-flatpickr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 import { ListStudentComponent } from './components/list-student/list-student.component';
 import { ListBlogComponent } from './components/list-blog/list-blog.component';
 import { HeaderComponent } from './components/header/header.component';
