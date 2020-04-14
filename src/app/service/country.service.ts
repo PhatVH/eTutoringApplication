@@ -84,7 +84,6 @@ export class CountryService {
       this._countries$.next(result.countries);
       this._total$.next(result.total);
     });
-
     this._search$.next();
     this.getAllCountries();
   }

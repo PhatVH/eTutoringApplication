@@ -16,14 +16,13 @@ import {ClassService} from '../../service/class.service';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
-  user: User = {id: 1, name: 'visitor', pass: '20', type: 'visitor'};
+  user: User = {id: null, name: null, pass: null, type: null};
   result: string;
   invalidAccount: string;
 
   ngOnInit(): void {
     this.getUser();
   }
-
   getAllTutor(): void {
     this.tutorService.getTutors().subscribe(
     );
@@ -37,21 +36,18 @@ export class LoginComponent implements OnInit {
     }
     this.result = null;
     this.classService.getLogin(user, pass).subscribe(
-      userRecieve => {
-        this.user = userRecieve;
+      (userRecieve) => {
         // tslint:disable-next-line:triple-equals
-        if (userRecieve == null) {
+        if (userRecieve[0] == null) {
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
-          return;
         } else {
-          this.invalidAccount = null
+          this.user = userRecieve[0];
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
           this.router.navigate(['/home']);
         }
       }
     );
-
   }
 
   isUserLoggedIn() {
