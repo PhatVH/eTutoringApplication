@@ -2,9 +2,12 @@ import {Injectable, PipeTransform} from '@angular/core';
 
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
+import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from '../sortable.directive';
-import {COUNTRIES, Country} from '../../models/Countries';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Student} from '../../models/Student';
+import {Constant} from '../../models/Constant';
+import {Country} from '../../models/Countries';
 
 interface SearchResult {
   countries: Country[];
@@ -18,6 +21,8 @@ interface State {
   sortColumn: SortColumn;
   sortDirection: SortDirection;
 }
+
+const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 
 const compare = (v1: string, v2: string) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
@@ -44,7 +49,21 @@ export class CountryService {
   private _search$ = new Subject<void>();
   private _countries$ = new BehaviorSubject<Country[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
-
+  private COUNTRIES: Country[] = [{
+    "id": 12,
+    "name": "Tuvalu",
+    "flag": "3/38/Flag_of_Tuvalu.svg",
+    "area": 26,
+    "population": 11097
+  },
+    {
+      "id": 13,
+      "name": "China",
+      "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+      "area": 9596960,
+      "population": 1409517397
+    }];
+  private COUNTRIES$: Observable<Country[]>;
   private _state: State = {
     page: 1,
     pageSize: 10,
@@ -53,7 +72,8 @@ export class CountryService {
     sortDirection: ''
   };
 
-  constructor(private pipe: DecimalPipe) {
+  constructor(private pipe: DecimalPipe,
+              private http: HttpClient) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -66,20 +86,69 @@ export class CountryService {
     });
 
     this._search$.next();
+    this.getAllCountries();
   }
 
-  get countries$() { return this._countries$.asObservable(); }
-  get total$() { return this._total$.asObservable(); }
-  get loading$() { return this._loading$.asObservable(); }
-  get page() { return this._state.page; }
-  get pageSize() { return this._state.pageSize; }
-  get searchTerm() { return this._state.searchTerm; }
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(Constant.countryURL).pipe(
+      tap(recieve => console.log(`recieve Country: ${JSON.stringify(recieve)}`)),
+      catchError(error => of([]))
+    );
+  }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: SortColumn) { this._set({sortColumn}); }
-  set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
+  getAllCountries(): void {
+    this.getCountries().subscribe(
+      studentsRecieve => {
+        this.COUNTRIES = studentsRecieve;
+        console.log(`this.COUNTRIES`);
+        console.log(this.COUNTRIES);
+      }
+    );
+  }
+
+  get countries$() {
+    return this._countries$.asObservable();
+  }
+
+  get total$() {
+    return this._total$.asObservable();
+  }
+
+  get loading$() {
+    return this._loading$.asObservable();
+  }
+
+  get page() {
+    return this._state.page;
+  }
+
+  get pageSize() {
+    return this._state.pageSize;
+  }
+
+  get searchTerm() {
+    return this._state.searchTerm;
+  }
+
+  set page(page: number) {
+    this._set({page});
+  }
+
+  set pageSize(pageSize: number) {
+    this._set({pageSize});
+  }
+
+  set searchTerm(searchTerm: string) {
+    this._set({searchTerm});
+  }
+
+  set sortColumn(sortColumn: SortColumn) {
+    this._set({sortColumn});
+  }
+
+  set sortDirection(sortDirection: SortDirection) {
+    this._set({sortDirection});
+  }
 
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
@@ -90,7 +159,7 @@ export class CountryService {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
-    let countries = sort(COUNTRIES, sortColumn, sortDirection);
+    let countries = sort(this.COUNTRIES, sortColumn, sortDirection);
 
     // 2. filter
     countries = countries.filter(country => matches(country, searchTerm, this.pipe));
