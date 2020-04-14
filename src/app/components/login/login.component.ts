@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   faUnlock = faUnlock;
   user: User  = {id: 1, name: 'visitor', pass: '20', type: 'visitor'}
   result: string;
+  invalidAccount: string;
   ngOnInit(): void {
     this.getUser();
   }
@@ -28,18 +29,28 @@ export class LoginComponent implements OnInit {
   onSubmitForm(user: string, pass: string) {
     // tslint:disable-next-line:triple-equals
     if (user == '' || pass == '') {
-      this.result = 'aaa';
+      this.result = 'result';
+      return;
     }
     this.result = null;
     this.classService.getLogin(user, pass).subscribe(
-      userRecieve => {this.user = userRecieve;
+      userRecieve => {
+        this.user = userRecieve;
         // tslint:disable-next-line:triple-equals
-                      sessionStorage.setItem('user', JSON.stringify(userRecieve));
-                      this.router.navigate(['/home']);
-
+        if (userRecieve == null) {
+          this.invalidAccount = 'invalidAccount';
+          this.router.navigate(['/login']);
+          return;
+        } else {
+          this.invalidAccount = null
+          sessionStorage.setItem('user', JSON.stringify(userRecieve));
+          this.router.navigate(['/home']);
+        }
       }
     );
+
   }
+
   isUserLoggedIn() {
     const user = JSON.parse(sessionStorage.getItem('user'));
     return !(user === null);
