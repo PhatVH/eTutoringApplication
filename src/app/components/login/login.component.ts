@@ -16,7 +16,7 @@ import {ClassService} from '../../service/class.service';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
-  user: User  = {id: 1, name: 'visitor', pass: '20', type: 'visitor'}
+  user: User  = {id: 1, name: 'visitor', pass: '20', type: null}
   result: string;
   invalidAccount: string;
   ngOnInit(): void {
@@ -35,12 +35,13 @@ export class LoginComponent implements OnInit {
     this.result = null;
     this.classService.getLogin(user, pass).subscribe(
       userRecieve => {
-        this.user = userRecieve;
+        this.user = userRecieve[0];
+        let arrayEmpty :User
         // tslint:disable-next-line:triple-equals
-        if (userRecieve == null) {
+        if (userRecieve == arrayEmpty) {
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
-          return;
+          
         } else {
           this.invalidAccount = null
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
@@ -48,7 +49,6 @@ export class LoginComponent implements OnInit {
         }
       }
     );
-
   }
 
   isUserLoggedIn() {
