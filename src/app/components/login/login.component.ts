@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {User} from '../../../models/User';
 import {NgForm} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
@@ -16,30 +16,44 @@ import {ClassService} from '../../service/class.service';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
-  user: User  = {id: 1, name: 'visitor', pass: '20', type: 'visitor'}
+  user: User = {id: 1, name: 'visitor', pass: '20', type: 'visitor'};
   result: string;
+  invalidAccount: string;
+
   ngOnInit(): void {
     this.getUser();
   }
+
   getAllTutor(): void {
     this.tutorService.getTutors().subscribe(
     );
   }
+
   onSubmitForm(user: string, pass: string) {
     // tslint:disable-next-line:triple-equals
     if (user == '' || pass == '') {
-      this.result = 'aaa';
+      this.result = 'result';
+      return;
     }
     this.result = null;
     this.classService.getLogin(user, pass).subscribe(
-      userRecieve => {this.user = userRecieve;
+      userRecieve => {
+        this.user = userRecieve;
         // tslint:disable-next-line:triple-equals
-                      sessionStorage.setItem('user', JSON.stringify(userRecieve));
-                      this.router.navigate(['/home']);
-
+        if (userRecieve == null) {
+          this.invalidAccount = 'invalidAccount';
+          this.router.navigate(['/login']);
+          return;
+        } else {
+          this.invalidAccount = null
+          sessionStorage.setItem('user', JSON.stringify(userRecieve));
+          this.router.navigate(['/home']);
+        }
       }
     );
+
   }
+
   isUserLoggedIn() {
     const user = JSON.parse(sessionStorage.getItem('user'));
     return !(user === null);
@@ -58,10 +72,11 @@ export class LoginComponent implements OnInit {
     sessionStorage.removeItem('user');
     this.router.navigate(['/home']);
   }
+
   constructor(private studentService: StudentService,
               private tutorService: TutorService,
               private classService: ClassService,
               private router: Router,
-              ) {
+  ) {
   }
 }
