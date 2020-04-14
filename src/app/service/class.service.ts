@@ -34,7 +34,7 @@ export class ClassService {
   getLogin(userName: string, pass: string): Observable<User> {
     const url = `${this.usersURL}?name=${userName}&&pass=${pass}`;
     return this.http.get<User>(url).pipe(
-      tap(recieve => console.log('recieve user: ' +  recieve)),
+      tap(recieve => console.log(`recieve user: ${JSON.stringify(recieve)}`)),
       catchError(error => of(null))
     );
   }

@@ -99,34 +99,7 @@ import {CommonModule} from '@angular/common';
     LoginComponent,
     SortableDirective
   ],
-  bootstrap: [AppComponent,
-    AllocateComponent,
-    ErrorPageComponent,
-    DashboardComponent,
-    AllocateAddComponent,
-    AllocateRemoveComponent,
-    EventComponent,
-    AboutUsComponent,
-    ManageSectionComponent,
-    ReportComponent,
-    ContactComponent,
-    OurServicesComponent,
-    ListStudentComponent,
-    ListBlogComponent,
-    HeaderComponent,
-    FooterComponent,
-    ClockComponent,
-    OurServicesComponent,
-    ListStudentComponent,
-    ListBlogComponent,
-    ChatComponent,
-    ArrangeMeetingComponent,
-    CarouselComponent,
-    HomepageComponent,
-    BlogComponent,
-    ManageStudentComponent,
-    ManageTutorComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
