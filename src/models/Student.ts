@@ -4,4 +4,7 @@ export class Student {
   email: string;
   pass: string;
   selected: boolean;
+  country: string;
+  countryFlag: string;
+  tutor: string;
 }

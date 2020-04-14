@@ -5,12 +5,11 @@ import {DecimalPipe} from '@angular/common';
 import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from '../sortable.directive';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Student} from '../../models/Student';
 import {Constant} from '../../models/Constant';
-import {Country} from '../../models/Countries';
+import {Student} from '../../models/Student';
 
 interface SearchResult {
-  countries: Country[];
+  students: Student[];
   total: number;
 }
 
@@ -23,47 +22,32 @@ interface State {
 }
 
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
-
 const compare = (v1: string, v2: string) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-
-function sort(countries: Country[], column: SortColumn, direction: string): Country[] {
+function sort(students: Student[], column: SortColumn, direction: string): Student[] {
   if (direction === '' || column === '') {
-    return countries;
+    return students;
   } else {
-    return [...countries].sort((a, b) => {
+    return [...students].sort((a, b) => {
       const res = compare(`${a[column]}`, `${b[column]}`);
       return direction === 'asc' ? res : -res;
     });
   }
 }
 
-function matches(country: Country, term: string, pipe: PipeTransform) {
-  return country.name.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(country.area).includes(term)
-    || pipe.transform(country.population).includes(term);
+function matches(student: Student, term: string, pipe: PipeTransform) {
+  return student.name.toLowerCase().includes(term.toLowerCase())
+    || student.email.toLowerCase().includes(term.toLowerCase())
+    || pipe.transform(student.id).includes(term);
 }
 
 @Injectable({providedIn: 'root'})
 export class CountryService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
-  private _countries$ = new BehaviorSubject<Country[]>([]);
+  private _students$ = new BehaviorSubject<Student[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
-  private COUNTRIES: Country[] = [{
-    "id": 12,
-    "name": "Tuvalu",
-    "flag": "3/38/Flag_of_Tuvalu.svg",
-    "area": 26,
-    "population": 11097
-  },
-    {
-      "id": 13,
-      "name": "China",
-      "flag": "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
-      "area": 9596960,
-      "population": 1409517397
-    }];
-  private COUNTRIES$: Observable<Country[]>;
+  private STUDENTS: Student[];
+  private STUDENTS$: Observable<Student[]>;
   private _state: State = {
     page: 1,
     pageSize: 10,
@@ -74,39 +58,39 @@ export class CountryService {
 
   constructor(private pipe: DecimalPipe,
               private http: HttpClient) {
-    this._search$.pipe(
-      tap(() => this._loading$.next(true)),
-      debounceTime(200),
-      switchMap(() => this._search()),
-      delay(200),
-      tap(() => this._loading$.next(false))
-    ).subscribe(result => {
-      this._countries$.next(result.countries);
-      this._total$.next(result.total);
-    });
-    this._search$.next();
-    this.getAllCountries();
+    this.getAllStudents();
   }
 
-  getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(Constant.countryURL).pipe(
-      tap(recieve => console.log(`recieve Country: ${JSON.stringify(recieve)}`)),
+  getStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(Constant.studentsURL).pipe(
+      tap(recieve => console.log(`recieve Student: ${JSON.stringify(recieve)}`)),
       catchError(error => of([]))
     );
   }
 
-  getAllCountries(): void {
-    this.getCountries().subscribe(
+  getAllStudents(): void {
+    this.getStudents().subscribe(
       studentsRecieve => {
-        this.COUNTRIES = studentsRecieve;
-        console.log(`this.COUNTRIES`);
-        console.log(this.COUNTRIES);
+        this.STUDENTS = studentsRecieve;
+        this._search$.pipe(
+          tap(() => this._loading$.next(true)),
+          debounceTime(200),
+          switchMap(() => this._search()),
+          delay(200),
+          tap(() => this._loading$.next(false))
+        ).subscribe(result => {
+          this._students$.next(result.students);
+          this._total$.next(result.total);
+        });
+        this._search$.next();
+        console.log(`this.STUDENTS`);
+        console.log(this.STUDENTS);
       }
     );
   }
 
-  get countries$() {
-    return this._countries$.asObservable();
+  get students$() {
+    return this._students$.asObservable();
   }
 
   get total$() {
@@ -158,14 +142,14 @@ export class CountryService {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
-    let countries = sort(this.COUNTRIES, sortColumn, sortDirection);
+    let students = sort(this.STUDENTS, sortColumn, sortDirection);
 
     // 2. filter
-    countries = countries.filter(country => matches(country, searchTerm, this.pipe));
-    const total = countries.length;
+    students = students.filter(student => matches(student, searchTerm, this.pipe));
+    const total = students.length;
 
     // 3. paginate
-    countries = countries.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({countries, total});
+    students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    return of({students, total});
   }
 }

@@ -1,9 +1,10 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Country} from '../../../models/Countries';
-import {CountryService} from '../../service/country.service';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {DecimalPipe} from '@angular/common';
+import {Student} from '../../../models/Student';
+import {CountryService} from '../../service/country.service';
 
 @Component({
   selector: 'app-manage-student',
@@ -14,10 +15,10 @@ import {DecimalPipe} from '@angular/common';
 export class ManageStudentComponent implements OnInit {
 
   constructor(public service: CountryService) {
-    this.countries$ = service.countries$;
+    this.students$ = service.students$;
     this.total$ = service.total$;
   }
-  countries$: Observable<Country[]>;
+  students$: Observable<Student[]>;
   total$: Observable<number>;
 
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
