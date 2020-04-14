@@ -1,4 +1,4 @@
-{"user": [
+{ "user": [
   {
     "id": 1,
     "name": "staff",
@@ -111,6 +111,32 @@
       "id": 3,
       "name": "tutor3",
       "pass": "tam12"
+    }
+  ],
+  "schedule": [
+    {
+      "id": 1,
+      "name": "staff",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "staff",
+      "selected": false
+    },
+    {
+      "id": 1,
+      "name": "tutor",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "tutor",
+      "selected": false
+    },
+    {
+      "id": 1,
+      "name": "student",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "student",
+      "selected": false
     }
   ]
 }

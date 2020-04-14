@@ -16,7 +16,7 @@ import {ClassService} from '../../service/class.service';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
-  user: User = {id: 1, name: 'visitor', pass: '20', type: 'visitor'};
+  user: User = {id: 1, name: 'visitor', pass: '20', type: null};
   result: string;
   invalidAccount: string;
 
@@ -40,12 +40,11 @@ export class LoginComponent implements OnInit {
       userRecieve => {
         this.user = userRecieve;
         // tslint:disable-next-line:triple-equals
-        if (userRecieve == null) {
+        if (userRecieve[0].type == null) {
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
-          return;
+        
         } else {
-          this.invalidAccount = null
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
           this.router.navigate(['/home']);
         }

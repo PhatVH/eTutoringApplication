@@ -28,7 +28,7 @@
         <div class="wthree-pro">
           <h2>Login Here</h2>
         </div>
-        <form #frmUser="ngForm">
+        <form #frmUser="ngForm" novalidate>
           <input placeholder="Username or E-mail" class="user" type="email" name="userName" #user required="">
           <span class="icon1"> <fa-icon [icon]="faUser"></fa-icon></span><br><br>
           <input  placeholder="Password" class="pass" type="password" #pass required="">
