@@ -27,7 +27,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let student of students$ | async">
+    <tr *ngFor="let student of students$ | async" (click)="onDashboadStudent(student)">
       <th scope="row">{{ student.id }}</th>
       <td><ngb-highlight [result]="student.name" [term]="service.searchTerm"></ngb-highlight></td>
       <td>

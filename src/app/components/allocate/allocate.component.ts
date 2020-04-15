@@ -30,9 +30,6 @@ export class AllocateComponent implements OnInit {
   selectTutor: any = [];
   selectClass: any = [];
   selectStudent: any = [];
-  selectedTutor: any = [];
-  selectedClass: any = [];
-  selectedStudent: any = [];
   private searchTutor = new Subject<string>();
   private searchClass = new Subject<string>();
   private searchStudent = new Subject<string>();

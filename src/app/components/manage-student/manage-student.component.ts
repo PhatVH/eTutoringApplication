@@ -5,6 +5,7 @@ import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {DecimalPipe} from '@angular/common';
 import {Student} from '../../../models/Student';
 import {CountryService} from '../../service/country.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-manage-student',
@@ -14,7 +15,8 @@ import {CountryService} from '../../service/country.service';
 })
 export class ManageStudentComponent implements OnInit {
 
-  constructor(public service: CountryService) {
+  constructor(public service: CountryService,
+              private router: Router) {
     this.students$ = service.students$;
     this.total$ = service.total$;
   }
@@ -37,4 +39,9 @@ export class ManageStudentComponent implements OnInit {
     this.service.sortDirection = direction;
   }
 
+  onDashboadStudent(student) {
+    console.log(`click dashboard student`);
+
+    this.router.navigate(['/dashboard']);
+  }
 }

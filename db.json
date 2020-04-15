@@ -242,6 +242,18 @@
       "name": "tutor3",
       "pass": "tam12"
     }
+  ],
+  "schedule" : [
+    {
+      "start": "Wed Apr 15 2020 00:00:00 GMT+0700 (Indochina Time)",
+      "title": "A 3 day event",
+      "color": "#ad2121",
+      "invite": "Nguyen A"
+    },
+    {
+      "title": "An event with no end date",
+      "color": "#ad2121"
+    }
   ]
 }
 
