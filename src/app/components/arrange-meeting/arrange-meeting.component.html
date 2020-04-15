@@ -113,7 +113,6 @@
     <tr>
       <th>Title</th>
       <th>Invite</th>
-      <th>Primary color</th>
       <th>Starts at</th>
       <th>Ends at</th>
       <th>Remove</th>
@@ -137,13 +136,6 @@
           class="form-control"
           [(ngModel)]="event.invite"
           #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)"
-        />
-      </td>
-      <td>
-        <input
-          type="color"
-          [(ngModel)]="event.color.primary"
-          (change)="refresh.next()"
         />
       </td>
       <td>

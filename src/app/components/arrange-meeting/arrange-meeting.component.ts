@@ -65,7 +65,7 @@ export class ArrangeMeetingComponent implements OnInit {
 
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
+      label: '<i class="fa fa-fw fa-eye"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
@@ -131,8 +131,8 @@ export class ArrangeMeetingComponent implements OnInit {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        color: colors.red,
         invite: '',
+        actions: this.actions,
         draggable: true,
         resizable: {
           beforeStart: true,
