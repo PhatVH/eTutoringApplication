@@ -23,12 +23,9 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import {AllocateComponent} from '../allocate/allocate.component';
-import {CountryService} from '../../service/country.service';
-import {DecimalPipe} from '@angular/common';
 import {Student} from '../../../models/Student';
 import {StudentService} from '../../service/student.service';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import {int} from 'flatpickr/dist/utils';
 import {ScheduleService} from '../../schedule.service';
 
 const colors: any = {

@@ -10,7 +10,6 @@ import {CalendarEvent} from 'angular-calendar';
   providedIn: 'root'
 })
 export class ScheduleService {
-
   constructor(private http: HttpClient) { }
   getScheduleEvent(): Observable<CalendarEvent[]> {
     return this.http.get<CalendarEvent[]>(Constant.scheduleURL).pipe(
