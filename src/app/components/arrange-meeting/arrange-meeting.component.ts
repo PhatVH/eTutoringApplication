@@ -2,7 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef,
+  TemplateRef, OnInit,
 } from '@angular/core';
 import {
   startOfDay,
@@ -14,7 +14,7 @@ import {
   isSameMonth,
   addHours,
 } from 'date-fns';
-import { Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -22,28 +22,31 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
+import {AllocateComponent} from '../allocate/allocate.component';
+import {Student} from '../../../models/Student';
+import {StudentService} from '../../service/student.service';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {ScheduleService} from '../../schedule.service';
 
 const colors: any = {
   red: {
     primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
+  }
 };
 @Component({
   selector: 'app-arrange-meeting',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './arrange-meeting.component.html',
-  styleUrls: ['./arrange-meeting.component.css']
+  styleUrls: ['./arrange-meeting.component.css'],
+  providers: [AllocateComponent, ScheduleService]
 })
-export class ArrangeMeetingComponent {
+export class ArrangeMeetingComponent implements OnInit {
+  students$: Observable<Student[]>;
+  schedule$: Observable<CalendarEvent[]>;
+  closeDiv = 'value';
+  private eachStudent: Student;
+  invite: string;
+  private searchStudent = new Subject<string>();
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -59,7 +62,7 @@ export class ArrangeMeetingComponent {
 
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
+      label: '<i class="fa fa-fw fa-eye"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
@@ -77,51 +80,13 @@ export class ArrangeMeetingComponent {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  events: CalendarEvent[];
 
   activeDayIsOpen = true;
 
-  constructor(private modal: NgbModal) {}
-
+  constructor(private modal: NgbModal, private studentService: StudentService, private scheduleService: ScheduleService) {
+    this.getAllSchedule();
+  }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -136,11 +101,8 @@ export class ArrangeMeetingComponent {
     }
   }
 
-  eventTimesChanged({
-                      event,
-                      newStart,
-                      newEnd,
-                    }: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({event, newStart,
+                      newEnd}: CalendarEventTimesChangedEvent): void {
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {
@@ -166,7 +128,8 @@ export class ArrangeMeetingComponent {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        color: colors.red,
+        invite: '',
+        actions: this.actions,
         draggable: true,
         resizable: {
           beforeStart: true,
@@ -175,7 +138,6 @@ export class ArrangeMeetingComponent {
       },
     ];
   }
-
   deleteEvent(eventToDelete: CalendarEvent) {
     this.events = this.events.filter((event) => event !== eventToDelete);
   }
@@ -189,5 +151,32 @@ export class ArrangeMeetingComponent {
   }
 
   acceptEvent(event: CalendarEvent<any>) {
+  }
+  searchStudentAllocate(searchStudent: string): void {
+    console.log(`search nhập từ bàn phím student = ${searchStudent}`);
+    this.searchStudent.next(searchStudent);
+  }
+
+  ngOnInit(): void {
+    this.students$ = this.searchStudent.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent))
+    );
+  }
+
+  clickStudent(eachStudent: Student) {
+    this.eachStudent = eachStudent;
+    this.invite = eachStudent.name;
+    this.closeDiv = null;
+    console.log(this.events);
+  }
+  getAllSchedule(): void {
+    this.scheduleService.getScheduleEvent().subscribe(
+      scheduleRecieve => {
+        this.events = scheduleRecieve;
+        this.events.forEach(obj => obj.actions = this.actions);
+      }
+    );
   }
 }

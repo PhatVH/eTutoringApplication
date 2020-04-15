@@ -113,7 +113,6 @@
     <tr>
       <th>Title</th>
       <th>Invite</th>
-      <th>Primary color</th>
       <th>Starts at</th>
       <th>Ends at</th>
       <th>Remove</th>
@@ -136,14 +135,7 @@
           type="text"
           class="form-control"
           [(ngModel)]="event.invite"
-          (keyup)="refresh.next()"
-        />
-      </td>
-      <td>
-        <input
-          type="color"
-          [(ngModel)]="event.color.primary"
-          (change)="refresh.next()"
+          #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)"
         />
       </td>
       <td>
@@ -189,6 +181,13 @@
     </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="closeDiv">
+  <div class="container"  *ngFor="let eachStudent of students$ | async">
+    <ul>
+      <li (click)="clickStudent(eachStudent)">{{eachStudent.name}}</li>
+    </ul>
+  </div>
 </div>
 
 <ng-template #modalContent let-close="close">

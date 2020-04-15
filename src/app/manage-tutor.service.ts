@@ -1,15 +1,14 @@
 import {Injectable, PipeTransform} from '@angular/core';
-
+import {Tutor} from '../models/Tutor';
+import {SortColumn, SortDirection} from './sortable.directive';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
+import {Constant} from '../models/Constant';
 import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {SortColumn, SortDirection} from '../sortable.directive';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Constant} from '../../models/Constant';
-import {Student} from '../../models/Student';
 
 interface SearchResult {
-  students: Student[];
+  tutors: Tutor[];
   total: number;
 }
 
@@ -23,31 +22,31 @@ interface State {
 
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 const compare = (v1: string, v2: string) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-function sort(students: Student[], column: SortColumn, direction: string): Student[] {
+function sort(tutors: Tutor[], column: SortColumn, direction: string): Tutor[] {
   if (direction === '' || column === '') {
-    return students;
+    return tutors;
   } else {
-    return [...students].sort((a, b) => {
+    return [...tutors].sort((a, b) => {
       const res = compare(`${a[column]}`, `${b[column]}`);
       return direction === 'asc' ? res : -res;
     });
   }
 }
 
-function matches(student: Student, term: string, pipe: PipeTransform) {
-  return student.name.toLowerCase().includes(term.toLowerCase())
-    || student.email.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(student.id).includes(term);
+function matches(tutor: Tutor, term: string, pipe: PipeTransform) {
+  return tutor.name.toLowerCase().includes(term.toLowerCase())
+    || tutor.email.toLowerCase().includes(term.toLowerCase())
+    || pipe.transform(tutor.id).includes(term);
 }
 
 @Injectable({providedIn: 'root'})
-export class CountryService {
+export class ManageTutorService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
-  private _students$ = new BehaviorSubject<Student[]>([]);
+  private _tutors$ = new BehaviorSubject<Tutor[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
-  private STUDENTS: Student[];
-  private STUDENTS$: Observable<Student[]>;
+  private TUTORS: Tutor[];
+  private TUTORS$: Observable<Tutor[]>;
   private _state: State = {
     page: 1,
     pageSize: 10,
@@ -58,20 +57,20 @@ export class CountryService {
 
   constructor(private pipe: DecimalPipe,
               private http: HttpClient) {
-    this.getAllStudents();
+    this.getAllTutors();
   }
 
-  getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(Constant.studentsURL).pipe(
-      tap(recieve => console.log(`recieve Student: ${JSON.stringify(recieve)}`)),
+  getTutors(): Observable<Tutor[]> {
+    return this.http.get<Tutor[]>(Constant.tutorsURL).pipe(
+      tap(recieve => console.log(`recieve Tutor: ${JSON.stringify(recieve)}`)),
       catchError(error => of([]))
     );
   }
 
-  getAllStudents(): void {
-    this.getStudents().subscribe(
-      studentsRecieve => {
-        this.STUDENTS = studentsRecieve;
+  getAllTutors(): void {
+    this.getTutors().subscribe(
+      tutorsRecieve => {
+        this.TUTORS = tutorsRecieve;
         this._search$.pipe(
           tap(() => this._loading$.next(true)),
           debounceTime(200),
@@ -79,18 +78,18 @@ export class CountryService {
           delay(200),
           tap(() => this._loading$.next(false))
         ).subscribe(result => {
-          this._students$.next(result.students);
+          this._tutors$.next(result.tutors);
           this._total$.next(result.total);
         });
         this._search$.next();
-        console.log(`this.STUDENTS`);
-        console.log(this.STUDENTS);
+        console.log(`this.TUTORS`);
+        console.log(this.TUTORS);
       }
     );
   }
 
-  get students$() {
-    return this._students$.asObservable();
+  get tutors$() {
+    return this._tutors$.asObservable();
   }
 
   get total$() {
@@ -142,14 +141,14 @@ export class CountryService {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
-    let students = sort(this.STUDENTS, sortColumn, sortDirection);
+    let tutors = sort(this.TUTORS, sortColumn, sortDirection);
 
     // 2. filter
-    students = students.filter(student => matches(student, searchTerm, this.pipe));
-    const total = students.length;
+    tutors = tutors.filter(tutor => matches(tutor, searchTerm, this.pipe));
+    const total = tutors.length;
 
     // 3. paginate
-    students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({students, total});
+    tutors = tutors.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    return of({tutors, total});
   }
 }

@@ -1,85 +1,215 @@
-{ "user": [
+{"country" : [
   {
-    "id": 1,
-    "name": "staff",
-    "email": "tambt@gmail.com",
-    "pass": "1234",
-    "type": "staff",
-    "selected": false
+    "id": "1",
+    "name": "Russia",
+    "flag": "f/f3/Flag_of_Russia.svg",
+    "area": "Russia",
+    "population": "9976140"
   },
   {
-    "id": 1,
-    "name": "tutor",
-    "email": "tambt@gmail.com",
-    "pass": "1234",
-    "type": "tutor",
-    "selected": false
+    "id": 2,
+    "name": "France",
+    "flag": "c/c3/Flag_of_France.svg",
+    "area": "Canada",
+    "population": "9976140"
   },
   {
-    "id": 1,
-    "name": "student",
-    "email": "tambt@gmail.com",
-    "pass": "1234",
-    "type": "student",
-    "selected": false
+    "id": 3,
+    "name": "Germany",
+    "flag": "b/ba/Flag_of_Germany.svg",
+    "area": "Canada",
+    "population": "9976140"
+  },
+  {
+    "id": 4,
+    "name": "Portugal",
+    "flag": "5/5c/Flag_of_Portugal.svg",
+    "area": "Canada",
+    "population": "9976140"
+  },
+  {
+    "id": 5,
+    "name": "Canada",
+    "flag": "c/cf/Flag_of_Canada.svg",
+    "area": "Canada",
+    "population": "9976140"
   }
 ],
+  "user": [
+    {
+      "id": 1,
+      "name": "staff",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "staff",
+      "selected": false
+    },
+    {
+      "id": 1,
+      "name": "tutor",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "tutor",
+      "selected": false
+    },
+    {
+      "id": 1,
+      "name": "student",
+      "email": "tambt@gmail.com",
+      "pass": "1234",
+      "type": "student",
+      "selected": false
+    }
+  ],
   "students": [
     {
       "id": 1,
       "name": "TamBT",
       "email": "tambt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Germany",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 2,
-      "name": "ThamLT",
+      "name": "Trần Văn A",
       "email": "thamlt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Canada",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 3,
       "name": "Ha Nt",
       "email": "hantt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Germany",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 4,
       "name": "Duy TV",
       "email": "duytv@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "f/f3/Flag_of_Russia.svg",
+      "country": "Russia",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 5,
       "name": "Quyen DT",
       "email": "quyendt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 6,
       "name": "Phat VH",
       "email": "phatvh@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Germany",
+      "tutor" : "Lai Manh Dung"
     },
     {
       "id": 7,
       "name": "Tam BT",
       "email": "tambt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "2/21/Flag_of_Vietnam.svg",
+      "country": "Vietnam",
+      "tutor" : "Doan Trung Tung"
     },
     {
       "id": 8,
       "name": "ThamLT",
       "email": "thamlt@gmail.com",
       "pass": "tam12",
-      "selected": false
+      "selected": false,
+      "countryFlag": "5/5c/Flag_of_Portugal.svg",
+      "country": "Portugal",
+      "tutor" : "Doan Trung Tung"
+    },{
+      "id": 9,
+      "name": "TamBT",
+      "email": "tambt@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Germany",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 10,
+      "name": "Trần Văn A",
+      "email": "thamlt@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Canada",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 11,
+      "name": "Ha Nt",
+      "email": "hantt@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Germany",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 12,
+      "name": "Duy TV",
+      "email": "duytv@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "f/f3/Flag_of_Russia.svg",
+      "country": "Russia",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 13,
+      "name": "Quyen DT",
+      "email": "quyendt@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 14,
+      "name": "Duy TV",
+      "email": "duytv@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "f/f3/Flag_of_Russia.svg",
+      "country": "Russia",
+      "tutor" : "Lai Manh Dung"
+    },
+    {
+      "id": 15,
+      "name": "Quyen DT",
+      "email": "quyendt@gmail.com",
+      "pass": "tam12",
+      "selected": false,
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France",
+      "tutor" : "Lai Manh Dung"
     }
   ],
   "classes": [
@@ -100,17 +230,126 @@
     {
       "id": 1,
       "name": "tutor1",
-      "pass": "tam12"
+      "pass": "1234",
+      "email": "tutor1@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
     },
     {
       "id": 2,
       "name": "tutor2",
-      "pass": "tam12"
+      "pass": "tam12",
+      "email": "tutor2@gmail.com",
+      "countryFlag": "f/f3/Flag_of_Russia.svg",
+      "country": "Russia"
     },
     {
       "id": 3,
       "name": "tutor3",
-      "pass": "tam12"
+      "pass": "tam12",
+      "email": "tutor3@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
+    },
+    {
+      "id": 4,
+      "name": "tutor3",
+      "pass": "tam12",
+      "email": "tutor3@gmail.com",
+      "countryFlag": "2/21/Flag_of_Vietnam.svg",
+      "country": "Vietnam"
+    },
+    {
+      "id": 5,
+      "name": "tutor3",
+      "pass": "tam12",
+      "email": "tutor4@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
+    },
+    {
+      "id": 6,
+      "name": "tutor3",
+      "pass": "tam12",
+      "email": "quyendt@gmail.com",
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Canada"
+    },
+    {
+      "id": 7,
+      "name": "tutor3",
+      "pass": "tam12",
+      "email": "quyendt@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
+    },
+    {
+      "id": 8,
+      "name": "tutor3",
+      "pass": "tam12",
+      "email": "quyendt@gmail.com",
+      "countryFlag": "2/21/Flag_of_Vietnam.svg",
+      "country": "Vietnam"
+    },{
+      "id": 9,
+      "name": "tutor9",
+      "pass": "tam12",
+      "email": "tutor3@gmail.com",
+      "countryFlag": "2/21/Flag_of_Vietnam.svg",
+      "country": "Vietnam"
+    },
+    {
+      "id": 10,
+      "name": "tutor10",
+      "pass": "tam12",
+      "email": "tutor4@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
+    },
+    {
+      "id": 11,
+      "name": "tutor11",
+      "pass": "tam12",
+      "email": "tutor11@gmail.com",
+      "countryFlag": "c/cf/Flag_of_Canada.svg",
+      "country": "Canada"
+    },
+    {
+      "id": 12,
+      "name": "tutor12",
+      "pass": "tam12",
+      "email": "tutor12@gmail.com",
+      "countryFlag": "c/c3/Flag_of_France.svg",
+      "country": "France"
+    }
+  ],
+  "schedule" : [
+    {
+      "start": "Wed Apr 15 2020 00:00:00 GMT+0700 (Indochina Time)",
+      "end": "Thu Apr 16 2020 12:00:00 GMT+0700 (Indochina Time)",
+      "title": "A 3 day event",
+      "invite": "Nguyen B"
+    },
+    {
+      "start": "Wed Apr 15 2020 00:00:00 GMT+0700 (Indochina Time)",
+      "end": "Thu Apr 16 2020 12:00:00 GMT+0700 (Indochina Time)",
+      "title": "A 3 day event",
+      "invite": "Nguyen C"
+    },
+    {
+      "start": "Wed Apr 15 2020 00:00:00 GMT+0700 (Indochina Time)",
+      "end": "Thu Apr 16 2020 12:00:00 GMT+0700 (Indochina Time)",
+      "title": "A 3 day event",
+      "invite": "Nguyen D"
+    },
+    {
+      "start": "Wed Apr 15 2020 00:00:00 GMT+0700 (Indochina Time)",
+      "end": "Thu Apr 16 2020 12:00:00 GMT+0700 (Indochina Time)",
+      "title": "A 3 day event",
+      "invite": "Nguyen E"
+    },
+    {
+      "title": "An event with no end date"
     }
   ],
   "schedule": [
@@ -140,3 +379,4 @@
     }
   ]
 }
+
