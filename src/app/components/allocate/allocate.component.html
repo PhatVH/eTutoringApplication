@@ -50,7 +50,7 @@
     <div *ngIf="selectStudent" class="content">
       <div  *ngFor="let eachName of selectStudent" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="name-user">{{eachName.name}}</span>
+        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
       </div>
     </div>
   </div>
@@ -136,8 +136,8 @@
       </div>
 
       <div class="container">
-        <button type="button" (click)="onClickBtnCancelStudent()" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" (click)="onClickBtnAcceptStudent()" class="btn btn-primary btn-lg">Accept</button>
+        <button type="button" onclick="document.getElementById('student').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('student').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
       </div>
     </form>
   </div>
