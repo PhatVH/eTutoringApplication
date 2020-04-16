@@ -44,7 +44,9 @@ export class ManageStudentComponent implements OnInit {
 
   onDashboadStudent(student) {
     console.log(`click dashboard student`);
-    this.chatComponent.getChatStudent(student);
+    sessionStorage.removeItem('dashboard')
+    sessionStorage.setItem('dashboard', JSON.stringify(student));
+    console.log(student);
     this.router.navigate(['/dashboardStudent']);
   }
 }
