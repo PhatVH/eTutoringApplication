@@ -27,9 +27,9 @@ export class AllocateComponent implements OnInit {
   students: Student[];
   classes: Class[];
   tutors: Tutor[];
-  selectTutor: any = [];
-  selectClass: any = [];
-  selectStudent: any = [];
+  selectTutor: Tutor[] = [];
+  selectClass: Class[] = [];
+  selectStudent: Student[] = [];
   private searchTutor = new Subject<string>();
   private searchClass = new Subject<string>();
   private searchStudent = new Subject<string>();
@@ -39,7 +39,7 @@ export class AllocateComponent implements OnInit {
   }
   getAllStudent(): void {
     this.studentService.getStudents().subscribe(
-      studentsRecieve => this.students = studentsRecieve
+      studentsRecieve => this.students = null
     );
   }
   getAllTutor(): void {
@@ -86,33 +86,37 @@ export class AllocateComponent implements OnInit {
     );
   }
 
-  tutorChange(event) {
-    const index = this.selectTutor.indexOf(event.target.value);
+  tutorChange(tutor) {
+    const index = this.selectTutor.indexOf(tutor);
     // tslint:disable-next-line:triple-equals
     if (index == 1) {
      return;
     } else {
-      this.selectTutor.splice(0, 1, event.target.value);
+      this.selectTutor.splice(0, 1, tutor);
     }
   }
 
-  classChange(event) {
-    const index = this.selectClass.indexOf(event.target.value);
+  classChange(eachClass) {
+    const index = this.selectClass.indexOf(eachClass);
     // tslint:disable-next-line:triple-equals
     if (index == 1) {
       return;
     } else {
-      this.selectClass.splice(0, 1, event.target.value);
+      this.selectClass.splice(0, 1, eachClass);
     }
   }
 
-  studentChange(event) {
-    const index = this.selectStudent.indexOf(event.target.value);
+  studentChange(student: Student) {
+    const index = this.selectStudent.indexOf(student);
     // tslint:disable-next-line:triple-equals
     if (index == -1) {
-      this.selectStudent.push(event.target.value);
+      student.selected = true
+      this.selectStudent.push(student);
+      console.log(`this.selectStudent`);
+      console.log(this.selectStudent);
     } else {
       this.selectStudent.splice(index, 1);
+      this.selectStudent[index].selected = false;
     }
   }
 
