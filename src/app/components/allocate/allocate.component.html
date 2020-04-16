@@ -119,7 +119,7 @@
       <div class="containerModal">
         <div class="title-main">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="selectAllStudent">
+            <input type="checkbox" class="custom-control-input" id="selectAllStudent" (click)="selectAllStudent()">
             <label class="custom-control-label" for="selectAllStudent"><h4>Select All</h4></label>
           </div>
           <div class="title-right">
@@ -136,8 +136,8 @@
       </div>
 
       <div class="container">
-        <button type="button" onclick="document.getElementById('student').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" onclick="document.getElementById('student').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+        <button type="button" (click)="onClickBtnCancelStudent()" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" (click)="onClickBtnAcceptStudent()" class="btn btn-primary btn-lg">Accept</button>
       </div>
     </form>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../service/student.service';
 import {Student} from '../../../models/Student';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {FormBuilder, FormControl, FormGroup, Validator} from '@angular/forms';
 import {NgForm} from '@angular/forms';
+
 @Component({
   selector: 'app-allocate',
   templateUrl: './allocate.component.html',
@@ -23,7 +24,6 @@ export class AllocateComponent implements OnInit {
   faSearch = faSearch;
   tutors$: Observable<Tutor[]>;
   clases$: Observable<Class[]>;
-  students$: Observable<Student[]>;
   newStudents: Student[];
   students: Student[];
   classes: Class[];
@@ -31,33 +31,37 @@ export class AllocateComponent implements OnInit {
   selectTutor: Tutor[] = [];
   selectClass: Class[] = [];
   selectStudent: Student[] = [];
+  countCheckAll = 0;
   private searchTutor = new Subject<string>();
   private searchClass = new Subject<string>();
   private searchStudent = new Subject<string>();
+
   constructor(private studentService: StudentService,
               private tutorService: TutorService,
               private classService: ClassService) {
   }
+
   checkSelectedStudent(resultFromApi: Student[], selectStudent: Student[]) {
     resultFromApi.forEach(obj => {
       selectStudent.forEach(obj2 => {
         if (obj.id === obj2.id) {
-         obj.selected = obj2.selected;
+          obj.selected = obj2.selected;
         }
       });
     });
     return resultFromApi;
-    console.log(`resultFromApi`)
-    console.log(resultFromApi)
   }
+
   searchTutorAllocate(searchTutor: string): void {
     console.log(`searchTutor = ${searchTutor}`);
     this.searchTutor.next(searchTutor);
   }
+
   searchClassAllocate(searchClass: string): void {
     console.log(`searchedString = ${searchClass}`);
     this.searchClass.next(searchClass);
   }
+
   searchStudentAllocate(searchStudent: string): void {
     console.log(`search nhập từ bàn phím student = ${searchStudent}`);
     this.searchStudent.next(searchStudent);
@@ -79,11 +83,6 @@ export class AllocateComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((searchClass: string) => this.classService.searchClass(searchClass))
     );
-    this.students$ = this.searchStudent.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent))
-    );
 
   }
 
@@ -91,7 +90,7 @@ export class AllocateComponent implements OnInit {
     const index = this.selectTutor.indexOf(tutor);
     // tslint:disable-next-line:triple-equals
     if (index == 1) {
-     return;
+      return;
     } else {
       this.selectTutor.splice(0, 1, tutor);
     }
@@ -108,13 +107,10 @@ export class AllocateComponent implements OnInit {
   }
 
   studentChange(student) {
-    console.log(`this.selectStudent`);
     const index = this.selectStudent.indexOf(student);
-    console.log(student)
-    console.log(this.selectStudent);
     // tslint:disable-next-line:triple-equals
     if (index === -1) {
-      student.selected = !student.selected
+      student.selected = !student.selected;
       this.selectStudent.push(student);
     } else {
       student.selected = !student.selected;
@@ -124,6 +120,29 @@ export class AllocateComponent implements OnInit {
 
   onSubmitFormAllocateTutor(value: NgForm) {
     // tslint:disable-next-line:triple-equals
-      console.log(`hhaha`);
+    console.log(`hhaha`);
+  }
+
+  selectAllStudent(): void {
+    this.countCheckAll += 1;
+    if (this.countCheckAll % 2 !== 0) {
+      this.newStudents.forEach(obj => {
+        obj.selected = true;
+        this.selectStudent.push(obj);
+      });
+    } else {
+      this.selectStudent.forEach(obj => {
+        obj.selected = false;
+        this.selectStudent = [];
+      });
+    }
+  }
+
+  onClickBtnCancelStudent() {
+
+  }
+
+  onClickBtnAcceptStudent() {
+
   }
 }
