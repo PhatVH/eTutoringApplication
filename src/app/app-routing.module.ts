@@ -17,11 +17,13 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { BlogComponent } from './components/blog/blog.component';
 import {ManageStudentComponent} from './components/manage-student/manage-student.component';
 import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
+import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGaurdService]},
+  {path: 'dashboardStudent', component: DashboardStudentComponent, canActivate: [AuthGaurdService]},
   {path: 'login', component: LoginComponent},
   {path: 'allocate', component: AllocateAddComponent, canActivate: [AuthGaurdService]},
   {path: 'Reallocate', component: AllocateRemoveComponent, canActivate: [AuthGaurdService]},

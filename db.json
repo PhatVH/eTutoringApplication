@@ -377,6 +377,27 @@
       "type": "student",
       "selected": false
     }
+  ],
+  "chat": [
+    {
+      "id": 1,
+      "studentName": "TamBT",
+      "tutorName": "tutor",
+      "content": "content 1 hahah"
+    },
+    {
+      "id": 3,
+      "studentName": "Trần Văn A",
+      "tutorName": "tutor",
+      "content": "content 2 hahah"
+    },
+    {
+      "id": 2,
+      "studentName": "Ha nt",
+      "tutorName": "tutor",
+      "content": "content 3 hahah"
+    }
   ]
 }
+
 
