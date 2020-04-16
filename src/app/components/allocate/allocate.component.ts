@@ -38,15 +38,17 @@ export class AllocateComponent implements OnInit {
               private tutorService: TutorService,
               private classService: ClassService) {
   }
-  checkSelectedStudent(beforeFilter: Student[], afterFilter: Student[]) {
-    beforeFilter.forEach(obj => {
-      afterFilter.forEach(obj2 => {
+  checkSelectedStudent(resultFromApi: Student[], selectStudent: Student[]) {
+    resultFromApi.forEach(obj => {
+      selectStudent.forEach(obj2 => {
         if (obj.id === obj2.id) {
-         obj.selected = true;
+         obj.selected = obj2.selected;
         }
       });
     });
-    return beforeFilter;
+    return resultFromApi;
+    console.log(`resultFromApi`)
+    console.log(resultFromApi)
   }
   searchTutorAllocate(searchTutor: string): void {
     console.log(`searchTutor = ${searchTutor}`);
@@ -61,6 +63,8 @@ export class AllocateComponent implements OnInit {
     this.searchStudent.next(searchStudent);
     this.studentService.searchStudent(searchStudent).subscribe(result => {
       this.newStudents = this.checkSelectedStudent(result, this.selectStudent);
+      console.log(`checkSelectedStudent`);
+      console.log(this.newStudents);
     });
   }
 
@@ -103,17 +107,18 @@ export class AllocateComponent implements OnInit {
     }
   }
 
-  studentChange(student: Student) {
+  studentChange(student) {
+    console.log(`this.selectStudent`);
     const index = this.selectStudent.indexOf(student);
+    console.log(student)
+    console.log(this.selectStudent);
     // tslint:disable-next-line:triple-equals
-    if (index == -1) {
-      student.selected = true
+    if (index === -1) {
+      student.selected = !student.selected
       this.selectStudent.push(student);
-      console.log(`this.selectStudent`);
-      console.log(this.selectStudent);
     } else {
+      student.selected = !student.selected;
       this.selectStudent.splice(index, 1);
-      this.selectStudent[index].selected = false;
     }
   }
 
