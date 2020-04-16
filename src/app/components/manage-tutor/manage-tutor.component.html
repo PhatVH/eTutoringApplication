@@ -18,11 +18,10 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col" sortable="mssv" (sort)="onSort($event)">TutorID</th>
         <th scope="col" sortable="name" (sort)="onSort($event)">Tutor Name</th>
         <th scope="col" sortable="country" (sort)="onSort($event)">Country</th>
         <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
-        <th scope="col" sortable="mssv" (sort)="onSort($event)">TutorID</th>
       </tr>
       </thead>
       <tbody>
@@ -34,7 +33,7 @@
           <ngb-highlight [result]="tutor.country" [term]="service.searchTerm"></ngb-highlight>
         </td>
         <td><ngb-highlight [result]="tutor.email" [term]="service.searchTerm"></ngb-highlight></td>
-        <td><ngb-highlight [result]="tutor.id | number" [term]="service.searchTerm"></ngb-highlight></td>
+        <td><ngb-highlight [result]="tutor.id" [term]="service.searchTerm"></ngb-highlight></td>
       </tr>
       </tbody>
     </table>

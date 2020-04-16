@@ -1,5 +1,5 @@
 export class Tutor {
-  id: number;
+  id: string;
   name: string;
   email: string;
   pass: string;

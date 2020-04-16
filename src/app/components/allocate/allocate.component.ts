@@ -24,6 +24,7 @@ export class AllocateComponent implements OnInit {
   tutors$: Observable<Tutor[]>;
   clases$: Observable<Class[]>;
   students$: Observable<Student[]>;
+  newStudents: Student[];
   students: Student[];
   classes: Class[];
   tutors: Tutor[];
@@ -37,20 +38,15 @@ export class AllocateComponent implements OnInit {
               private tutorService: TutorService,
               private classService: ClassService) {
   }
-  getAllStudent(): void {
-    this.studentService.getStudents().subscribe(
-      studentsRecieve => this.students = null
-    );
-  }
-  getAllTutor(): void {
-    this.tutorService.getTutors().subscribe(
-      tutorsRecieve => this.tutors = tutorsRecieve
-    );
-  }
-  getAllClasses(): void {
-    this.classService.getClasses().subscribe(
-      classRecieve => this.classes = classRecieve
-    );
+  checkSelectedStudent(beforeFilter: Student[], afterFilter: Student[]) {
+    beforeFilter.forEach(obj => {
+      afterFilter.forEach(obj2 => {
+        if (obj.id === obj2.id) {
+         obj.selected = true;
+        }
+      });
+    });
+    return beforeFilter;
   }
   searchTutorAllocate(searchTutor: string): void {
     console.log(`searchTutor = ${searchTutor}`);
@@ -63,12 +59,12 @@ export class AllocateComponent implements OnInit {
   searchStudentAllocate(searchStudent: string): void {
     console.log(`search nhập từ bàn phím student = ${searchStudent}`);
     this.searchStudent.next(searchStudent);
+    this.studentService.searchStudent(searchStudent).subscribe(result => {
+      this.newStudents = this.checkSelectedStudent(result, this.selectStudent);
+    });
   }
 
   ngOnInit(): void {
-    this.getAllStudent();
-    this.getAllTutor();
-    this.getAllClasses();
     this.tutors$ = this.searchTutor.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -84,6 +80,7 @@ export class AllocateComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent))
     );
+
   }
 
   tutorChange(tutor) {
@@ -123,14 +120,5 @@ export class AllocateComponent implements OnInit {
   onSubmitFormAllocateTutor(value: NgForm) {
     // tslint:disable-next-line:triple-equals
       console.log(`hhaha`);
-  }
-  CheckAllOptions() {
-    // tslint:disable-next-line:triple-equals
-  //   if (this.students.every(val => val.selected == true)) {
-  //     this.students.forEach(val => { val.selected = false; });
-  //   } else {
-  //     this.students.forEach(val => { val.selected = true; });
-  //   }
-    console.log(`${JSON.stringify(this.students)}`);
   }
 }

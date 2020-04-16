@@ -1,69 +1,32 @@
-{"country" : [
+{"user": [
   {
-    "id": "1",
-    "name": "Russia",
-    "flag": "f/f3/Flag_of_Russia.svg",
-    "area": "Russia",
-    "population": "9976140"
+    "id": "user1",
+    "name": "staff",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": "staff",
+    "selected": false
   },
   {
-    "id": 2,
-    "name": "France",
-    "flag": "c/c3/Flag_of_France.svg",
-    "area": "Canada",
-    "population": "9976140"
+    "id": "user2",
+    "name": "tutor",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": "tutor",
+    "selected": false
   },
   {
-    "id": 3,
-    "name": "Germany",
-    "flag": "b/ba/Flag_of_Germany.svg",
-    "area": "Canada",
-    "population": "9976140"
-  },
-  {
-    "id": 4,
-    "name": "Portugal",
-    "flag": "5/5c/Flag_of_Portugal.svg",
-    "area": "Canada",
-    "population": "9976140"
-  },
-  {
-    "id": 5,
-    "name": "Canada",
-    "flag": "c/cf/Flag_of_Canada.svg",
-    "area": "Canada",
-    "population": "9976140"
+    "id": "user3",
+    "name": "student",
+    "email": "tambt@gmail.com",
+    "pass": "1234",
+    "type": "student",
+    "selected": false
   }
 ],
-  "user": [
-    {
-      "id": 1,
-      "name": "staff",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "staff",
-      "selected": false
-    },
-    {
-      "id": 1,
-      "name": "tutor",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "tutor",
-      "selected": false
-    },
-    {
-      "id": 1,
-      "name": "student",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "student",
-      "selected": false
-    }
-  ],
   "students": [
     {
-      "id": 1,
+      "id": "SDT1",
       "name": "TamBT",
       "email": "tambt@gmail.com",
       "pass": "tam12",
@@ -73,7 +36,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 2,
+      "id": "SDT2",
       "name": "Trần Văn A",
       "email": "thamlt@gmail.com",
       "pass": "tam12",
@@ -83,7 +46,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 3,
+      "id": "SDT3",
       "name": "Ha Nt",
       "email": "hantt@gmail.com",
       "pass": "tam12",
@@ -93,7 +56,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 4,
+      "id": "SDT4",
       "name": "Duy TV",
       "email": "duytv@gmail.com",
       "pass": "tam12",
@@ -103,7 +66,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 5,
+      "id": "SDT5",
       "name": "Quyen DT",
       "email": "quyendt@gmail.com",
       "pass": "tam12",
@@ -113,7 +76,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 6,
+      "id": "SDT6",
       "name": "Phat VH",
       "email": "phatvh@gmail.com",
       "pass": "tam12",
@@ -123,7 +86,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 7,
+      "id": "SDT7",
       "name": "Tam BT",
       "email": "tambt@gmail.com",
       "pass": "tam12",
@@ -133,7 +96,7 @@
       "tutor" : "Doan Trung Tung"
     },
     {
-      "id": 8,
+      "id": "SDT8",
       "name": "ThamLT",
       "email": "thamlt@gmail.com",
       "pass": "tam12",
@@ -142,7 +105,7 @@
       "country": "Portugal",
       "tutor" : "Doan Trung Tung"
     },{
-      "id": 9,
+      "id": "SDT9",
       "name": "TamBT",
       "email": "tambt@gmail.com",
       "pass": "tam12",
@@ -152,7 +115,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 10,
+      "id": "SDT10",
       "name": "Trần Văn A",
       "email": "thamlt@gmail.com",
       "pass": "tam12",
@@ -162,7 +125,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 11,
+      "id": "SDT11",
       "name": "Ha Nt",
       "email": "hantt@gmail.com",
       "pass": "tam12",
@@ -172,7 +135,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 12,
+      "id": "SDT12",
       "name": "Duy TV",
       "email": "duytv@gmail.com",
       "pass": "tam12",
@@ -182,7 +145,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 13,
+      "id": "SDT13",
       "name": "Quyen DT",
       "email": "quyendt@gmail.com",
       "pass": "tam12",
@@ -192,7 +155,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 14,
+      "id": "SDT14",
       "name": "Duy TV",
       "email": "duytv@gmail.com",
       "pass": "tam12",
@@ -202,7 +165,7 @@
       "tutor" : "Lai Manh Dung"
     },
     {
-      "id": 15,
+      "id": "SDT15",
       "name": "Quyen DT",
       "email": "quyendt@gmail.com",
       "pass": "tam12",
@@ -214,21 +177,21 @@
   ],
   "classes": [
     {
-      "id": 1,
+      "id": "Class1",
       "name": "class1"
     },
     {
-      "id": 2,
+      "id": "Class1",
       "name": "class2"
     },
     {
-      "id": 3,
+      "id": "Class1",
       "name": "class3"
     }
   ],
   "tutors": [
     {
-      "id": 1,
+      "id": "TT1",
       "name": "tutor1",
       "pass": "1234",
       "email": "tutor1@gmail.com",
@@ -236,7 +199,7 @@
       "country": "France"
     },
     {
-      "id": 2,
+      "id": "TT2",
       "name": "tutor2",
       "pass": "tam12",
       "email": "tutor2@gmail.com",
@@ -244,7 +207,7 @@
       "country": "Russia"
     },
     {
-      "id": 3,
+      "id": "TT3",
       "name": "tutor3",
       "pass": "tam12",
       "email": "tutor3@gmail.com",
@@ -252,7 +215,7 @@
       "country": "France"
     },
     {
-      "id": 4,
+      "id": "TT4",
       "name": "tutor3",
       "pass": "tam12",
       "email": "tutor3@gmail.com",
@@ -260,7 +223,7 @@
       "country": "Vietnam"
     },
     {
-      "id": 5,
+      "id": "TT5",
       "name": "tutor3",
       "pass": "tam12",
       "email": "tutor4@gmail.com",
@@ -268,7 +231,7 @@
       "country": "France"
     },
     {
-      "id": 6,
+      "id": "TT6",
       "name": "tutor3",
       "pass": "tam12",
       "email": "quyendt@gmail.com",
@@ -276,7 +239,7 @@
       "country": "Canada"
     },
     {
-      "id": 7,
+      "id": "TT7",
       "name": "tutor3",
       "pass": "tam12",
       "email": "quyendt@gmail.com",
@@ -284,14 +247,14 @@
       "country": "France"
     },
     {
-      "id": 8,
+      "id": "TT8",
       "name": "tutor3",
       "pass": "tam12",
       "email": "quyendt@gmail.com",
       "countryFlag": "2/21/Flag_of_Vietnam.svg",
       "country": "Vietnam"
     },{
-      "id": 9,
+      "id": "TT9",
       "name": "tutor9",
       "pass": "tam12",
       "email": "tutor3@gmail.com",
@@ -299,7 +262,7 @@
       "country": "Vietnam"
     },
     {
-      "id": 10,
+      "id": "TT10",
       "name": "tutor10",
       "pass": "tam12",
       "email": "tutor4@gmail.com",
@@ -307,7 +270,7 @@
       "country": "France"
     },
     {
-      "id": 11,
+      "id": "TT11",
       "name": "tutor11",
       "pass": "tam12",
       "email": "tutor11@gmail.com",
@@ -315,7 +278,7 @@
       "country": "Canada"
     },
     {
-      "id": 12,
+      "id": "TT12",
       "name": "tutor12",
       "pass": "tam12",
       "email": "tutor12@gmail.com",
@@ -350,32 +313,6 @@
     },
     {
       "title": "An event with no end date"
-    }
-  ],
-  "schedule": [
-    {
-      "id": 1,
-      "name": "staff",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "staff",
-      "selected": false
-    },
-    {
-      "id": 1,
-      "name": "tutor",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "tutor",
-      "selected": false
-    },
-    {
-      "id": 1,
-      "name": "student",
-      "email": "tambt@gmail.com",
-      "pass": "1234",
-      "type": "student",
-      "selected": false
     }
   ]
 }

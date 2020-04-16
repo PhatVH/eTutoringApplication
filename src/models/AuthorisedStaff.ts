@@ -1,4 +1,4 @@
 export class AuthorisedStaff {
-  id: number;
+  id: string;
   name: string;
 }

@@ -1,6 +1,5 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Country} from '../../../models/Countries';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {DecimalPipe} from '@angular/common';
 import {Student} from '../../../models/Student';
@@ -41,7 +40,6 @@ export class ManageStudentComponent implements OnInit {
 
   onDashboadStudent(student) {
     console.log(`click dashboard student`);
-
     this.router.navigate(['/dashboard']);
   }
 }
