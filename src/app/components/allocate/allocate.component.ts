@@ -10,8 +10,6 @@ import {TutorService} from '../../service/tutor.service';
 import {ClassService} from '../../service/class.service';
 import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import {FormBuilder, FormControl, FormGroup, Validator} from '@angular/forms';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-allocate',
@@ -22,9 +20,9 @@ export class AllocateComponent implements OnInit {
   faUserCircle = faUserCircle;
   faUserPlus = faUserPlus;
   faSearch = faSearch;
-  tutors$: Observable<Tutor[]>;
-  clases$: Observable<Class[]>;
   newStudents: Student[];
+  newTutors: Tutor[];
+  newClasses: Class[];
   students: Student[];
   classes: Class[];
   tutors: Tutor[];
@@ -35,80 +33,73 @@ export class AllocateComponent implements OnInit {
   private searchTutor = new Subject<string>();
   private searchClass = new Subject<string>();
   private searchStudent = new Subject<string>();
+  openDivStudent: any = null;
+  openDivTutor: any = null;
+  openDivClass: any = null;
 
   constructor(private studentService: StudentService,
               private tutorService: TutorService,
               private classService: ClassService) {
   }
 
-  checkSelectedStudent(resultFromApi: Student[], selectStudent: Student[]) {
+  checkSelected(resultFromApi, selectedArr) {
     resultFromApi.forEach(obj => {
-      selectStudent.forEach(obj2 => {
+      selectedArr.forEach(obj2 => {
         if (obj.id === obj2.id) {
           obj.selected = obj2.selected;
         }
       });
     });
     return resultFromApi;
+    console.log(`resultFromApi`)
+    console.log(resultFromApi)
   }
-
   searchTutorAllocate(searchTutor: string): void {
-    console.log(`searchTutor = ${searchTutor}`);
     this.searchTutor.next(searchTutor);
+    this.tutorService.searchTutor(searchTutor).subscribe(result => {
+      this.newTutors = this.checkSelected(result, this.selectTutor);
+    });
   }
 
   searchClassAllocate(searchClass: string): void {
-    console.log(`searchedString = ${searchClass}`);
     this.searchClass.next(searchClass);
+    this.classService.searchClass(searchClass).subscribe(result => {
+      this.newClasses = this.checkSelected(result, this.selectClass);
+    });
   }
 
   searchStudentAllocate(searchStudent: string): void {
-    console.log(`search nhập từ bàn phím student = ${searchStudent}`);
     this.searchStudent.next(searchStudent);
     this.studentService.searchStudent(searchStudent).subscribe(result => {
-      this.newStudents = this.checkSelectedStudent(result, this.selectStudent);
-      console.log(`checkSelectedStudent`);
-      console.log(this.newStudents);
+      this.newStudents = this.checkSelected(result, this.selectStudent);
     });
   }
 
   ngOnInit(): void {
-    this.tutors$ = this.searchTutor.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((searchTutor: string) => this.tutorService.searchTutor(searchTutor))
-    );
-    this.clases$ = this.searchClass.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((searchClass: string) => this.classService.searchClass(searchClass))
-    );
-
   }
 
   tutorChange(tutor) {
     const index = this.selectTutor.indexOf(tutor);
-    // tslint:disable-next-line:triple-equals
-    if (index == 1) {
-      return;
-    } else {
-      this.selectTutor.splice(0, 1, tutor);
+    if (index === -1) {
+      tutor.selected = true ;
+      this.selectTutor[0] = tutor;
+      this.selectTutor.splice(0, 1, tutor)
     }
   }
 
-  classChange(eachClass) {
+  classChange(eachClass: Class) {
     const index = this.selectClass.indexOf(eachClass);
-    // tslint:disable-next-line:triple-equals
-    if (index == 1) {
-      return;
-    } else {
-      this.selectClass.splice(0, 1, eachClass);
+    if (index === -1) {
+      eachClass.selected = true ;
+      this.selectClass[0] = eachClass;
+      this.selectClass.splice(0, 1, eachClass)
     }
   }
 
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
     // tslint:disable-next-line:triple-equals
+    console.log(index)
     if (index === -1) {
       student.selected = !student.selected;
       this.selectStudent.push(student);
@@ -117,12 +108,6 @@ export class AllocateComponent implements OnInit {
       this.selectStudent.splice(index, 1);
     }
   }
-
-  onSubmitFormAllocateTutor(value: NgForm) {
-    // tslint:disable-next-line:triple-equals
-    console.log(`hhaha`);
-  }
-
   selectAllStudent(): void {
     this.countCheckAll += 1;
     if (this.countCheckAll % 2 !== 0) {
@@ -143,6 +128,14 @@ export class AllocateComponent implements OnInit {
   }
 
   onClickBtnAcceptStudent() {
+    this.openDivStudent = 'value';
+  }
 
+  onClickBtnAcceptClass() {
+    this.openDivClass = 'value';
+  }
+
+  onClickBtnAcceptTutor() {
+    this.openDivTutor = 'value';
   }
 }

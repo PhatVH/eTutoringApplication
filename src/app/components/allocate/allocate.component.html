@@ -21,42 +21,45 @@
       <h4>Tutor</h4>
       <fa-icon [icon]="faUserPlus" (click)="searchTutorAllocate(searchTutor.value)" onclick="document.getElementById('tutor').style.display='block'"></fa-icon>
     </div>
-    <div *ngIf="selectTutor" class="content">
-      <div *ngFor="let eachName of selectTutor" class="user">
+    <div *ngIf="openDivTutor" class="content">
+      <div  *ngFor="let eachName of selectTutor" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="name-user">{{eachName.name}}</span>
+        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
       </div>
     </div>
+    <br>
   </div>
 
   <div class="classes">
     <div class="title-main">
       <h4>Class</h4>
-      <fa-icon [icon]="faUserPlus" (click)="searchClassAllocate(searchTutor.value)" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
+      <fa-icon [icon]="faUserPlus" (click)="searchClassAllocate(searchClass.value)" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
     </div>
-    <div *ngIf="selectClass" class="content">
+    <div *ngIf="openDivClass" class="content">
       <div  *ngFor="let eachName of selectClass" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
         <span class="name-user">{{eachName.name}}</span>
       </div>
     </div>
+    <br>
   </div>
 
   <div class="student">
     <div class="title-main">
       <h4>Students</h4>
-      <fa-icon [icon]="faUserPlus" (click)="searchStudentAllocate(searchTutor.value)" onclick="document.getElementById('student').style.display='block'"></fa-icon>
+      <fa-icon [icon]="faUserPlus" (click)="searchStudentAllocate(searchStudent.value)" onclick="document.getElementById('student').style.display='block'"></fa-icon>
     </div>
-    <div *ngIf="selectStudent" class="content">
+    <div *ngIf="openDivStudent" class="content">
       <div  *ngFor="let eachName of selectStudent" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
         <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
       </div>
     </div>
+    <br>
   </div>
 
   <div id="tutor" class="modal">
-    <form #frmAllocateTutor="ngForm" (ngSubmit)="onSubmitFormAllocateTutor(frmAllocateTutor.value)" class="modal-content animate">
+    <form #frmAllocateTutor="ngForm" class="modal-content animate">
       <div class="imgcontainer">
         <span onclick="document.getElementById('tutor').style.display='none'" class="close" title="Close Modal">&times;</span>
       </div>
@@ -68,16 +71,16 @@
             <fa-icon [icon]="faSearch"></fa-icon>
           </div>
         </div>
-        <div class="container"  *ngFor="let eachTutor of tutors$ | async">
+        <div class="container"  *ngFor="let eachTutor of newTutors">
           <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" name="tutor" id="{{eachTutor.id}}tutor" value= "{{eachTutor.id}}" (change)="tutorChange(eachTutor)">
+            <input type="radio" class="custom-control-input" name="tutor" id="{{eachTutor.id}}tutor" value= "{{eachTutor.id}}" (click)="tutorChange(eachTutor)" [checked]="eachTutor.selected">
             <label class="custom-control-label" for="{{eachTutor.id}}tutor"><h4>{{eachTutor.id}}-{{eachTutor.name}}</h4></label>
           </div>
         </div>
       </div>
       <div class="container">
         <button type="button" onclick="document.getElementById('tutor').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" onclick="document.getElementById('tutor').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+        <button type="submit" onclick="document.getElementById('tutor').style.display='none'" (click)="onClickBtnAcceptTutor()" class="btn btn-primary btn-lg">Accept</button>
       </div>
     </form>
   </div>
@@ -96,16 +99,16 @@
             <fa-icon [icon]="faSearch"></fa-icon>
           </div>
         </div>
-        <div class="container"  *ngFor="let eachClass of clases$ | async">
+        <div class="container"  *ngFor="let eachClass of newClasses">
           <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" name="class" id="{{eachClass.id}}class" value= "{{eachClass.id}}" (change)="classChange(eachClass)">
+            <input type="radio" class="custom-control-input" name="class" id="{{eachClass.id}}class" value= "{{eachClass.id}}" (click)="classChange(eachClass)" [checked]="eachClass.selected">
             <label class="custom-control-label" for="{{eachClass.id}}class"><h4>{{eachClass.id}}-{{eachClass.name}}</h4></label>
           </div>
         </div>
       </div>
       <div class="container">
         <button type="button" onclick="document.getElementById('classes').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" onclick="document.getElementById('classes').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+        <button type="submit" onclick="document.getElementById('classes').style.display='none'" (click)="onClickBtnAcceptClass()" class="btn btn-primary btn-lg">Accept</button>
       </div>
     </form>
   </div>
@@ -137,7 +140,7 @@
 
       <div class="container">
         <button type="button" onclick="document.getElementById('student').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" onclick="document.getElementById('student').style.display='none'" class="btn btn-primary btn-lg">Accept</button>
+        <button type="submit" onclick="document.getElementById('student').style.display='none'" (click)="onClickBtnAcceptStudent()" class="btn btn-primary btn-lg">Accept</button>
       </div>
     </form>
   </div>

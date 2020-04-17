@@ -21,12 +21,14 @@ export class TutorService {
   getLoginTutor(userName: string, pass: string): Observable<Tutor> {
     const url = `${this.tutorsURL}?name=${userName}&&pass=${pass}`;
     return this.http.get<Tutor>(url).pipe(
-      tap(recieve => console.log(`recieve movie: ${JSON.stringify(recieve)}`)),
       catchError(error => of(null))
     );
   }
 
   searchTutor(typeString: string): Observable<Tutor[]> {
+    if (!typeString.trim()) {
+      this.getTutors();
+    }
     return this.http.get(`${this.tutorsURL}?name_like=${typeString}`).pipe(
       tap(recieve => console.log(`recieve tutors: ${JSON.stringify(recieve)}`)),
       catchError(error => of(null))

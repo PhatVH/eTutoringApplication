@@ -178,15 +178,18 @@
   "classes": [
     {
       "id": "Class1",
-      "name": "class1"
+      "name": "class1",
+      "selected": false
     },
     {
-      "id": "Class1",
-      "name": "class2"
+      "id": "Class2",
+      "name": "class2",
+      "selected": false
     },
     {
-      "id": "Class1",
-      "name": "class3"
+      "id": "Class3",
+      "name": "class3",
+      "selected": false
     }
   ],
   "tutors": [
@@ -196,7 +199,8 @@
       "pass": "1234",
       "email": "tutor1@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     },
     {
       "id": "TT2",
@@ -204,7 +208,8 @@
       "pass": "tam12",
       "email": "tutor2@gmail.com",
       "countryFlag": "f/f3/Flag_of_Russia.svg",
-      "country": "Russia"
+      "country": "Russia",
+      "selected": false
     },
     {
       "id": "TT3",
@@ -212,7 +217,8 @@
       "pass": "tam12",
       "email": "tutor3@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     },
     {
       "id": "TT4",
@@ -220,7 +226,8 @@
       "pass": "tam12",
       "email": "tutor3@gmail.com",
       "countryFlag": "2/21/Flag_of_Vietnam.svg",
-      "country": "Vietnam"
+      "country": "Vietnam",
+      "selected": false
     },
     {
       "id": "TT5",
@@ -228,7 +235,8 @@
       "pass": "tam12",
       "email": "tutor4@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     },
     {
       "id": "TT6",
@@ -236,7 +244,8 @@
       "pass": "tam12",
       "email": "quyendt@gmail.com",
       "countryFlag": "c/cf/Flag_of_Canada.svg",
-      "country": "Canada"
+      "country": "Canada",
+      "selected": false
     },
     {
       "id": "TT7",
@@ -244,7 +253,8 @@
       "pass": "tam12",
       "email": "quyendt@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     },
     {
       "id": "TT8",
@@ -252,14 +262,16 @@
       "pass": "tam12",
       "email": "quyendt@gmail.com",
       "countryFlag": "2/21/Flag_of_Vietnam.svg",
-      "country": "Vietnam"
+      "country": "Vietnam",
+      "selected": false
     },{
       "id": "TT9",
       "name": "tutor9",
       "pass": "tam12",
       "email": "tutor3@gmail.com",
       "countryFlag": "2/21/Flag_of_Vietnam.svg",
-      "country": "Vietnam"
+      "country": "Vietnam",
+      "selected": false
     },
     {
       "id": "TT10",
@@ -267,7 +279,8 @@
       "pass": "tam12",
       "email": "tutor4@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     },
     {
       "id": "TT11",
@@ -275,7 +288,8 @@
       "pass": "tam12",
       "email": "tutor11@gmail.com",
       "countryFlag": "c/cf/Flag_of_Canada.svg",
-      "country": "Canada"
+      "country": "Canada",
+      "selected": false
     },
     {
       "id": "TT12",
@@ -283,7 +297,8 @@
       "pass": "tam12",
       "email": "tutor12@gmail.com",
       "countryFlag": "c/c3/Flag_of_France.svg",
-      "country": "France"
+      "country": "France",
+      "selected": false
     }
   ],
   "schedule" : [
