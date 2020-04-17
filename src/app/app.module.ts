@@ -42,6 +42,7 @@ import { ManageStudentComponent } from './components/manage-student/manage-stude
 import { ManageTutorComponent } from './components/manage-tutor/manage-tutor.component';
 import { SortableDirective } from './sortable.directive';
 import {CommonModule} from '@angular/common';
+import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import {CommonModule} from '@angular/common';
     BlogComponent,
     ManageStudentComponent,
     ManageTutorComponent,
-    SortableDirective
+    SortableDirective,
+    DashboardStudentComponent
   ],
   imports: [
     CommonModule,
