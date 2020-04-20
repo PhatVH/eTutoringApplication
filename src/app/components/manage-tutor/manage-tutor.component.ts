@@ -3,10 +3,10 @@ import {CountryService} from '../../service/country.service';
 import {DecimalPipe} from '@angular/common';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Student} from '../../../models/Student';
+import {Student} from '../../models/Student';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
-import {ManageTutorService} from '../../manage-tutor.service';
-import {Tutor} from '../../../models/Tutor';
+import {ManageTutorService} from '../../service/manage-tutor.service';
+import {Tutor} from '../../models/Tutor';
 
 @Component({
   selector: 'app-manage-tutor',

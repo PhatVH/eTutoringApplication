@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../service/student.service';
-import {Student} from '../../../models/Student';
+import {Student} from '../../models/Student';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {Class} from '../../../models/Class';
-import {Tutor} from '../../../models/Tutor';
+import {Class} from '../../models/Class';
+import {Tutor} from '../../models/Tutor';
 import {TutorService} from '../../service/tutor.service';
 import {ClassService} from '../../service/class.service';
 import {Observable, Subject} from 'rxjs';

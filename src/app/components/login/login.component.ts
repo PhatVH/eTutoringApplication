@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from '../../../models/User';
+import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {faUnlock} from '@fortawesome/free-solid-svg-icons';

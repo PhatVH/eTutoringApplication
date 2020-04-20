@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Class} from '../../models/Class';
+import {Class} from '../models/Class';
 import {catchError, tap} from 'rxjs/operators';
-import {Student} from '../../models/Student';
-import {User} from '../../models/User';
+import {Student} from '../models/Student';
+import {User} from '../models/User';
 
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 @Injectable({

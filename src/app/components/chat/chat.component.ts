@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ChatService} from 'src/app/chat.service';
+import {ChatService} from 'src/app/service/chat.service';
 import {Router} from '@angular/router';
-import {Chat} from '../../../models/Chat';
-import {Student} from '../../../models/Student';
+import {Chat} from '../../models/Chat';
+import {Student} from '../../models/Student';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +13,8 @@ import {Student} from '../../../models/Student';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private chatService: ChatService, private router: Router) {
+  constructor(private chatService: ChatService, private router: Router,
+              private loginComponent: LoginComponent) {
   }
 
   content;
@@ -20,7 +22,11 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.sessionStudent);
-    this.getChat(this.sessionStudent.name);
+    if (this.loginComponent.user.type === 'student' || this.loginComponent.user.type === 'tutor') {
+      this.getChat(this.loginComponent.user.name);
+    } else {
+      this.getChat(this.sessionStudent.name);
+    }
   }
 
   getChat(userName): void {

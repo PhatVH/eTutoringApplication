@@ -2,6 +2,10 @@ h3 {
   margin: 0 0 10px;
 }
 
+.styleLi {
+  color: dodgerblue;
+}
+
 pre {
   background-color: #f5f5f5;
   padding: 15px;

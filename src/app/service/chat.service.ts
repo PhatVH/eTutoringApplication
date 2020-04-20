@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { Student } from 'src/models/Student';
+import { Student } from 'src/app/models/Student';
 import {catchError, tap} from 'rxjs/operators';
-import { Constant } from 'src/models/Constant';
-import { Chat } from 'src/models/Chat';
+import { Constant } from 'src/app/models/Constant';
+import { Chat } from 'src/app/models/Chat';
 
 
 @Injectable({

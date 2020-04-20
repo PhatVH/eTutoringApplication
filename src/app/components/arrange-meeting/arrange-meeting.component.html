@@ -62,7 +62,7 @@
     </div>
   </div>
 </div>
-<br />
+<br/>
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
@@ -97,7 +97,7 @@
 
 <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
 
-<br /><br /><br />
+<br/><br/><br/>
 
 <h3>
   Arrange Meeting
@@ -131,12 +131,24 @@
         />
       </td>
       <td>
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="event.invite"
-          #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)"
+        <input *ngIf="user.type == 'tutor'"
+               type="text"
+               class="form-control"
+               [(ngModel)]="event.invite"
+               #searchStudent (keyup)="searchStudentSchedule(searchStudent.value)"
         />
+        <input *ngIf="user.type == 'staff'"
+               type="text"
+               class="form-control"
+               [(ngModel)]="event.invite"
+               #searchTutor (keyup)="searchTutorSchedule(searchTutor.value)"
+        />
+        <input *ngIf="user.type == 'student'"
+               type="text"
+               class="form-control"
+               [(ngModel)]="event.invite"
+               #searchTutor (keyup)="searchTutorSchedule(searchTutor.value)"
+               />
       </td>
       <td>
         <input
@@ -182,11 +194,31 @@
     </tbody>
   </table>
 </div>
-<div *ngIf="closeDiv">
-  <div class="container"  *ngFor="let eachStudent of students$ | async">
-    <ul>
-      <li (click)="clickStudent(eachStudent)">{{eachStudent.name}}</li>
-    </ul>
+<div *ngIf="user.type == 'tutor'">
+  <div *ngIf="closeDiv">
+    <div class="container" *ngFor="let eachStudent of students$|async">
+      <ul>
+        <li class="styleLi" (click)="clickStudent(eachStudent)">{{eachStudent.id}} - {{eachStudent.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="user.type == 'student'">
+  <div *ngIf="closeDiv">
+    <div class="container" *ngFor="let eachTutor of tutors$|async">
+      <ul>
+        <li class="styleLi" (click)="clickStudent(eachTutor)">{{eachTutor.id}} - {{eachTutor.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="user.type == 'staff'">
+  <div *ngIf="closeDiv">
+    <div class="container" *ngFor="let eachTutor of tutors$|async">
+      <ul>
+        <li class="styleLi" (click)="clickStudent(eachTutor)">{{eachTutor.id}} - {{eachTutor.name}}</li>
+      </ul>
+    </div>
   </div>
 </div>
 

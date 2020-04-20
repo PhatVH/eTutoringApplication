@@ -17,7 +17,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { BlogComponent } from './components/blog/blog.component';
 import {ManageStudentComponent} from './components/manage-student/manage-student.component';
 import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
-import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
+import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 
 
 const routes: Routes = [

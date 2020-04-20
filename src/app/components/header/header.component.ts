@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthGaurdService} from '../../service/auth-gaurd.service';
 import {LoginComponent} from '../login/login.component';
-import {User} from '../../../models/User';
+import {User} from '../../models/User';
+import {ReportComponent} from '../report/report.component';
 
 @Component({
   selector: 'app-header',
@@ -21,4 +22,5 @@ export class HeaderComponent implements OnInit {
   login() {
     this.router.navigate(['/login']);
   }
+
 }

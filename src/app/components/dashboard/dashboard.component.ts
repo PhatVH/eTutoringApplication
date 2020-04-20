@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LoginComponent} from '../login/login.component';
-import {User} from '../../../models/User';
+import {User} from '../../models/User';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

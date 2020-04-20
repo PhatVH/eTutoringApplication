@@ -15,7 +15,7 @@ import {
   addHours,
 } from 'date-fns';
 import {Observable, Subject} from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -23,16 +23,20 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import {AllocateComponent} from '../allocate/allocate.component';
-import {Student} from '../../../models/Student';
+import {Student} from '../../models/Student';
 import {StudentService} from '../../service/student.service';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import {ScheduleService} from '../../schedule.service';
+import {ScheduleService} from '../../service/schedule.service';
+import {LoginComponent} from '../login/login.component';
+import {Tutor} from '../../models/Tutor';
+import {TutorService} from '../../service/tutor.service';
 
 const colors: any = {
   red: {
     primary: '#ad2121',
   }
 };
+
 @Component({
   selector: 'app-arrange-meeting',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,12 +46,13 @@ const colors: any = {
 })
 export class ArrangeMeetingComponent implements OnInit {
   students$: Observable<Student[]>;
-  schedule$: Observable<CalendarEvent[]>;
-  closeDiv = 'value';
+  tutors$: Observable<Tutor[]>;
+  closeDiv;
   private eachStudent: Student;
   invite: string;
   private searchStudent = new Subject<string>();
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+  private searchTutor = new Subject<string>();
+  @ViewChild('modalContent', {static: true}) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -64,14 +69,14 @@ export class ArrangeMeetingComponent implements OnInit {
     {
       label: '<i class="fa fa-fw fa-eye"></i>',
       a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
+      onClick: ({event}: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
       },
     },
     {
       label: '<i class="fa fa-fw fa-times"></i>',
       a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
+      onClick: ({event}: { event: CalendarEvent }): void => {
         this.events = this.events.filter((iEvent) => iEvent !== event);
         this.handleEvent('Deleted', event);
       },
@@ -84,10 +89,18 @@ export class ArrangeMeetingComponent implements OnInit {
 
   activeDayIsOpen = true;
 
-  constructor(private modal: NgbModal, private studentService: StudentService, private scheduleService: ScheduleService) {
+  constructor(private modal: NgbModal,
+              private studentService: StudentService,
+              private tutorServide: TutorService,
+              private scheduleService: ScheduleService,
+              private loginComponent: LoginComponent) {
     this.getAllSchedule();
+
   }
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+
+  user = this.loginComponent.getUser();
+
+  dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -101,8 +114,10 @@ export class ArrangeMeetingComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({event, newStart,
-                      newEnd}: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({
+                      event, newStart,
+                      newEnd
+                    }: CalendarEventTimesChangedEvent): void {
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {
@@ -117,8 +132,8 @@ export class ArrangeMeetingComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modalData = {event, action};
+    this.modal.open(this.modalContent, {size: 'lg'});
   }
 
   addEvent(): void {
@@ -128,7 +143,7 @@ export class ArrangeMeetingComponent implements OnInit {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        invite: '',
+        invite: this.invite,
         actions: this.actions,
         draggable: true,
         resizable: {
@@ -138,6 +153,7 @@ export class ArrangeMeetingComponent implements OnInit {
       },
     ];
   }
+
   deleteEvent(eventToDelete: CalendarEvent) {
     this.events = this.events.filter((event) => event !== eventToDelete);
   }
@@ -152,9 +168,15 @@ export class ArrangeMeetingComponent implements OnInit {
 
   acceptEvent(event: CalendarEvent<any>) {
   }
-  searchStudentAllocate(searchStudent: string): void {
-    console.log(`search nhập từ bàn phím student = ${searchStudent}`);
+
+  searchStudentSchedule(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
+    this.closeDiv = 'value';
+  }
+
+  searchTutorSchedule(searchTutor: string) {
+    this.searchTutor.next(searchTutor);
+    this.closeDiv = 'value';
   }
 
   ngOnInit(): void {
@@ -163,20 +185,33 @@ export class ArrangeMeetingComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent))
     );
+
+    this.tutors$ = this.searchTutor.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((searchTutor: string) => this.tutorServide.searchTutor(searchTutor))
+    );
   }
 
-  clickStudent(eachStudent: Student) {
+  clickStudent(eachStudent) {
+    console.log(`click student`);
+    this.closeDiv = null;
     this.eachStudent = eachStudent;
     this.invite = eachStudent.name;
-    this.closeDiv = null;
     console.log(this.events);
   }
+
   getAllSchedule(): void {
     this.scheduleService.getScheduleEvent().subscribe(
       scheduleRecieve => {
         this.events = scheduleRecieve;
-        this.events.forEach(obj => obj.actions = this.actions);
-      }
-    );
+        this.events.forEach(obj => {
+          obj.actions = this.actions;
+          obj.start = new Date(obj.start);
+          obj.end = new Date(obj.end);
+      });
   }
+
+);
+}
 }

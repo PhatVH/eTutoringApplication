@@ -2,11 +2,12 @@ import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Observable} from 'rxjs';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {DecimalPipe} from '@angular/common';
-import {Student} from '../../../models/Student';
+import {Student} from '../../models/Student';
 import {CountryService} from '../../service/country.service';
 import {Router} from '@angular/router';
-import { ChatService } from 'src/app/chat.service';
+import { ChatService } from 'src/app/service/chat.service';
 import { ChatComponent } from '../chat/chat.component';
+import {Constant} from '../../models/Constant';
 
 @Component({
   selector: 'app-manage-student',
@@ -27,6 +28,7 @@ export class ManageStudentComponent implements OnInit {
 
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
   ngOnInit(): void {
+    this.service.getAllStudentManage(Constant.studentsURL);
   }
 
   onSort({column, direction}: SortEvent) {

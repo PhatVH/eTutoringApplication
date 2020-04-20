@@ -55,15 +55,13 @@
 
         <!-- Content Row -->
         <div class="row">
-
-          <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-success text-white shadow h-100 py-2">
+            <div class="card bg-success text-white shadow h-100 py-2" routerLink="/manageStudent">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Courses</div>
-                    <div class="h5 mb-0 font-weight-bold text-white-800">45 Courses</div>
+                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Student</div>
+                    <div class="h5 mb-0 font-weight-bold text-white-800">45 Student</div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -72,15 +70,13 @@
               </div>
             </div>
           </div>
-
-          <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-warning text-white shadow h-100 py-2">
+            <div class="card bg-warning text-white shadow h-100 py-2" routerLink="/manageTutor">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Staffs</div>
-                    <div class="h5 mb-0 font-weight-bold text-white-800">65 Staffs</div>
+                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Tutor</div>
+                    <div class="h5 mb-0 font-weight-bold text-white-800">65 Tutors</div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-user-tie fa-2x text-gray-300"></i>
@@ -89,17 +85,15 @@
               </div>
             </div>
           </div>
-
-          <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-primary text-white shadow h-100 py-2">
+            <div class="card bg-primary text-white shadow h-100 py-2" routerLink="/errorPage">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Students</div>
+                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Course</div>
                     <div class="row no-gutters align-items-center">
                       <div class="col-auto">
-                        <div class="h5 mb-0 mr-3 font-weight-bold text-white-800">1340 Students</div>
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-white-800" >1340 Courses</div>
                       </div>
                       <div class="col">
                         <div class="progress progress-sm mr-2">
@@ -115,15 +109,13 @@
               </div>
             </div>
           </div>
-
-          <!-- Pending Requests Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
             <div class="card bg-danger text-white shadow h-100 py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total messages</div>
-                    <div class="h5 mb-0 font-weight-bold text-white-800">1870 messages</div>
+                    <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Class</div>
+                    <div class="h5 mb-0 font-weight-bold text-white-800">1870 classes</div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -133,13 +125,11 @@
             </div>
           </div>
         </div>
-
         <!-- Content Row -->
-
         <div class="row">
 
-          <!-- Area Chart -->
-          <div class="col-xl-8 col-lg-7">
+          <!-- Content Column -->
+          <div class="col-lg-6 mb-4">
             <div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -159,91 +149,22 @@
               </div>
               <!-- Card Body -->
               <div class="card-body">
-                  <canvas baseChart
-                          [data]="lineChartData"
-                          [labels]="lineChartLabels"
-                          [chartType]="lineChartType"
-                          [options]="lineChartOptions"
-                  ></canvas>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pie Chart -->
-          <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Student Interaction</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink1">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Card Body -->
-              <div class="card-body">
-                <br>
-                  <canvas baseChart
-                          [data]="doughnutChartData"
-                          [labels]="doughnutChartLabels"
-                          [chartType]="doughnutChartType"></canvas>
-                <br>
-                <hr>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content Row -->
-        <div class="row">
-
-          <!-- Content Column -->
-          <div class="col-lg-6 mb-4">
-
-            <!-- Project Card Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-              </div>
-              <div class="card-body">
-                <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                <div class="progress">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <canvas baseChart
+                        [data]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [chartType]="lineChartType"
+                        [options]="lineChartOptions"
+                ></canvas>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mb-4">
 
-            <!-- Illustrations -->
+            <!-- Total message of student and tutor last week -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Total message of student and tutor last week</h6>
               </div>
               <div class="card-body">
                   <canvas baseChart
@@ -256,7 +177,97 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row">
+        <!-- Area Chart -->
+        <div class="col-lg-8">
+          <div class="container-fluid">
+            <button class="btn btn-primary w-50" (click)="studentWithoutTutor()">Student without tutor</button>
+            <button class="btn btn-primary w-50" (click)="studentWithNoInteract()">Student with interaction for 7 days</button>
+            <form class="mt-5 ml-2 mr-2 mb-5" >
+              <div class="row">
+                <div class="col-md-6 m-0">
+                  <div class="form-group form-inline">
+                    Search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+                    <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+                  </div>
+                </div>
+                <div class="col-md-6 my-auto">
+                  <p class="m-0 text-right">Click on title to sort data</p>
+                </div>
+              </div>
 
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" sortable="name" (sort)="onSort($event)">Student Name</th>
+                  <th scope="col" sortable="country" (sort)="onSort($event)">Country</th>
+                  <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
+                  <th scope="col" sortable="mssv" (sort)="onSort($event)">StudentID</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let student of students$ | async" (click)="onDashboadStudent(student)">
+                  <th scope="row">{{ student.id }}</th>
+                  <td><ngb-highlight [result]="student.name" [term]="service.searchTerm"></ngb-highlight></td>
+                  <td>
+                    <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + student.countryFlag" class="mr-2" style="width: 20px">
+                    <ngb-highlight [result]="student.country" [term]="service.searchTerm"></ngb-highlight>
+                  </td>
+                  <td><ngb-highlight [result]="student.email" [term]="service.searchTerm"></ngb-highlight></td>
+                  <td><ngb-highlight [result]="student.id" [term]="service.searchTerm"></ngb-highlight></td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div class="d-flex justify-content-between p-2">
+                <ngb-pagination
+                  [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+                </ngb-pagination>
+
+                <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                  <option [ngValue]="10">10 items per page</option>
+                  <option [ngValue]="8">8 items per page</option>
+                  <option [ngValue]="6">6 items per page</option>
+                </select>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-lg-4">
+          <div class="card shadow mr-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Student Interaction</h6>
+              <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink1">
+                  <div class="dropdown-header">Dropdown Header:</div>
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+              <br>
+              <canvas baseChart
+                      [data]="doughnutChartData"
+                      [labels]="doughnutChartLabels"
+                      [chartType]="doughnutChartType"></canvas>
+              <br>
+              <hr>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -268,5 +279,6 @@
 </body>
 
 </html>
+
 
 

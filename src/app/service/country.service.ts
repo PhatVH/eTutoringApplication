@@ -5,8 +5,8 @@ import {DecimalPipe} from '@angular/common';
 import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from '../sortable.directive';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Constant} from '../../models/Constant';
-import {Student} from '../../models/Student';
+import {Constant} from '../models/Constant';
+import {Student} from '../models/Student';
 
 interface SearchResult {
   students: Student[];
@@ -58,18 +58,28 @@ export class CountryService {
 
   constructor(private pipe: DecimalPipe,
               private http: HttpClient) {
-    this.getAllStudents();
   }
 
-  getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(Constant.studentsURL).pipe(
+  getStudents(studentsURL): Observable<Student[]> {
+    return this.http.get<Student[]>(studentsURL).pipe(
       tap(recieve => console.log(`recieve Student: ${JSON.stringify(recieve)}`)),
       catchError(error => of([]))
     );
   }
 
-  getAllStudents(): void {
-    this.getStudents().subscribe(
+  getAllStudentManage(studentsURL): void {
+    this.getAllStudents(studentsURL);
+  }
+  getAllStudentWithoutTutor(studentsURL): void {
+    this.getAllStudents(studentsURL);
+  }
+
+  getAllStudentWithNoInteract(studentsURL: string) {
+    this.getAllStudents(studentsURL);
+  }
+
+  getAllStudents(studentsURL): void {
+    this.getStudents(studentsURL).subscribe(
       studentsRecieve => {
         this.STUDENTS = studentsRecieve;
         this._search$.pipe(
@@ -83,8 +93,6 @@ export class CountryService {
           this._total$.next(result.total);
         });
         this._search$.next();
-        console.log(`this.STUDENTS`);
-        console.log(this.STUDENTS);
       }
     );
   }
@@ -152,4 +160,6 @@ export class CountryService {
     students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
     return of({students, total});
   }
+
+
 }

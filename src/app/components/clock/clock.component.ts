@@ -11,7 +11,7 @@ export class ClockComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.realtimeClock();
+    //this.realtimeClock();
     this.renderDate();
   }
 
