@@ -18,8 +18,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import {ManageStudentComponent} from './components/manage-student/manage-student.component';
 import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
 import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
-
-
+import {VirtualmeetingComponent} from './components/message/meeting/virtualmeeting/virtualmeeting.component';
+import {RealmeetingnoteComponent} from './components/message/meeting/realmeetingnote/realmeetingnote.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGaurdService]},
@@ -39,6 +39,9 @@ const routes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'manageStudent', component: ManageStudentComponent},
   {path: 'manageTutor', component: ManageTutorComponent},
+  {path: 'virtualmeeting', component: VirtualmeetingComponent},
+  {path: 'realmeetingnote', component: RealmeetingnoteComponent}
+
 
 
 ];

@@ -43,6 +43,11 @@ import { ManageTutorComponent } from './components/manage-tutor/manage-tutor.com
 import { SortableDirective } from './sortable.directive';
 import {CommonModule} from '@angular/common';
 import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
+import { MessageComponent } from './components/message/message.component';
+import { AfterpostComponent } from './components/message/afterpost/afterpost.component';
+import { MeetingComponent } from './components/message/meeting/meeting.component';
+import { VirtualmeetingComponent } from './components/message/meeting/virtualmeeting/virtualmeeting.component';
+import { RealmeetingnoteComponent } from './components/message/meeting/realmeetingnote/realmeetingnote.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +80,12 @@ import { DashboardStudentComponent } from './dashboard-student/dashboard-student
     ManageStudentComponent,
     ManageTutorComponent,
     SortableDirective,
-    DashboardStudentComponent
+    DashboardStudentComponent,
+    MessageComponent,
+    AfterpostComponent,
+    MeetingComponent,
+    VirtualmeetingComponent,
+    RealmeetingnoteComponent
   ],
   imports: [
     CommonModule,
