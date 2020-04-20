@@ -30,6 +30,7 @@ import {ScheduleService} from '../../service/schedule.service';
 import {LoginComponent} from '../login/login.component';
 import {Tutor} from '../../models/Tutor';
 import {TutorService} from '../../service/tutor.service';
+import {Constant} from '../../models/Constant';
 
 const colors: any = {
   red: {
@@ -183,7 +184,7 @@ export class ArrangeMeetingComponent implements OnInit {
     this.students$ = this.searchStudent.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent))
+      switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent, Constant.studentsURL))
     );
 
     this.tutors$ = this.searchTutor.pipe(

@@ -12,7 +12,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ClassService} from './service/class.service';
 import {TutorService} from './service/tutor.service';
-import { AllocateAddComponent } from './components/allocate-add/allocate-add.component';
 import { AllocateRemoveComponent } from './components/allocate-remove/allocate-remove.component';
 import { EventComponent } from './components/event/event.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -51,7 +50,6 @@ import { DashboardStudentComponent } from './components/dashboard-student/dashbo
     ErrorPageComponent,
     DashboardComponent,
     LoginComponent,
-    AllocateAddComponent,
     AllocateRemoveComponent,
     EventComponent,
     AboutUsComponent,

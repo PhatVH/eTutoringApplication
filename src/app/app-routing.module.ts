@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {ErrorPageComponent} from './components/error-page/error-page.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
-import {AllocateAddComponent} from './components/allocate-add/allocate-add.component';
 import {AllocateRemoveComponent} from './components/allocate-remove/allocate-remove.component';
 import {EventComponent} from './components/event/event.component';
 import {AboutUsComponent} from './components/about-us/about-us.component';
@@ -18,6 +17,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import {ManageStudentComponent} from './components/manage-student/manage-student.component';
 import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
+import {AllocateComponent} from './components/allocate/allocate.component';
 
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGaurdService]},
   {path: 'dashboardStudent', component: DashboardStudentComponent, canActivate: [AuthGaurdService]},
   {path: 'login', component: LoginComponent},
-  {path: 'allocate', component: AllocateAddComponent, canActivate: [AuthGaurdService]},
+  {path: 'allocate', component: AllocateComponent, canActivate: [AuthGaurdService]},
   {path: 'Reallocate', component: AllocateRemoveComponent, canActivate: [AuthGaurdService]},
   {path: 'errorPage', component: ErrorPageComponent, canActivate: [AuthGaurdService]},
   {path: 'event', component: EventComponent, canActivate: [AuthGaurdService]},

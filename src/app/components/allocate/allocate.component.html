@@ -1,7 +1,8 @@
-
+<app-header></app-header>
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,9 +72,6 @@
       </div>
     </form>
   </div>
-
-
-
   <div id="student" class="modal">
     <form class="modal-content animate" action="/action_page.php" method="post">
       <div class="imgcontainer">
@@ -104,6 +102,9 @@
       </div>
     </form>
   </div>
+  <div class="allocate">
+    <button (click)="postAllocate()" type="button" class="btn btn-primary" style="width: 120px">Allocate</button>
+  </div>
 </div>
 
 <script>
@@ -120,5 +121,6 @@
 </script>
 </body>
 </html>
+<app-footer></app-footer>
 
 

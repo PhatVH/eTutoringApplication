@@ -110,7 +110,7 @@
       "selected": false,
       "countryFlag": "c/cf/Flag_of_Canada.svg",
       "country": "Germany",
-      "tutor": "Lai Manh Dung"
+      "tutor": "Tutor 1"
     },
     {
       "id": "SDT2",
@@ -169,8 +169,7 @@
       "pass": "tam12",
       "selected": false,
       "countryFlag": "2/21/Flag_of_Vietnam.svg",
-      "country": "Vietnam",
-      "tutor": "Doan Trung Tung"
+      "country": "Vietnam"
     },
     {
       "id": "SDT8",
@@ -179,8 +178,7 @@
       "pass": "tam12",
       "selected": false,
       "countryFlag": "5/5c/Flag_of_Portugal.svg",
-      "country": "Portugal",
-      "tutor": "Doan Trung Tung"
+      "country": "Portugal"
     },
     {
       "id": "SDT9",
@@ -189,8 +187,7 @@
       "pass": "tam12",
       "selected": false,
       "countryFlag": "c/cf/Flag_of_Canada.svg",
-      "country": "Germany",
-      "tutor": "Lai Manh Dung"
+      "country": "Germany"
     },
     {
       "id": "SDT10",
@@ -210,7 +207,7 @@
       "selected": false,
       "countryFlag": "c/cf/Flag_of_Canada.svg",
       "country": "Germany",
-      "tutor": "Lai Manh Dung"
+      "tutor": "tutor1"
     },
     {
       "id": "SDT12",
@@ -230,7 +227,7 @@
       "selected": false,
       "countryFlag": "c/c3/Flag_of_France.svg",
       "country": "France",
-      "tutor": "Lai Manh Dung"
+      "tutor": "tutor1"
     },
     {
       "id": "SDT14",
@@ -240,7 +237,7 @@
       "selected": false,
       "countryFlag": "f/f3/Flag_of_Russia.svg",
       "country": "Russia",
-      "tutor": "Lai Manh Dung"
+      "tutor": "tutor1"
     },
     {
       "id": "SDT15",
@@ -250,7 +247,7 @@
       "selected": false,
       "countryFlag": "c/c3/Flag_of_France.svg",
       "country": "France",
-      "tutor": "Lai Manh Dung"
+      "tutor": "tutor1"
     }
   ],
   "classes": [

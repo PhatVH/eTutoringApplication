@@ -7,8 +7,8 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {Class} from '../../models/Class';
 import {Tutor} from '../../models/Tutor';
 import {TutorService} from '../../service/tutor.service';
-import {ClassService} from '../../service/class.service';
 import {Observable, Subject} from 'rxjs';
+import {Constant} from '../../models/Constant';
 
 @Component({
   selector: 'app-allocate',
@@ -55,7 +55,7 @@ export class AllocateComponent implements OnInit {
 
   searchStudentAllocate(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
-    this.studentService.searchStudent(searchStudent).subscribe(result => {
+    this.studentService.searchStudent(searchStudent, Constant.studentWithoutTutorURL).subscribe(result => {
       this.newStudents = this.checkSelected(result, this.selectStudent);
     });
   }
@@ -68,7 +68,7 @@ export class AllocateComponent implements OnInit {
     if (index === -1) {
       tutor.selected = true ;
       this.selectTutor[0] = tutor;
-      this.selectTutor.splice(0, 1, tutor)
+      this.selectTutor.splice(0, 1, tutor);
     }
   }
 
@@ -110,5 +110,9 @@ export class AllocateComponent implements OnInit {
 
   onClickBtnAcceptTutor() {
     this.openDivTutor = 'value';
+  }
+
+  postAllocate() {
+
   }
 }

@@ -1,19 +1,125 @@
 <app-header></app-header>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!--    Font Google     -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Noto+Sans&display=swap" rel="stylesheet">
+
 </head>
 <body>
+<div class="containerMain">
+  <div class="tutor">
+    <div class="title-main">
+      <h4>Tutor</h4>
+      <fa-icon [icon]="faUserPlus" (click)="searchTutorAllocate(searchTutor.value)" onclick="document.getElementById('tutor').style.display='block'"></fa-icon>
+    </div>
+    <div *ngIf="openDivTutor" class="content">
+      <div  *ngFor="let eachName of selectTutor" class="user">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
+      </div>
+    </div>
+    <br>
+  </div>
 
-<div class="container">
-  <app-allocate></app-allocate>
+
+  <div class="student">
+    <div class="title-main">
+      <h4>Students</h4>
+      <fa-icon [icon]="faUserPlus" (click)="searchStudentAllocate(searchStudent.value)" onclick="document.getElementById('student').style.display='block'"></fa-icon>
+    </div>
+    <div *ngIf="openDivStudent" class="content">
+      <div  *ngFor="let eachName of selectStudent" class="user">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div id="tutor" class="modal">
+    <form #frmAllocateTutor="ngForm" class="modal-content animate">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('tutor').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="containerModal">
+        <div class="title-main">
+          <label><h4>Select Tutor</h4></label>
+          <div class="title-right">
+            <input #searchTutor class="selectTutor" (keyup)="searchTutorAllocate(searchTutor.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+        </div>
+        <div class="container"  *ngFor="let eachTutor of newTutors">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="tutor" id="{{eachTutor.id}}tutor" value= "{{eachTutor.id}}" (click)="tutorChange(eachTutor)" [checked]="eachTutor.selected">
+            <label class="custom-control-label" for="{{eachTutor.id}}tutor"><h4>{{eachTutor.id}}-{{eachTutor.name}}</h4></label>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <button type="button" onclick="document.getElementById('tutor').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('tutor').style.display='none'" (click)="onClickBtnAcceptTutor()" class="btn btn-primary btn-lg">Accept</button>
+      </div>
+    </form>
+  </div>
+  <div id="student" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('student').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div class="containerModal">
+        <div class="title-main">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="selectAllStudent" (click)="selectAllStudent()">
+            <label class="custom-control-label" for="selectAllStudent"><h4>Select All</h4></label>
+          </div>
+          <div class="title-right">
+            <input #searchStudent (keyup)="searchStudentAllocate(searchStudent.value)" />
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+        </div>
+        <div class="container"  *ngFor="let eachStudent of newStudents">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}" (change)="studentChange(eachStudent)" [checked]="eachStudent.selected">
+            <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.name}}-{{eachStudent.email}}</h4></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <button type="button" onclick="document.getElementById('student').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
+        <button type="submit" onclick="document.getElementById('student').style.display='none'" (click)="onClickBtnAcceptStudent()" class="btn btn-primary btn-lg">Accept</button>
+      </div>
+    </form>
+  </div>
   <div class="allocate">
-    <button type="button" class="btn btn-danger pt-2 pl-3 pr-3 pb-2">Reallocate</button>
+    <button (click)="postReallocate()" type="button" class="btn btn-danger" style="width: 120px">Reallocate</button>
   </div>
 </div>
 
+<script>
+  // Get the modal
+  var tutor = document.getElementById('tutor');
+  var student = document.getElementById('student');
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == tutor || event.target == student) {
+      tutor.style.display = "none";
+      student.style.display = "none";
+    }
+  }
+</script>
 </body>
 </html>
 <app-footer></app-footer>
+
+
