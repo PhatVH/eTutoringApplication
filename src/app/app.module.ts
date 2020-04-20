@@ -42,6 +42,15 @@ import { ManageStudentComponent } from './components/manage-student/manage-stude
 import { ManageTutorComponent } from './components/manage-tutor/manage-tutor.component';
 import { SortableDirective } from './sortable.directive';
 import {CommonModule} from '@angular/common';
+<<<<<<< Updated upstream
+=======
+import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
+import { MessageComponent } from './components/message/message.component';
+import { MeetingComponent } from './components/message/meeting/meeting.component';
+import { AfterpostComponent } from './components/message/afterpost/afterpost.component';
+import { VirtualmeetingComponent } from './components/message/meeting/virtualmeeting/virtualmeeting.component';
+import { RealmeetingnoteComponent } from './components/message/meeting/realmeetingnote/realmeetingnote.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -73,7 +82,17 @@ import {CommonModule} from '@angular/common';
     BlogComponent,
     ManageStudentComponent,
     ManageTutorComponent,
+<<<<<<< Updated upstream
     SortableDirective
+=======
+    SortableDirective,
+    DashboardStudentComponent,
+    MessageComponent,
+    MeetingComponent,
+    AfterpostComponent,
+    VirtualmeetingComponent,
+    RealmeetingnoteComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     CommonModule,

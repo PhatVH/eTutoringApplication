@@ -166,7 +166,11 @@ export class ArrangeMeetingComponent {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
+<<<<<<< Updated upstream
         color: colors.red,
+=======
+        actions: this.actions,
+>>>>>>> Stashed changes
         draggable: true,
         resizable: {
           beforeStart: true,

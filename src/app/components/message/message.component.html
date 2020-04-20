@@ -1,0 +1,59 @@
+<ul class="horizontal">
+    <li (click)="messageClick()" ><a>Message</a></li>
+    <li (click)="meetingClick()" ><a>Meeting</a></li>
+    <li (click)="documentClick()"><a>Document</a></li>
+    <li (click)="storageClick()" ><a>Storage</a></li>
+</ul>
+
+<div *ngIf="message">
+    <app-chat></app-chat>
+</div>
+
+
+<!--Document-->
+<div *ngIf="document" class="m-5">
+    <app-afterpost></app-afterpost>
+</div>
+
+
+<!--Meeting-->
+
+<div class="filter m-5 d-flex flex-column" *ngIf="meeting">
+    <app-meeting></app-meeting>
+</div>
+
+
+
+<!--storage-->
+<div class="document m-5" *ngIf="storage">
+    <div style="float: left;">
+        <h4>All document</h4>
+    </div>
+    <div style="float: right;">
+        <h4>Filter</h4>
+    </div>
+    <div style="float: left; width: 100%; border-style: groove;">
+        <div style="float: left;">Document 1</div>
+        <div class="DeleteDocument" style="float: right;">...
+            <div class="filterDeltete">
+                <button class="btn">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div style="float: left; width: 100%; border-style: groove;">
+        <div style="float: left;">Document 2</div>
+        <div class="DeleteDocument" style="float: right;">...
+            <div class="filterDeltete">
+                <button class="btn">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div style="float: left; width: 100%; border-style: groove;">
+        <div style="float: left;">Document 3</div>
+        <div class="DeleteDocument" style="float: right;">...
+            <div class="filterDeltete">
+                <button class="btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
