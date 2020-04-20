@@ -30,19 +30,6 @@
     <br>
   </div>
 
-  <div class="classes">
-    <div class="title-main">
-      <h4>Class</h4>
-      <fa-icon [icon]="faUserPlus" (click)="searchClassAllocate(searchClass.value)" onclick="document.getElementById('classes').style.display='block'"></fa-icon>
-    </div>
-    <div *ngIf="openDivClass" class="content">
-      <div  *ngFor="let eachName of selectClass" class="user">
-        <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="name-user">{{eachName.name}}</span>
-      </div>
-    </div>
-    <br>
-  </div>
 
   <div class="student">
     <div class="title-main">
@@ -86,33 +73,6 @@
   </div>
 
 
-  <div id="classes" class="modal">
-    <form class="modal-content animate" action="/action_page.php" method="post">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('classes').style.display='none'" class="close" title="Close Modal">&times;</span>
-      </div>
-      <div class="containerModal">
-        <div class="title-main">
-          <label><h4>Select Class</h4></label>
-          <div class="title-right">
-            <input #searchClass (keyup)="searchClassAllocate(searchClass.value)" />
-            <fa-icon [icon]="faSearch"></fa-icon>
-          </div>
-        </div>
-        <div class="container"  *ngFor="let eachClass of newClasses">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" name="class" id="{{eachClass.id}}class" value= "{{eachClass.id}}" (click)="classChange(eachClass)" [checked]="eachClass.selected">
-            <label class="custom-control-label" for="{{eachClass.id}}class"><h4>{{eachClass.id}}-{{eachClass.name}}</h4></label>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <button type="button" onclick="document.getElementById('classes').style.display='none'" class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" onclick="document.getElementById('classes').style.display='none'" (click)="onClickBtnAcceptClass()" class="btn btn-primary btn-lg">Accept</button>
-      </div>
-    </form>
-  </div>
-
 
   <div id="student" class="modal">
     <form class="modal-content animate" action="/action_page.php" method="post">
@@ -149,13 +109,11 @@
 <script>
   // Get the modal
   var tutor = document.getElementById('tutor');
-  var classes = document.getElementById('classes');
   var student = document.getElementById('student');
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-    if (event.target == tutor || event.target == classes || event.target == student) {
+    if (event.target == tutor || event.target == student) {
       tutor.style.display = "none";
-      classes.style.display = "none";
       student.style.display = "none";
     }
   }

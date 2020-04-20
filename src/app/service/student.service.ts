@@ -24,7 +24,6 @@ export class StudentService {
       catchError(error => of(null))
     );
   }
-
   searchStudent(typeString: string): Observable<Student[]> {
     if (!typeString.trim()) {
       return this.getStudents();

@@ -9,7 +9,6 @@ import {Tutor} from '../../models/Tutor';
 import {TutorService} from '../../service/tutor.service';
 import {ClassService} from '../../service/class.service';
 import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-allocate',
@@ -22,24 +21,19 @@ export class AllocateComponent implements OnInit {
   faSearch = faSearch;
   newStudents: Student[];
   newTutors: Tutor[];
-  newClasses: Class[];
   students: Student[];
   classes: Class[];
   tutors: Tutor[];
   selectTutor: Tutor[] = [];
-  selectClass: Class[] = [];
   selectStudent: Student[] = [];
   countCheckAll = 0;
   private searchTutor = new Subject<string>();
-  private searchClass = new Subject<string>();
   private searchStudent = new Subject<string>();
   openDivStudent: any = null;
   openDivTutor: any = null;
-  openDivClass: any = null;
 
   constructor(private studentService: StudentService,
-              private tutorService: TutorService,
-              private classService: ClassService) {
+              private tutorService: TutorService) {
   }
 
   checkSelected(resultFromApi, selectedArr) {
@@ -51,20 +45,11 @@ export class AllocateComponent implements OnInit {
       });
     });
     return resultFromApi;
-    console.log(`resultFromApi`)
-    console.log(resultFromApi)
   }
   searchTutorAllocate(searchTutor: string): void {
     this.searchTutor.next(searchTutor);
     this.tutorService.searchTutor(searchTutor).subscribe(result => {
       this.newTutors = this.checkSelected(result, this.selectTutor);
-    });
-  }
-
-  searchClassAllocate(searchClass: string): void {
-    this.searchClass.next(searchClass);
-    this.classService.searchClass(searchClass).subscribe(result => {
-      this.newClasses = this.checkSelected(result, this.selectClass);
     });
   }
 
@@ -87,14 +72,6 @@ export class AllocateComponent implements OnInit {
     }
   }
 
-  classChange(eachClass: Class) {
-    const index = this.selectClass.indexOf(eachClass);
-    if (index === -1) {
-      eachClass.selected = true ;
-      this.selectClass[0] = eachClass;
-      this.selectClass.splice(0, 1, eachClass)
-    }
-  }
 
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
@@ -129,10 +106,6 @@ export class AllocateComponent implements OnInit {
 
   onClickBtnAcceptStudent() {
     this.openDivStudent = 'value';
-  }
-
-  onClickBtnAcceptClass() {
-    this.openDivClass = 'value';
   }
 
   onClickBtnAcceptTutor() {
