@@ -109,8 +109,6 @@ export class AllocateRemoveComponent implements OnInit {
     this.openDivTutor = 'value';
     this.getListStudentOfTutor(this.selectTutor[0].name);
   }
-  postReallocate() {
-  }
 
   getListStudentOfTutor(tutor): void {
     console.log(`student with no tutor`)

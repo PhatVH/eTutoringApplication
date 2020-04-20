@@ -29,9 +29,9 @@
           <h2>Login Here</h2>
         </div>
         <form #frmUser="ngForm" novalidate>
-          <input placeholder="Username or E-mail" class="user" type="email" name="userName" #user required="">
+          <input placeholder="Username or E-mail" class="user" type="email" name="userName" #user>
           <span class="icon1"> <fa-icon [icon]="faUser"></fa-icon></span><br><br>
-          <input  placeholder="Password" class="pass" type="password" #pass required="">
+          <input  placeholder="Password" class="pass" type="password" #pass>
           <span class="icon2"> <fa-icon [icon]="faUnlock"></fa-icon></span><br>
           <div style="color: white" *ngIf="result">Please enter email and password!</div>
           <div style="color: white" *ngIf="invalidAccount">Wrong email or password!</div>

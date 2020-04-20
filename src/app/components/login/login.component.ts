@@ -16,7 +16,7 @@ import {ClassService} from '../../service/class.service';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
-  user: User = {id: null, name: null, pass: null, type: null};
+  user: User = null;
   result: string;
   invalidAccount: string;
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.result = null;
-    this.classService.getLogin(user, pass).subscribe(
+    this.classService.login(user, pass).subscribe(
       (userRecieve) => {
         // tslint:disable-next-line:triple-equals
         if (userRecieve[0] == null) {
