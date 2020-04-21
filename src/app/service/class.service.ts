@@ -44,7 +44,8 @@ export class ClassService {
   login(username, password): Observable<any> {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     const params = new HttpParams().set('username', username).set('password', password);
-    return this.http.post<any>(Constant.loginURL, {headers, params});
+    // @ts-ignore
+    return this.http.post<any>(Constant.loginURL, params, headers );
   }
 
   constructor(private http: HttpClient) { }

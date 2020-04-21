@@ -29,20 +29,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitForm(user: string, pass: string) {
+    console.log(`user infor`)
+    console.log(user)
+    console.log(pass)
     // tslint:disable-next-line:triple-equals
     if (user == '' || pass == '') {
       this.result = 'result';
       return;
     }
     this.result = null;
-    this.classService.login(user, pass).subscribe(
+    this.classService.getLogin(user, pass).subscribe(
       (userRecieve) => {
+        console.log(`userRecieve`)
+        console.log(userRecieve)
         // tslint:disable-next-line:triple-equals
         if (userRecieve[0] == null) {
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
         } else {
-          this.user = userRecieve[0];
+          this.user = userRecieve;
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
           this.router.navigate(['/home']);
         }
