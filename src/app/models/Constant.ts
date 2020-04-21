@@ -6,4 +6,5 @@ export class Constant {
   public static chatURL = 'http://localhost:3000/chat';
   static studentWithoutTutorURL = 'http://localhost:3000/studentsWithoutTutor';
   static studentWithNoInteractionURL = 'http://localhost:3000/studentsWithNoInteraction';
+  static deleteMeetingURL = 'http://localhost:3000/studentsWithNoInteraction';
 }
