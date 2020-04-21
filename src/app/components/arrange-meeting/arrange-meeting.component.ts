@@ -142,7 +142,6 @@ export class ArrangeMeetingComponent implements OnInit {
       ...this.events,
       {
         title: 'New event',
-        host: '',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
         invite: this.invite,
@@ -158,6 +157,7 @@ export class ArrangeMeetingComponent implements OnInit {
 
   deleteEvent(eventToDelete: CalendarEvent) {
     this.events = this.events.filter((event) => event !== eventToDelete);
+    this.scheduleService.deleteMeeting(eventToDelete).subscribe(result => console.log(result));
   }
 
   setView(view: CalendarView) {
