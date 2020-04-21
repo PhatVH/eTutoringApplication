@@ -24,7 +24,7 @@
     <div *ngIf="openDivTutor" class="content">
       <div  *ngFor="let eachName of selectTutor" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
+        <span class="name-user">{{eachName.id}} - {{eachName.tutor_name}}</span>
       </div>
     </div>
     <br>
@@ -39,7 +39,7 @@
     <div *ngIf="openDivStudent" class="content">
       <div  *ngFor="let eachName of selectStudent" class="user">
         <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="name-user">{{eachName.id}} - {{eachName.name}}</span>
+        <span class="name-user">{{eachName.id}} - {{eachName.student_name}}</span>
       </div>
     </div>
     <br>
@@ -61,7 +61,7 @@
         <div class="container"  *ngFor="let eachTutor of newTutors">
           <div class="custom-control custom-radio">
             <input type="radio" class="custom-control-input" name="tutor" id="{{eachTutor.id}}tutor" value= "{{eachTutor.id}}" (click)="tutorChange(eachTutor)" [checked]="eachTutor.selected">
-            <label class="custom-control-label" for="{{eachTutor.id}}tutor"><h4>{{eachTutor.id}}-{{eachTutor.name}}</h4></label>
+            <label class="custom-control-label" for="{{eachTutor.id}}tutor"><h4>{{eachTutor.id}}-{{eachTutor.tutor_name}}</h4></label>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         <div class="container"  *ngFor="let eachStudent of newStudents">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="{{eachStudent.id}}std" value= "{{eachStudent.id}}" (change)="studentChange(eachStudent)" [checked]="eachStudent.selected">
-            <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.name}}-{{eachStudent.email}}</h4></label>
+            <label class="custom-control-label" for="{{eachStudent.id}}std"><h4>{{eachStudent.id}}-{{eachStudent.student_name}}-{{eachStudent.student_email}}</h4></label>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit {
     if (this.loginComponent.user.type === 'student' || this.loginComponent.user.type === 'tutor') {
       this.getChat(this.loginComponent.user.name);
     } else {
-      this.getChat(this.sessionStudent.name);
+      this.getChat(this.sessionStudent.student_name);
     }
   }
 

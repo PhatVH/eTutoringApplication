@@ -34,8 +34,8 @@ function sort(tutors: Tutor[], column: SortColumn, direction: string): Tutor[] {
 }
 
 function matches(tutor: Tutor, term: string, pipe: PipeTransform) {
-  return tutor.name.toLowerCase().includes(term.toLowerCase())
-    || tutor.email.toLowerCase().includes(term.toLowerCase())
+  return tutor.tutor_name.toLowerCase().includes(term.toLowerCase())
+    || tutor.tutor_email.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(tutor.id).includes(term);
 }
 
@@ -61,10 +61,9 @@ export class ManageTutorService {
   }
 
   getTutors(): Observable<Tutor[]> {
-    return this.http.get<Tutor[]>(Constant.tutorsURL).pipe(
-      tap(recieve => console.log(`recieve Tutor: ${JSON.stringify(recieve)}`)),
-      catchError(error => of([]))
-    );
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    // @ts-ignore
+    return this.http.get<any>(Constant.tutorsURL, headers );
   }
 
   getAllTutors(): void {

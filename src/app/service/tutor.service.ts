@@ -9,30 +9,17 @@ const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json
   providedIn: 'root'
 })
 export class TutorService {
-
-  private tutorsURL = 'http://localhost:3000/tutors';
   getTutors(): Observable<Tutor[]> {
-    return this.http.get<Tutor[]>(this.tutorsURL).pipe(
-      tap(recieve => console.log(`recieve tutors: ${JSON.stringify(recieve)}`)),
-      catchError(error => of([]))
-    );
-  }
-
-  getLoginTutor(userName: string, pass: string): Observable<Tutor> {
-    const url = `${this.tutorsURL}?name=${userName}&&pass=${pass}`;
-    return this.http.get<Tutor>(url).pipe(
-      catchError(error => of(null))
-    );
+    // @ts-ignore
+    return this.http.get<any>(Constant.tutorsURL, Constant.headers );
   }
 
   searchTutor(typeString: string): Observable<Tutor[]> {
     if (!typeString.trim()) {
       this.getTutors();
     }
-    return this.http.get(`${this.tutorsURL}?name_like=${typeString}`).pipe(
-      tap(recieve => console.log(`recieve tutors: ${JSON.stringify(recieve)}`)),
-      catchError(error => of(null))
-    );
+    // @ts-ignore
+    return this.http.get<any>(`${Constant.tutorsURL}?name_like=${typeString}`, Constant.headers );
   }
   constructor(private http: HttpClient) { }
 

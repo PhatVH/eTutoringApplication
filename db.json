@@ -50,8 +50,6 @@
       "id": "SDT1",
       "name": "TamBT",
       "email": "tambt@gmail.com",
-      "pass": "tam12",
-      "selected": false,
       "countryFlag": "c/cf/Flag_of_Canada.svg",
       "country": "Germany"
     },
@@ -99,6 +97,341 @@
       "selected": false,
       "countryFlag": "c/cf/Flag_of_Canada.svg",
       "country": "Canada"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "title": "New event",
+              "host": "Quyen DT",
+              "start": "2020-04-20T17:00:00.000Z",
+              "end": "2020-04-21T16:59:59.999Z",
+              "invite": "tu",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ],
+              "draggable": true,
+              "resizable": {
+                "beforeStart": true,
+                "afterEnd": true
+              }
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "kUQpbre"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "start": "2020-04-23T18:25:43.511Z",
+              "end": "2020-04-23T18:25:43.511Z",
+              "title": "A 3 day event",
+              "invite": "Nguyen D",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ]
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "JTYR_bn"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "start": "2020-04-23T18:25:43.511Z",
+              "end": "2020-04-23T18:25:43.511Z",
+              "title": "A 3 day event",
+              "invite": "Nguyen E",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ]
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "JIaezHp"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "title": "An event with no end date",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ],
+              "start": null,
+              "end": null
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "MM6GYDI"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "title": "New event",
+              "host": "Quyen DT",
+              "start": "2020-04-20T17:00:00.000Z",
+              "end": "2020-04-21T16:59:59.999Z",
+              "invite": "tutor1",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ],
+              "draggable": true,
+              "resizable": {
+                "beforeStart": true,
+                "afterEnd": true
+              }
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "evjSoS_"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "title": "New event",
+              "host": "Quyen DT",
+              "start": "2020-04-20T17:00:00.000Z",
+              "end": "2020-04-21T16:59:59.999Z",
+              "invite": "tutor1",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ],
+              "draggable": true,
+              "resizable": {
+                "beforeStart": true,
+                "afterEnd": true
+              }
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "w9vt50x"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "start": "2020-04-23T18:25:43.511Z",
+              "end": "2020-04-23T18:25:43.511Z",
+              "title": "A 3 day event",
+              "invite": "Nguyen C",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ]
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "uInb05k"
+    },
+    {
+      "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null
+      },
+      "params": {
+        "updates": [
+          {
+            "param": "event",
+            "value": {
+              "title": "New event",
+              "host": "Quyen DT",
+              "start": "2020-04-20T17:00:00.000Z",
+              "end": "2020-04-21T16:59:59.999Z",
+              "invite": "tutor1",
+              "actions": [
+                {
+                  "label": "<i class=\"fa fa-fw fa-eye\"></i>",
+                  "a11yLabel": "Edit"
+                },
+                {
+                  "label": "<i class=\"fa fa-fw fa-times\"></i>",
+                  "a11yLabel": "Delete"
+                }
+              ],
+              "draggable": true,
+              "resizable": {
+                "beforeStart": true,
+                "afterEnd": true
+              }
+            },
+            "op": "s"
+          }
+        ],
+        "cloneFrom": {
+          "updates": null,
+          "cloneFrom": null,
+          "encoder": {},
+          "map": null
+        },
+        "encoder": {},
+        "map": null
+      },
+      "id": "WjOCZdV"
     }
   ],
   "students": [
@@ -428,5 +761,3 @@
     }
   ]
 }
-
-

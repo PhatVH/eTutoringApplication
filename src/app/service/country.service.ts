@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from '../sortable.directive';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Constant} from '../models/Constant';
 import {Student} from '../models/Student';
 
@@ -35,8 +35,8 @@ function sort(students: Student[], column: SortColumn, direction: string): Stude
 }
 
 function matches(student: Student, term: string, pipe: PipeTransform) {
-  return student.name.toLowerCase().includes(term.toLowerCase())
-    || student.email.toLowerCase().includes(term.toLowerCase())
+  return student.student_name.toLowerCase().includes(term.toLowerCase())
+    || student.student_email.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(student.id).includes(term);
 }
 
@@ -61,10 +61,9 @@ export class CountryService {
   }
 
   getStudents(studentsURL): Observable<Student[]> {
-    return this.http.get<Student[]>(studentsURL).pipe(
-      tap(recieve => console.log(`recieve Student: ${JSON.stringify(recieve)}`)),
-      catchError(error => of([]))
-    );
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    // @ts-ignore
+    return this.http.get<any>(studentsURL, headers );
   }
 
   getAllStudentManage(studentsURL): void {

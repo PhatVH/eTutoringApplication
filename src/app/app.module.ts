@@ -15,7 +15,6 @@ import {TutorService} from './service/tutor.service';
 import { AllocateRemoveComponent } from './components/allocate-remove/allocate-remove.component';
 import { EventComponent } from './components/event/event.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ManageSectionComponent } from './components/manage-section/manage-section.component';
 import { ReportComponent } from './components/report/report.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
@@ -45,8 +44,6 @@ import { DashboardStudentComponent } from './components/dashboard-student/dashbo
 import { MessageComponent } from './components/message/message.component';
 import { AfterpostComponent } from './components/message/afterpost/afterpost.component';
 import { MeetingComponent } from './components/message/meeting/meeting.component';
-import { VirtualmeetingComponent } from './components/message/meeting/virtualmeeting/virtualmeeting.component';
-import { RealmeetingnoteComponent } from './components/message/meeting/realmeetingnote/realmeetingnote.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +55,6 @@ import { RealmeetingnoteComponent } from './components/message/meeting/realmeeti
     AllocateRemoveComponent,
     EventComponent,
     AboutUsComponent,
-    ManageSectionComponent,
     ReportComponent,
     ContactComponent,
     OurServicesComponent,
@@ -81,9 +77,7 @@ import { RealmeetingnoteComponent } from './components/message/meeting/realmeeti
     DashboardStudentComponent,
     MessageComponent,
     AfterpostComponent,
-    MeetingComponent,
-    VirtualmeetingComponent,
-    RealmeetingnoteComponent
+    MeetingComponent
   ],
   imports: [
     CommonModule,

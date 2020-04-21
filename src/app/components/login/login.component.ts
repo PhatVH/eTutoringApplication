@@ -23,31 +23,23 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
   }
-  getAllTutor(): void {
-    this.tutorService.getTutors().subscribe(
-    );
-  }
 
   onSubmitForm(user: string, pass: string) {
-    console.log(`user infor`)
-    console.log(user)
-    console.log(pass)
     // tslint:disable-next-line:triple-equals
     if (user == '' || pass == '') {
       this.result = 'result';
       return;
     }
     this.result = null;
-    this.classService.getLogin(user, pass).subscribe(
+    this.classService.login(user, pass).subscribe(
       (userRecieve) => {
-        console.log(`userRecieve`)
-        console.log(userRecieve)
         // tslint:disable-next-line:triple-equals
-        if (userRecieve[0] == null) {
+        if (userRecieve == null) {
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
         } else {
           this.user = userRecieve;
+          console.log(this.user)
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
           this.router.navigate(['/home']);
         }
@@ -63,7 +55,7 @@ export class LoginComponent implements OnInit {
   getUser(): User {
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (user) {
-      this.user = user[0];
+      this.user = user;
       return this.user;
     }
     return this.user;

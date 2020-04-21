@@ -1,10 +1,13 @@
+import {HttpHeaders} from '@angular/common/http';
+
 export class Constant {
-  public static studentsURL = 'http://localhost:3000/students';
+  public static headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+  public static studentsURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllStudents';
   public static loginURL = 'https://agile-reaches-44577.herokuapp.com/api/login';
-  public static tutorsURL = ' http://localhost:3000/tutors';
+  public static tutorsURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllTutor';
   public static scheduleURL = 'http://localhost:3000/schedule';
   public static chatURL = 'http://localhost:3000/chat';
-  static studentWithoutTutorURL = 'http://localhost:3000/studentsWithoutTutor';
-  static studentWithNoInteractionURL = 'http://localhost:3000/studentsWithNoInteraction';
-  static deleteMeetingURL = 'http://localhost:3000/studentsWithNoInteraction';
+  static studentWithoutTutorURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithoutTutor';
+  static studentWithNoInteractionURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
+  static deleteMeetingURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
 }

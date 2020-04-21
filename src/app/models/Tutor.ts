@@ -1,8 +1,8 @@
 export class Tutor {
   id: string;
-  name: string;
-  email: string;
-  pass: string;
+  tutor_name: any;
+  tutor_email: any;
+  tutor_phone: any;
   selected: boolean;
   country: string;
   countryFlag: string;

@@ -13,6 +13,8 @@ export class HomepageComponent implements OnInit {
   }
   user: User = this.loginComponent.getUser();
   ngOnInit(): void {
+    console.log(`home`)
+    console.log(this.user)
   }
 
 }
