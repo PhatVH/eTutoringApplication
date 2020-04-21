@@ -7,6 +7,8 @@ import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {Router} from '@angular/router';
 import {ChatComponent} from '../chat/chat.component';
 import {DecimalPipe} from '@angular/common';
+import {StudentService} from '../../service/student.service';
+import {TutorService} from '../../service/tutor.service';
 
 @Component({
   selector: 'app-report',
@@ -46,19 +48,25 @@ export class ReportComponent implements OnInit {
   public doughnutChartLabels = ['Students with no interaction for 7 days', 'Students without a personal tutor', 'Students with interaction'];
   public doughnutChartData = [120, 150, 180];
   public doughnutChartType = 'doughnut';
+  totalStudent;
+  totalTutor;
   // line chart
   public lineChartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   public lineChartData = [120, 150, 140, 90, 70, 143, 80];
   public lineChartType = 'line';
 
   constructor(public service: CountryService,
-              private router: Router) {
+              private router: Router,
+              private studentService: StudentService,
+              private tutorService: TutorService) {
     this.students$ = service.students$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
     this.studentWithoutTutor();
+    this.getTotalStudent();
+    this.getTotalTutor();
   }
 
   studentWithoutTutor() {
@@ -66,6 +74,17 @@ export class ReportComponent implements OnInit {
   }
   studentWithNoInteract() {
     this.service.getAllStudentWithNoInteract(Constant.studentWithNoInteractionURL);
+  }
+  getTotalStudent() {
+    this.studentService.getStudents(Constant.studentsURL).subscribe(result => {
+      this.totalStudent = result.length;
+    });
+  }
+
+  getTotalTutor() {
+    this.tutorService.getTutors().subscribe(result => {
+      this.totalTutor = result.length;
+    });
   }
   onSort({column, direction}: SortEvent) {
     // resetting other headers

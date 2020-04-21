@@ -131,6 +131,15 @@
         />
       </td>
       <td>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="event.host"
+          (keyup)="refresh.next()"
+        />
+      </td>
+
+      <td>
         <input *ngIf="user.type == 'tutor'"
                type="text"
                class="form-control"
