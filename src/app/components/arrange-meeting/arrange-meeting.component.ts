@@ -142,6 +142,7 @@ export class ArrangeMeetingComponent implements OnInit {
       ...this.events,
       {
         title: 'New event',
+        host: this.user.name,
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
         invite: this.invite,
