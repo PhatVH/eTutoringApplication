@@ -5,6 +5,8 @@ import {LoginComponent} from '../../login/login.component';
 import {Student} from '../../../models/Student';
 import {TutorService} from '../../../service/tutor.service';
 import {Tutor} from '../../../models/Tutor';
+import {HttpParams} from '@angular/common/http';
+import {Constant} from '../../../models/Constant';
 
 @Component({
   selector: 'app-chat-student',
@@ -22,6 +24,7 @@ export class ChatStudentComponent implements OnInit {
   user;
   tutor: Tutor;
   sessionStudent: Student = JSON.parse(sessionStorage.getItem('studentSession'));
+  haveTutor: any;
 
   ngOnInit(): void {
     console.log(this.sessionStudent);
@@ -36,7 +39,13 @@ export class ChatStudentComponent implements OnInit {
     }
   }
   getTutorOfStudent(studentID) {
-    this.tutorService.getTutorOfStudent(studentID).subscribe(result => this.tutor = result);
+    this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
+      if (result === null) {
+        this.haveTutor = null;
+      }
+      this.haveTutor = 'value'
+      this.tutor = result;
+    });
   }
   getChat(userName): void {
     this.chatService.getChatStudent(userName).subscribe(result => {

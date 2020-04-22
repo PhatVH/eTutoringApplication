@@ -198,9 +198,11 @@ export class ArrangeMeetingComponent implements OnInit {
 
   clickStudent(eachStudent) {
     console.log(`click student`);
+    console.log(this.events.length)
     this.closeDiv = null;
     this.eachStudent = eachStudent;
-    this.invite = eachStudent.name;
+    const indexEvent = this.events.length - 1
+    this.events[indexEvent].invite = eachStudent.name;
     console.log(this.events);
   }
 

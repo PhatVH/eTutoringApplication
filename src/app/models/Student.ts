@@ -4,6 +4,7 @@ export class Student {
   tutor_ID: any;
   name: string;
   email: string;
+  tutor_name: string;
   phone: string;
   tutor: string;
   selected: boolean;

@@ -18,6 +18,7 @@ export class ChatTutorComponent implements OnInit {
   students: Student[] = [];
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
+  haveStudent: any;
   constructor(private chatService: ChatService, private router: Router,
               private loginComponent: LoginComponent,
               private studentService: StudentService) {
@@ -40,6 +41,10 @@ export class ChatTutorComponent implements OnInit {
 
   getStudentOfTutor(tutorID) {
     this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
+      if (result === []) {
+      this.haveStudent = null;
+      }
+      this.haveStudent = 'value';
       this.studentClick = result[0]
       this.students = result;
     });

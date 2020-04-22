@@ -76,7 +76,7 @@ export class AllocateComponent implements OnInit {
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
     // tslint:disable-next-line:triple-equals
-    console.log(index)
+    console.log(index);
     if (index === -1) {
       student.selected = !student.selected;
       this.selectStudent.push(student);
@@ -112,10 +112,12 @@ export class AllocateComponent implements OnInit {
     this.openDivTutor = 'value';
   }
 
-  postAllocate() {
+  postAllocateBtn() {
     const tutorID = this.selectTutor[0].id;
     const arrStudentID = [];
-    this.selectStudent.forEach(student => arrStudentID.push(student.id))
-    this.studentService.setTutorToStudent(tutorID, arrStudentID).subscribe(result => console.log(result));
+    this.selectStudent.forEach(student => arrStudentID.push(student.id));
+    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => console.log(result));
+    this.openDivTutor = null;
+    this.openDivStudent = null;
   }
 }

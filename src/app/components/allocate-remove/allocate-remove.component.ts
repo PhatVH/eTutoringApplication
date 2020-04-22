@@ -77,7 +77,7 @@ export class AllocateRemoveComponent implements OnInit {
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
     // tslint:disable-next-line:triple-equals
-    console.log(index)
+    console.log(index);
     if (index === -1) {
       student.selected = !student.selected;
       this.selectStudent.push(student);
@@ -111,7 +111,19 @@ export class AllocateRemoveComponent implements OnInit {
     this.getListStudentOfTutor(this.selectTutor[0].id);
   }
 
-  getListStudentOfTutor(tutor): void {
-    this.studentService.getListStudentOfTutor(tutor).subscribe(result => console.log(result));
+  getListStudentOfTutor(tutorID): void {
+    this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
+      console.log(`getListStudentOfTutor`)
+      console.log(result);
+       });
+  }
+
+  postReallocateBtn() {
+    const tutorID = this.selectTutor[0].id;
+    const arrStudentID = [];
+    this.selectStudent.forEach(student => arrStudentID.push(student.id))
+    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.reallocateTutorToStudentUrl).subscribe(result => console.log(result));
+    this.openDivTutor = null;
+    this.openDivStudent = null;
   }
 }

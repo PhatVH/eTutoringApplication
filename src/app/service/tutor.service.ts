@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Tutor} from '../models/Tutor';
 import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
 import {Constant} from '../models/Constant';
-import {Student} from '../models/Student';
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 @Injectable({
   providedIn: 'root'
@@ -14,9 +12,10 @@ export class TutorService {
     // @ts-ignore
     return this.http.get<any>(Constant.tutorsURL, Constant.headers );
   }
-  getTutorOfStudent(studentID): Observable<Tutor> {
+  getTutorByStudentId(studentID): Observable<Tutor> {
+    const params = new HttpParams().set('student_id', studentID);
     // @ts-ignore
-    return this.http.get<any>(`${Constant.tutorsURL}?studentID=${studentID}`, Constant.headers );
+    return this.http.get<any>(Constant.getTutorByStudentIdUrl, params, Constant.headers );
 
   }
 
