@@ -12,10 +12,10 @@ export class TutorService {
     // @ts-ignore
     return this.http.get<any>(Constant.tutorsURL, Constant.headers );
   }
-  getTutorByStudentId(studentID): Observable<Tutor> {
-    const params = new HttpParams().set('student_id', studentID);
+  getTutorByStudentId(studentID): Observable<Tutor[]> {
+    const url = `${Constant.getTutorByStudentIdUrl}?student_id=${studentID}`
     // @ts-ignore
-    return this.http.get<any>(Constant.getTutorByStudentIdUrl, params, Constant.headers );
+    return this.http.get<Tutor[]>(url, Constant.headers );
 
   }
 

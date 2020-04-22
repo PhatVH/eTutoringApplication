@@ -5,9 +5,6 @@ import {LoginComponent} from '../../login/login.component';
 import {Student} from '../../../models/Student';
 import {TutorService} from '../../../service/tutor.service';
 import {Tutor} from '../../../models/Tutor';
-import {HttpParams} from '@angular/common/http';
-import {Constant} from '../../../models/Constant';
-
 @Component({
   selector: 'app-chat-student',
   templateUrl: './chat-student.component.html',
@@ -30,28 +27,21 @@ export class ChatStudentComponent implements OnInit {
     console.log(this.sessionStudent);
     if (this.loginComponent.user.type === 'student') {
       this.user = this.loginComponent.getUser();
-      this.getChat(this.loginComponent.user.name);
       this.getTutorOfStudent(this.loginComponent.user.id);
     } else {
       this.user = this.sessionStudent;
-      this.getChat(this.sessionStudent.name);
       this.getTutorOfStudent(this.sessionStudent.id);
     }
   }
   getTutorOfStudent(studentID) {
     this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
-      if (result === null) {
+      if (result === []) {
         this.haveTutor = null;
       }
       this.haveTutor = 'value'
-      this.tutor = result;
+      this.tutor = result[0];
     });
   }
-  getChat(userName): void {
-    this.chatService.getChatStudent(userName).subscribe(result => {
-      this.content = result[0].content;
-      console.log(result[0].content);
-    });
-  }
+
 
 }

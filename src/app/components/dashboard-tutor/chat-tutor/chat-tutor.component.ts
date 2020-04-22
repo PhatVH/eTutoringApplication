@@ -14,7 +14,6 @@ import {Student} from '../../../models/Student';
 export class ChatTutorComponent implements OnInit {
   content;
   user;
-  studentIndex0: Student;
   students: Student[] = [];
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
@@ -28,7 +27,6 @@ export class ChatTutorComponent implements OnInit {
     console.log(this.sessionTutor);
     if (this.loginComponent.user.type === 'tutor') {
       this.user = this.loginComponent.getUser();
-      /*this.getChat(this.loginComponent.user.name);*/
       this.getStudentOfTutor(this.loginComponent.user.id);
     } else {
       console.log(`haha`);
@@ -49,14 +47,6 @@ export class ChatTutorComponent implements OnInit {
       this.students = result;
     });
   }
-
-  getChat(userName): void {
-    this.chatService.getChatStudent(userName).subscribe(result => {
-      this.content = result[0].content;
-      console.log(result[0].content);
-    });
-  }
-
   studentClicked(eachStudent: Student) {
     this.studentClick = eachStudent;
   }

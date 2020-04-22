@@ -88,7 +88,7 @@ export class ArrangeMeetingComponent implements OnInit {
 
   events: CalendarEvent[];
 
-  activeDayIsOpen = true;
+  activeDayIsOpen = false;
 
   constructor(private modal: NgbModal,
               private studentService: StudentService,
@@ -211,9 +211,9 @@ export class ArrangeMeetingComponent implements OnInit {
           obj.actions = this.actions;
           obj.start = new Date(obj.start);
           obj.end = new Date(obj.end);
-      });
-  }
+        });
+      }
 
-);
-}
+    );
+  }
 }
