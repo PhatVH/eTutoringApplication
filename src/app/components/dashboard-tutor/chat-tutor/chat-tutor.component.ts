@@ -9,8 +9,7 @@ import {Student} from '../../../models/Student';
 @Component({
   selector: 'app-chat-tutor',
   templateUrl: './chat-tutor.component.html',
-  styleUrls: ['./chat-tutor.component.css'],
-  providers: [LoginComponent, StudentService]
+  styleUrls: ['./chat-tutor.component.css']
 })
 export class ChatTutorComponent implements OnInit {
   content;
