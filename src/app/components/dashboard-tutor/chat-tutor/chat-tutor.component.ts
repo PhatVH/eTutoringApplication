@@ -14,9 +14,9 @@ import {Student} from '../../../models/Student';
 export class ChatTutorComponent implements OnInit {
   content;
   user;
+  studentIndex0: Student;
   students: Student[] = [];
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
-  studentClickOpenDiv: any = null;
   studentClick: Student;
   constructor(private chatService: ChatService, private router: Router,
               private loginComponent: LoginComponent,
@@ -40,11 +40,9 @@ export class ChatTutorComponent implements OnInit {
 
   getStudentOfTutor(tutorID) {
     this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
+      this.studentClick = result[0]
       this.students = result;
-      console.log(`this.students`);
-      console.log(this.students);
     });
-    console.log(this.students);
   }
 
   getChat(userName): void {
@@ -55,7 +53,6 @@ export class ChatTutorComponent implements OnInit {
   }
 
   studentClicked(eachStudent: Student) {
-    this.studentClickOpenDiv = 'value';
     this.studentClick = eachStudent;
   }
 }

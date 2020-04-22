@@ -39,11 +39,11 @@
     </div>
   </div>
 
-  <div class="content" *ngIf="studentClickOpenDiv==null">
+<!--  <div class="content" *ngIf="studentClickOpenDiv==null">
     <div class="contact-profile">
       <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" alt="" />
-      <!--<p>{{students[0].name}}</p>-->
-      <p>students[0].name</p>
+    &lt;!&ndash;  <p>{{students[0].name}}</p>&ndash;&gt;
+      <p>{{studentIndex0.name}}</p>
     </div>
     <div class="messages">
       <ul>
@@ -65,17 +65,18 @@
         <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       </div>
     </div>
-  </div>
-  <div class="content" *ngIf="studentClickOpenDiv">
+  </div>-->
+  <div class="content">
     <div class="contact-profile">
       <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" alt="" />
-      <!--<p>{{studentClick.name}}</p>-->
-      <p>Stdclick.name</p>
+      <p>{{studentClick.name}}</p>
+     <!-- <p>Stdclick.name</p>-->
     </div>
     <div class="messages">
       <ul>
         <li class="sent">
           <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+          <p>{{studentClick.email}}</p>
           <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
         </li>
         <li class="replies">

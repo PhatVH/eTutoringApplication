@@ -1,9 +1,9 @@
 export class Student {
   id: string;
-  name: any;
-  email: any;
-  phone: any;
-  tutor: any;
+  name: string;
+  email: string;
+  phone: string;
+  tutor: string;
   selected: boolean;
   country: string;
   countryFlag: string;
