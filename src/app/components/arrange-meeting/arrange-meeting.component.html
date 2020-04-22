@@ -148,12 +148,6 @@
                  [(ngModel)]="event.invite"
                  #searchStudent (keyup)="searchStudentSchedule(searchStudent.value)"
           />
-          <input *ngIf="user.type == 'staff'"
-                 type="text"
-                 class="form-control"
-                 [(ngModel)]="event.invite"
-                 #searchTutor (keyup)="searchTutorSchedule(searchTutor.value)"
-          />
           <input *ngIf="user.type == 'student'"
                  type="text"
                  class="form-control"

@@ -26,8 +26,9 @@ export class StudentService {
   }
 
   getListStudentOfTutor(tutorID): Observable<Student[]> {
-    console.log(`${Constant.studentsURL}?tutor_ID=${tutorID}`);
-    return this.http.get<Student[]>(`${Constant.studentsURL}?tutor_ID=${tutorID}`);
+    const url = `${Constant.getStudentsByTutorIdUrl}?tutor_ID=${tutorID}`
+    // @ts-ignore
+    return this.http.get<Student[]>(url, Constant.headers );
   }
 
   constructor(private http: HttpClient) {

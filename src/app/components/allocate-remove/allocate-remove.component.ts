@@ -56,7 +56,7 @@ export class AllocateRemoveComponent implements OnInit {
   searchStudentAllocate(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
     // tslint:disable-next-line:max-line-length
-    this.studentService.searchStudent(searchStudent, `${Constant.studentsURL}?tutor_ID=${this.selectTutor[0].id}`).subscribe(result => {
+    this.studentService.searchStudent(searchStudent, `${Constant.getStudentsByTutorIdUrl}?tutor_ID=${this.selectTutor[0].id}`).subscribe(result => {
       this.newStudents = this.checkSelected(result, this.selectStudent);
     });
   }
@@ -113,7 +113,6 @@ export class AllocateRemoveComponent implements OnInit {
 
   getListStudentOfTutor(tutorID): void {
     this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
-      console.log(`getListStudentOfTutor`)
       console.log(result);
        });
   }

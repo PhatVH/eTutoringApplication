@@ -13,4 +13,5 @@ export class Constant {
   static studentWithNoInteractionURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
   static deleteMeetingURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
   static getTutorByStudentIdUrl = 'https://agile-reaches-44577.herokuapp.com/api/getTutorByStudentId';
+  static getStudentsByTutorIdUrl = 'https://agile-reaches-44577.herokuapp.com/api/getStudentsByTutorId';
 }

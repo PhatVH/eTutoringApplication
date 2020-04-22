@@ -32,12 +32,6 @@ import {Tutor} from '../../models/Tutor';
 import {TutorService} from '../../service/tutor.service';
 import {Constant} from '../../models/Constant';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-  }
-};
-
 @Component({
   selector: 'app-arrange-meeting',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,7 +41,6 @@ const colors: any = {
 })
 export class ArrangeMeetingComponent implements OnInit {
   students$: Observable<Student[]>;
-  tutors$: Observable<Tutor[]>;
   closeDiv;
   private eachStudent: Student;
   invite: string;
@@ -177,22 +170,11 @@ export class ArrangeMeetingComponent implements OnInit {
     this.closeDiv = 'value';
   }
 
-  searchTutorSchedule(searchTutor: string) {
-    this.searchTutor.next(searchTutor);
-    this.closeDiv = 'value';
-  }
-
   ngOnInit(): void {
     this.students$ = this.searchStudent.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent, Constant.studentsURL))
-    );
-
-    this.tutors$ = this.searchTutor.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((searchTutor: string) => this.tutorServide.searchTutor(searchTutor))
     );
   }
 
