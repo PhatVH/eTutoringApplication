@@ -113,6 +113,9 @@ export class AllocateComponent implements OnInit {
   }
 
   postAllocate() {
-
+    const tutorID = this.selectTutor[0].id;
+    const arrStudentID = [];
+    this.selectStudent.forEach(student => arrStudentID.push(student.id))
+    this.studentService.setTutorToStudent(tutorID, arrStudentID).subscribe(result => console.log(result));
   }
 }

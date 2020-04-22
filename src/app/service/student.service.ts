@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {catchError, tap, map} from 'rxjs/operators';
 import {Student} from '../models/Student';
 import {Tutor} from '../models/Tutor';
@@ -23,11 +23,19 @@ export class StudentService {
     return this.http.get<any>(`${url}&name_like=${typeString}`, Constant.headers);
   }
 
-  getListStudentOfTutor(tutor): Observable<Student[]> {
-    const url = `${Constant.studentsURL}?tutor=${tutor}`;
+  getListStudentOfTutor(tutorID): Observable<Student[]> {
+    const url = `${Constant.studentsURL}?tutor_ID=${tutorID}`;
     // @ts-ignore
     return this.http.get<any>(url, Constant.headers);
   }
 
   constructor(private http: HttpClient) { }
+  setTutorToStudent(tutorID, arrStudentID) {
+    const params = new HttpParams().set('tutor_id', tutorID).append('student_id[]', arrStudentID);
+    // @ts-ignore
+    console.log(`parram`)
+    console.log(params)
+    // @ts-ignore
+    return this.http.post<any>(Constant.setTutorToStudent, params, Constant.headers );
+  }
 }
