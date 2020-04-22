@@ -1,10 +1,10 @@
 export class Student {
   id: string;
-  student_name: string;
-  student_email: string;
-  student_phone: string;
+  name: any;
+  email: any;
+  phone: any;
+  tutor: any;
   selected: boolean;
   country: string;
   countryFlag: string;
-  tutor: string;
 }

@@ -14,18 +14,18 @@
     </ul>
 
     <div *ngIf="message">
-      <app-chat-student></app-chat-student>
+      <app-chat-tutor></app-chat-tutor>
     </div>
 
     <!--Document-->
     <div *ngIf="document" class="m-5">
-      <app-document-student></app-document-student>
+      <app-document-tutor></app-document-tutor>
     </div>
 
     <!--Meeting-->
 
     <div class="filter m-5 d-flex flex-column" *ngIf="meeting">
-      <app-meeting-student></app-meeting-student>
+      <app-meeting-tutor></app-meeting-tutor>
     </div>
 
     <!--storage-->

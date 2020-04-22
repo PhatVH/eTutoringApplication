@@ -9,7 +9,6 @@ import {AboutUsComponent} from './components/about-us/about-us.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {ReportComponent} from './components/report/report.component';
 import {AuthGaurdService} from './service/auth-gaurd.service';
-import {ChatComponent} from './components/chat/chat.component';
 import {ArrangeMeetingComponent} from './components/arrange-meeting/arrange-meeting.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { BlogComponent } from './components/blog/blog.component';
@@ -17,10 +16,12 @@ import {ManageStudentComponent} from './components/manage-student/manage-student
 import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.component';
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 import {AllocateComponent} from './components/allocate/allocate.component';
+import {DashboardTutorComponent} from './components/dashboard-tutor/dashboard-tutor.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'dashboardStudent', component: DashboardStudentComponent},
+  {path: 'dashboardTutor', component: DashboardTutorComponent},
   {path: 'login', component: LoginComponent},
   {path: 'allocate', component: AllocateComponent},
   {path: 'Reallocate', component: AllocateRemoveComponent},
@@ -29,15 +30,11 @@ const routes: Routes = [
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'report', component: ReportComponent},
-  {path: 'chat', component: ChatComponent},
   {path: 'schedule', component: ArrangeMeetingComponent},
   {path: 'blog', component: BlogComponent, canActivate: [AuthGaurdService]},
   {path: 'home', component: HomepageComponent},
   {path: 'manageStudent', component: ManageStudentComponent},
   {path: 'manageTutor', component: ManageTutorComponent}
-
-
-
 ];
 
 @NgModule({

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class=''>
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+  <link rel='stylesheet prefetch'
+        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+</head>
+
+<body>
+<div id="frame">
+  <div id="sidepanel">
+    <div id="profile">
+      <div class="wrap">
+        <img id="profile-img" src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" class="online" alt="" />
+        <p>{{user.name}}</p>
+      </div>
+    </div>
+    <div id="search">
+      <label><i class="fa fa-search" aria-hidden="true"></i></label>
+      <input type="text" placeholder="Search contacts..." />
+    </div>
+    <div id="contacts">
+      <ul *ngFor="let eachStudent of students">
+        <li class="contact">
+          <div class="wrap" (click)="studentClicked(eachStudent)">
+            <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" alt="" />
+            <p class="name">{{eachStudent.name}}</p>
+            <p class="preview">{{eachStudent.email}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="bottom-bar">
+      <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add
+           contact</span></button>
+      <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="studentClickOpenDiv==null">
+    <div class="contact-profile">
+      <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" alt="" />
+      <!--<p>{{students[0].name}}</p>-->
+      <p>students[0].name</p>
+    </div>
+    <div class="messages">
+      <ul>
+        <li class="sent">
+          <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+          <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+        </li>
+        <li class="replies">
+          <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+          <p>When you're backed against the wall, break the god damn thing down.</p>
+        </li>
+
+      </ul>
+    </div>
+    <div class="message-input">
+      <div class="wrap">
+        <input type="text" placeholder="Write your message..." />
+        <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+        <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="content" *ngIf="studentClickOpenDiv">
+    <div class="contact-profile">
+      <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=1618390" alt="" />
+      <!--<p>{{studentClick.name}}</p>-->
+      <p>Stdclick.name</p>
+    </div>
+    <div class="messages">
+      <ul>
+        <li class="sent">
+          <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+          <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+        </li>
+        <li class="replies">
+          <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+          <p>When you're backed against the wall, break the god damn thing down.</p>
+        </li>
+
+      </ul>
+    </div>
+    <div class="message-input">
+      <div class="wrap">
+        <input type="text" placeholder="Write your message..." />
+        <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+        <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

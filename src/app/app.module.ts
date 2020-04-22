@@ -21,14 +21,12 @@ import { OurServicesComponent } from './components/our-services/our-services.com
 import {ChartsModule} from 'ng2-charts';
 import {CountdownModule} from 'ng2-date-countdown';
 import {AuthGaurdService} from './service/auth-gaurd.service';
-import { ChatComponent } from './components/chat/chat.component';
 import { ArrangeMeetingComponent } from './components/arrange-meeting/arrange-meeting.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FlatpickrModule} from 'angularx-flatpickr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ListStudentComponent } from './components/list-student/list-student.component';
 import { ListBlogComponent } from './components/list-blog/list-blog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -41,9 +39,13 @@ import { ManageTutorComponent } from './components/manage-tutor/manage-tutor.com
 import { SortableDirective } from './sortable.directive';
 import {CommonModule} from '@angular/common';
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
-import { MessageComponent } from './components/message/message.component';
-import { AfterpostComponent } from './components/message/afterpost/afterpost.component';
-import { MeetingComponent } from './components/message/meeting/meeting.component';
+import { DashboardTutorComponent } from './components/dashboard-tutor/dashboard-tutor.component';
+import { ChatTutorComponent } from './components/dashboard-tutor/chat-tutor/chat-tutor.component';
+import { MeetingTutorComponent } from './components/dashboard-tutor/meeting-tutor/meeting-tutor.component';
+import { DocumentTutorComponent } from './components/dashboard-tutor/document-tutor/document-tutor.component';
+import { DocumentStudentComponent } from './components/dashboard-student/document-student/document-student.component';
+import { MeetingStudentComponent } from './components/dashboard-student/meeting-student/meeting-student.component';
+import { ChatStudentComponent } from './components/dashboard-student/chat-student/chat-student.component';
 
 @NgModule({
   declarations: [
@@ -58,15 +60,11 @@ import { MeetingComponent } from './components/message/meeting/meeting.component
     ReportComponent,
     ContactComponent,
     OurServicesComponent,
-    ListStudentComponent,
     ListBlogComponent,
     HeaderComponent,
     FooterComponent,
     ClockComponent,
     OurServicesComponent,
-    ListStudentComponent,
-    ListBlogComponent,
-    ChatComponent,
     ArrangeMeetingComponent,
     CarouselComponent,
     HomepageComponent,
@@ -75,9 +73,13 @@ import { MeetingComponent } from './components/message/meeting/meeting.component
     ManageTutorComponent,
     SortableDirective,
     DashboardStudentComponent,
-    MessageComponent,
-    AfterpostComponent,
-    MeetingComponent
+    DashboardTutorComponent,
+    ChatTutorComponent,
+    MeetingTutorComponent,
+    DocumentTutorComponent,
+    DocumentStudentComponent,
+    MeetingStudentComponent,
+    ChatStudentComponent
   ],
   imports: [
     CommonModule,

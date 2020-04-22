@@ -210,13 +210,13 @@
                 <tbody>
                 <tr *ngFor="let student of students$ | async" (click)="onDashboadStudent(student)">
                   <td><ngb-highlight [result]="student.id" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td><ngb-highlight [result]="student.student_name" [term]="service.searchTerm"></ngb-highlight></td>
+                  <td><ngb-highlight [result]="student.name" [term]="service.searchTerm"></ngb-highlight></td>
                   <td>
                     <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + student.countryFlag" class="mr-2" style="width: 20px">
                     <ngb-highlight [result]="student.country" [term]="service.searchTerm"></ngb-highlight>
                   </td>
-                  <td><ngb-highlight [result]="student.student_email" [term]="service.searchTerm"></ngb-highlight></td>
-                  <td><ngb-highlight [result]="student.student_phone" [term]="service.searchTerm"></ngb-highlight></td>
+                  <td><ngb-highlight [result]="student.email" [term]="service.searchTerm"></ngb-highlight></td>
+                  <td><ngb-highlight [result]="student.phone" [term]="service.searchTerm"></ngb-highlight></td>
                 </tr>
                 </tbody>
               </table>

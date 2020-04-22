@@ -1,9 +1,7 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {CountryService} from '../../service/country.service';
 import {DecimalPipe} from '@angular/common';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Student} from '../../models/Student';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {ManageTutorService} from '../../service/manage-tutor.service';
 import {Tutor} from '../../models/Tutor';
@@ -39,9 +37,9 @@ export class ManageTutorComponent implements OnInit {
     this.service.sortDirection = direction;
   }
 
-  onDashboadStudent(student) {
-    console.log(`click dashboard student`);
-
-    this.router.navigate(['/dashboard']);
+  onDashboadTutor(tutor) {
+    sessionStorage.removeItem('tutorSession')
+    sessionStorage.setItem('tutorSession', JSON.stringify(tutor));
+    this.router.navigate(['/dashboardTutor']);
   }
 }

@@ -26,15 +26,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let tutor of tutors$ | async" (click)="onDashboadStudent(tutor)">
+      <tr *ngFor="let tutor of tutors$ | async" (click)="onDashboadTutor(tutor)">
         <th scope="row">{{ tutor.id }}</th>
-        <td><ngb-highlight [result]="tutor.tutor_name" [term]="service.searchTerm"></ngb-highlight></td>
+        <td><ngb-highlight [result]="tutor.name" [term]="service.searchTerm"></ngb-highlight></td>
         <td>
           <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + tutor.countryFlag" class="mr-2" style="width: 20px">
           <ngb-highlight [result]="tutor.country" [term]="service.searchTerm"></ngb-highlight>
         </td>
-        <td><ngb-highlight [result]="tutor.tutor_email" [term]="service.searchTerm"></ngb-highlight></td>
-        <td><ngb-highlight [result]="tutor.tutor_phone" [term]="service.searchTerm"></ngb-highlight></td>
+        <td><ngb-highlight [result]="tutor.email" [term]="service.searchTerm"></ngb-highlight></td>
+        <td><ngb-highlight [result]="tutor.phone" [term]="service.searchTerm"></ngb-highlight></td>
       </tr>
       </tbody>
     </table>

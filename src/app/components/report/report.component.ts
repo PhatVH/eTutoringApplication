@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 import {Student} from '../../models/Student';
 import {SortableDirective, SortEvent} from '../../sortable.directive';
 import {Router} from '@angular/router';
-import {ChatComponent} from '../chat/chat.component';
 import {DecimalPipe} from '@angular/common';
 import {StudentService} from '../../service/student.service';
 import {TutorService} from '../../service/tutor.service';

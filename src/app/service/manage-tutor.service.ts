@@ -34,8 +34,8 @@ function sort(tutors: Tutor[], column: SortColumn, direction: string): Tutor[] {
 }
 
 function matches(tutor: Tutor, term: string, pipe: PipeTransform) {
-  return tutor.tutor_name.toLowerCase().includes(term.toLowerCase())
-    || tutor.tutor_email.toLowerCase().includes(term.toLowerCase())
+  return tutor.name.toLowerCase().includes(term.toLowerCase())
+    || tutor.email.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(tutor.id).includes(term);
 }
 

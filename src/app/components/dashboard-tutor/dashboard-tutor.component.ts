@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {DocumentStudentComponent} from './document-student/document-student.component';
+import {DocumentTutorComponent} from './document-tutor/document-tutor.component';
 
 @Component({
-  selector: 'app-dashboard-student',
-  templateUrl: './dashboard-student.component.html',
-  styleUrls: ['./dashboard-student.component.css'],
-  providers: [DocumentStudentComponent]
+  selector: 'app-dashboard-tutor',
+  templateUrl: './dashboard-tutor.component.html',
+  styleUrls: ['./dashboard-tutor.component.css'],
+  providers: [DocumentTutorComponent]
 })
-export class DashboardStudentComponent implements OnInit {
+export class DashboardTutorComponent implements OnInit {
   message: any = 'value';
   meeting: any;
   document: any;
   storage: any;
-  constructor(private documentStudent: DocumentStudentComponent ) { }
+  constructor(private documentTutor: DocumentTutorComponent ) { }
 
   ngOnInit(): void {
   }
@@ -35,8 +35,8 @@ export class DashboardStudentComponent implements OnInit {
     this.message = null;
     this.meeting = null;
     this.storage = null;
-    this.documentStudent.post = 'value';
-    this.documentStudent.afterPost = null;
+    this.documentTutor.post = 'value';
+    this.documentTutor.afterPost = null;
 
   }
   storageClick() {

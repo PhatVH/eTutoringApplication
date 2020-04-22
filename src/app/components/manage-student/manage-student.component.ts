@@ -5,21 +5,18 @@ import {DecimalPipe} from '@angular/common';
 import {Student} from '../../models/Student';
 import {CountryService} from '../../service/country.service';
 import {Router} from '@angular/router';
-import { ChatService } from 'src/app/service/chat.service';
-import { ChatComponent } from '../chat/chat.component';
 import {Constant} from '../../models/Constant';
 
 @Component({
   selector: 'app-manage-student',
   templateUrl: './manage-student.component.html',
   styleUrls: ['./manage-student.component.css'],
-  providers: [CountryService, DecimalPipe, ChatComponent]
+  providers: [CountryService, DecimalPipe]
 })
 export class ManageStudentComponent implements OnInit {
 
   constructor(public service: CountryService,
-              private router: Router,
-              private chatComponent: ChatComponent) {
+              private router: Router) {
     this.students$ = service.students$;
     this.total$ = service.total$;
   }
@@ -45,8 +42,8 @@ export class ManageStudentComponent implements OnInit {
 
   onDashboadStudent(student) {
     console.log(`click dashboard student`);
-    sessionStorage.removeItem('dashboard')
-    sessionStorage.setItem('dashboard', JSON.stringify(student));
+    sessionStorage.removeItem('studentSession')
+    sessionStorage.setItem('studentSession', JSON.stringify(student));
     console.log(student);
     this.router.navigate(['/dashboardStudent']);
   }

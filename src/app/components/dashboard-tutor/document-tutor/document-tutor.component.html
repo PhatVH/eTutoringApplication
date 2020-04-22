@@ -1,0 +1,18 @@
+<div>
+  <textarea class="w-100 mb-3" placeholder="Share something..." rows="10"></textarea>
+  <div class="row">
+    <form action="" method="post" enctype="multipart/form-data" class="col-9">
+      Add File
+      <input type="file" multiple name="fileToUpload" id="file">
+    </form>
+    <div class="float-right col-3 align">
+      <button id="Cancel" class="btn btn-danger w-50" (click)="cancelClick()">Cancel</button>
+      <button id="Post" class="btn btn-primary w-50" (click)="postClick()">Post</button>
+    </div>
+  </div>
+</div>
+
+<!--After Post-->
+<div *ngIf="afterPost" class="afterPost">
+  <p>Upload Success</p>
+</div>
