@@ -18,6 +18,8 @@ export class StudentService {
   searchStudent(typeString: string, url): Observable<Student[]> {
     if (!typeString.trim()) {
       return this.getStudents(url);
+      console.log(`this.getStudents(url)`);
+      console.log(this.getStudents(url));
     }
     // @ts-ignore
     return this.http.get<any>(`${url}&name_like=${typeString}`, Constant.headers);
@@ -31,8 +33,10 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
   setTutorToStudent(tutorID, arrStudentID) {
-    const params = new HttpParams().set('tutor_id', tutorID).append('student_id[]', arrStudentID);
-    // @ts-ignore
+    const params = new HttpParams().set('tutor_id', tutorID).append('student_id[]', arrStudentID[0])
+/*
+    arrStudentID.forEach(studentID => params.append('student_id[]', studentID))
+*/
     console.log(`parram`)
     console.log(params)
     // @ts-ignore
