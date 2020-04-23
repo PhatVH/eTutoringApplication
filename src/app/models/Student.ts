@@ -2,6 +2,7 @@ export class Student {
   id: string;
   // tslint:disable-next-line:variable-name
   tutor_ID: any;
+  user_ID: any;
   name: string;
   email: string;
   tutor_name: string;

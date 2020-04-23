@@ -20,7 +20,7 @@ export class Constant {
   static studentWithNoInteractionURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
 
   /* meeting-schedule*/
-  static getMeetingByHostURL = 'https://agile-reaches-44577.herokuapp.com/api/getMeetingByHost';
+  static getAllMeetingsByUserIdURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllMeetingsByUserId';
   static deleteMeetingURL = 'https://agile-reaches-44577.herokuapp.com/api/deleteMeeting';
   static createMeetingUrl = 'https://agile-reaches-44577.herokuapp.com/api/createMeeting';
 

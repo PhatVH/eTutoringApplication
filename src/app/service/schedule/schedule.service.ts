@@ -9,23 +9,11 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 export class ScheduleService {
   constructor(private http: HttpClient) { }
   getScheduleEvent(userID): Observable<any> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    const params = new HttpParams().set('user_id', userID);
-    console.log(`params`);
-    console.log(params);
-    // @ts-ignore
-    return this.http.get<any>(Constant.getMeetingByHostURL, headers, params);
+    return this.http.get<any>(`${Constant.getAllMeetingsByUserIdURL}?user_id=${userID}`);
   }
 
-/*  getScheduleEvent(): Observable<CalendarEvent[]> {
-    return this.http.get<CalendarEvent[]>(Constant.scheduleURL).pipe(
-      tap(recieve => console.log(`recieve CalendarEvent: ${JSON.stringify(recieve)}`)),
-      catchError(error => of([]))
-    );
-  }*/
-
   deleteMeeting(eventID): Observable<any> {
-    const params = new HttpParams().set('event_id', eventID);
+    const params = new HttpParams().set('id', eventID);
     // @ts-ignore
     return this.http.post<any>(Constant.deleteMeetingURL, params, Constant.headers);
   }

@@ -133,7 +133,7 @@ export class ArrangeMeetingComponent implements OnInit {
   }
 
   addEvent(type): void {
-    console.log(`add new`)
+    console.log(`add new`);
     if (type === 'student') {
       this.invite = this.user.tutor_name;
       console.log(this.user.tutor_name);
@@ -183,12 +183,13 @@ export class ArrangeMeetingComponent implements OnInit {
     this.eachStudent = eachStudent;
     const indexEvent = this.events.length - 1;
     this.events[indexEvent].invite = eachStudent.name;
-    this.studentInvitedID = eachStudent.id;
   }
 
   getAllSchedule(): void {
     this.scheduleService.getScheduleEvent(this.user.user_ID).subscribe(
       scheduleRecieve => {
+        console.log(`scheduleRecieve`);
+        console.log(scheduleRecieve);
         this.events = scheduleRecieve;
         this.events.forEach(obj => {
           obj.actions = this.actions;
@@ -201,7 +202,7 @@ export class ArrangeMeetingComponent implements OnInit {
 
   deleteEventBtn(eventDelete: CalendarEvent) {
     console.log(`eventDelete`);
-    console.log(eventDelete);
+    console.log(eventDelete.id);
     this.events = this.events.filter((event) => event !== eventDelete);
     this.scheduleService.deleteMeeting(eventDelete.id).subscribe(result => alert(result.message));
   }
@@ -213,28 +214,16 @@ export class ArrangeMeetingComponent implements OnInit {
     } else {
       this.divAlert = null;
       if (this.user.type === 'student') {
-        this.scheduleService.createMeeting(this.user.user_ID, this.user.tutor_ID, event.start, event.end, event.title).subscribe(
+        // tslint:disable-next-line:max-line-length
+        this.scheduleService.createMeeting(this.user.user_ID, this.user.tutor_ID, JSON.stringify(event.start), JSON.stringify(event.end), event.title).subscribe(
           result => alert(result.message)
         );
       } else {
-        this.scheduleService.createMeeting(this.user.user_ID, this.studentInvitedID, event.start, event.end, event.title).subscribe(
+        // tslint:disable-next-line:max-line-length
+        this.scheduleService.createMeeting(this.user.user_ID, this.eachStudent.user_ID, JSON.stringify(event.start), JSON.stringify(event.end), event.title).subscribe(
           result => alert(result.message)
         );
       }
     }
   }
-/*
-  getAllSchedule(): void {
-    this.scheduleService.getScheduleEvent().subscribe(
-      scheduleRecieve => {
-        this.events = scheduleRecieve;
-        this.events.forEach(obj => {
-          obj.actions = this.actions;
-          obj.start = new Date(obj.start);
-          obj.end = new Date(obj.end);
-        });
-      }
-
-    );
-  }*/
 }
