@@ -74,8 +74,10 @@ export class CountryService {
   getAllStudentWithoutTutor(studentsURL): void {
     this.getAllStudents(studentsURL);
   }
-
   getAllStudentWithNoInteract(studentsURL: string) {
+    this.getAllStudents(studentsURL);
+  }
+  getAllStudentsOfTutor(studentsURL): void {
     this.getAllStudents(studentsURL);
   }
 

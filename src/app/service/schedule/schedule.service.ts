@@ -26,4 +26,13 @@ export class ScheduleService {
     // @ts-ignore
     return this.http.post<any>(Constant.createMeetingUrl, params, Constant.headers);
   }
+
+  studentCreateMeeting(hostID, start, end, title): Observable<any> {
+    let params = new HttpParams().set('host_ID', hostID);
+    params = params.append('start', start);
+    params = params.append('end', end);
+    params = params.append('title', title);
+    // @ts-ignore
+    return this.http.post<any>(Constant.studentCreateMeetingUrl, params, Constant.headers);
+  }
 }

@@ -23,6 +23,7 @@ export class Constant {
   static getAllMeetingsByUserIdURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllMeetingsByUserId';
   static deleteMeetingURL = 'https://agile-reaches-44577.herokuapp.com/api/deleteMeeting';
   static createMeetingUrl = 'https://agile-reaches-44577.herokuapp.com/api/createMeeting';
+  static studentCreateMeetingUrl = 'https://agile-reaches-44577.herokuapp.com/api/studentCreateMeeting';
 
   /*chat*/
   public static chatURL = 'http://localhost:3000/chat';

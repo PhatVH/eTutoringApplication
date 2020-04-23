@@ -39,9 +39,10 @@ export class ChatStudentComponent implements OnInit {
     this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
       if (result === []) {
         this.haveTutor = null;
+      } else {
+        this.haveTutor = 'value';
+        this.tutor = result[0];
       }
-      this.haveTutor = 'value';
-      this.tutor = result[0];
     });
   }
 

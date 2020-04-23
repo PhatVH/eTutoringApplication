@@ -123,10 +123,12 @@ export class AllocateRemoveComponent implements OnInit {
     } else if (this.openDivStudent == null) {
       alert('You must select Student to reallocate');
     }
-    const tutorID = this.selectTutor[0].id;
     const arrStudentID = [];
-    this.selectStudent.forEach(student => arrStudentID.push(student.id))
-    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.reallocateTutorToStudentUrl).subscribe(result => alert(result.message));
+    this.selectStudent.forEach(student => arrStudentID.push(student.id));
+    this.studentService.postAllocateAndReallocate('', arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => {
+      alert(`Reallocate successful`);
+      this.selectStudent = [];
+    });
     this.openDivTutor = null;
     this.openDivStudent = null;
   }
