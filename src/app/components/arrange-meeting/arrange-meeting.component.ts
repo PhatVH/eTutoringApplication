@@ -44,8 +44,8 @@ export class ArrangeMeetingComponent implements OnInit {
   closeDiv;
   private eachStudent: Student;
   invite: string;
+  studentInvitedID: any
   private searchStudent = new Subject<string>();
-  private searchTutor = new Subject<string>();
   @ViewChild('modalContent', {static: true}) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -162,8 +162,23 @@ export class ArrangeMeetingComponent implements OnInit {
   }
 
   InviteEventBtn(event: CalendarEvent<any>) {
-    console.log(`event`)
-    console.log(event)
+    if (event.invite == null || event.host == null || event.title == null) {
+      console.log(`thông báo yêu cầu nhập`);
+    } else {
+      if (this.user.type === 'student') {
+        console.log(`this.user.tutor_ID`)
+        console.log(this.user.tutor_ID)
+        this.scheduleService.createMeeting(this.user.user_ID, this.user.tutor_ID, event.start, event.end, event.title).subscribe(
+          result => console.log(result)
+        );
+      } else {
+        console.log(`this.studentInvitedID`)
+        console.log(this.studentInvitedID)
+        this.scheduleService.createMeeting(this.user.user_ID, this.studentInvitedID, event.start, event.end, event.title).subscribe(
+          result => console.log(result)
+        );
+      }
+    }
   }
   deleteEventBtn(eventDelete: CalendarEvent) {
     console.log(`eventDelete`)
@@ -191,6 +206,7 @@ export class ArrangeMeetingComponent implements OnInit {
     this.eachStudent = eachStudent;
     const indexEvent = this.events.length - 1;
     this.events[indexEvent].invite = eachStudent.name;
+    this.studentInvitedID = eachStudent.id;
   }
 
   /*getAllSchedule(): void {

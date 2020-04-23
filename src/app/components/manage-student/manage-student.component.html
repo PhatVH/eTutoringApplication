@@ -18,7 +18,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th scope="col" sortable="tutor_ID" (sort)="onSort($event)">StudentID</th>
+        <th scope="col" sortable="student_ID" (sort)="onSort($event)">StudentID</th>
         <th scope="col" sortable="name" (sort)="onSort($event)">Student Name</th>
         <th scope="col" sortable="country" (sort)="onSort($event)">Country</th>
         <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
@@ -28,7 +28,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let student of students$ | async" (click)="onDashboadStudent(student)">
-        <td><ngb-highlight [result]="student.id" [term]="service.searchTerm"></ngb-highlight></td>
+        <td><ngb-highlight [result]="student.student_ID" [term]="service.searchTerm"></ngb-highlight></td>
         <td><ngb-highlight [result]="student.name" [term]="service.searchTerm"></ngb-highlight></td>
         <td>
           <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + student.countryFlag" class="mr-2" style="width: 20px">

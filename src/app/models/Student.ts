@@ -5,6 +5,7 @@ export class Student {
   name: string;
   email: string;
   tutor_name: string;
+  student_ID: string;
   phone: string;
   tutor: string;
   selected: boolean;

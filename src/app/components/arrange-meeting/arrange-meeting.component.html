@@ -202,7 +202,7 @@
     <div *ngIf="closeDiv">
       <div class="container" *ngFor="let eachStudent of students$|async">
         <ul>
-          <li class="styleLi" (click)="clickStudent(eachStudent)">{{eachStudent.id}} - {{eachStudent.name}}</li>
+          <li class="styleLi" (click)="clickStudent(eachStudent)">{{eachStudent.student_ID}} - {{eachStudent.name}}</li>
         </ul>
       </div>
     </div>
