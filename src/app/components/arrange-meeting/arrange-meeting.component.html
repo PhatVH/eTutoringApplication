@@ -102,7 +102,7 @@
 
   <h3>
     Arrange Meeting
-    <button class="btn btn-primary pull-right" (click)="addEvent()">
+    <button class="btn btn-primary pull-right" (click)="addEvent(user.type)">
       Add new
     </button>
     <div class="clearfix"></div>
@@ -152,7 +152,6 @@
                  type="text"
                  class="form-control"
                  [(ngModel)]="event.invite"
-                 #searchTutor (keyup)="searchTutorSchedule(searchTutor.value)"
           />
         </td>
         <td>
@@ -186,13 +185,13 @@
           />
         </td>
         <td>
-          <button class="btn btn-danger" (click)="deleteEvent(event)">
+          <button class="btn btn-danger" (click)="deleteEventBtn(event)">
             Delete
           </button>
         </td>
         <td>
-          <button class="btn btn-primary" (click)="acceptEvent(event)">
-            Accept
+          <button class="btn btn-primary" (click)="InviteEventBtn(event)">
+            Invite
           </button>
         </td>
       </tr>
@@ -204,24 +203,6 @@
       <div class="container" *ngFor="let eachStudent of students$|async">
         <ul>
           <li class="styleLi" (click)="clickStudent(eachStudent)">{{eachStudent.id}} - {{eachStudent.name}}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="user.type == 'student'">
-    <div *ngIf="closeDiv">
-      <div class="container" *ngFor="let eachTutor of tutors$|async">
-        <ul>
-          <li class="styleLi" (click)="clickStudent(eachTutor)">{{eachTutor.id}} - {{eachTutor.name}}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="user.type == 'staff'">
-    <div *ngIf="closeDiv">
-      <div class="container" *ngFor="let eachTutor of tutors$|async">
-        <ul>
-          <li class="styleLi" (click)="clickStudent(eachTutor)">{{eachTutor.id}} - {{eachTutor.name}}</li>
         </ul>
       </div>
     </div>

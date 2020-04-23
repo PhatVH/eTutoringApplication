@@ -130,7 +130,11 @@ export class ArrangeMeetingComponent implements OnInit {
     this.modal.open(this.modalContent, {size: 'lg'});
   }
 
-  addEvent(): void {
+  addEvent(type): void {
+    if (type === 'student') {
+      this.invite = this.user.tutor_name;
+      console.log(this.user.tutor_name)
+    }
     this.events = [
       ...this.events,
       {
@@ -149,11 +153,6 @@ export class ArrangeMeetingComponent implements OnInit {
     ];
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
-    this.scheduleService.deleteMeeting(eventToDelete).subscribe(result => console.log(result));
-  }
-
   setView(view: CalendarView) {
     this.view = view;
   }
@@ -162,7 +161,15 @@ export class ArrangeMeetingComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
-  acceptEvent(event: CalendarEvent<any>) {
+  InviteEventBtn(event: CalendarEvent<any>) {
+    console.log(`event`)
+    console.log(event)
+  }
+  deleteEventBtn(eventDelete: CalendarEvent) {
+    console.log(`eventDelete`)
+    console.log(eventDelete)
+    this.events = this.events.filter((event) => event !== eventDelete);
+    this.scheduleService.deleteMeeting(eventDelete).subscribe(result => console.log(result));
   }
 
   searchStudentSchedule(searchStudent: string): void {
@@ -174,16 +181,31 @@ export class ArrangeMeetingComponent implements OnInit {
     this.students$ = this.searchStudent.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((searchStudent: string) => this.studentService.searchStudent(searchStudent, Constant.studentsURL))
+      // tslint:disable-next-line:max-line-length
+      switchMap((searchStudent: string) => this.studentService.searchStudentInvite(searchStudent, `${Constant.getStudentsByTutorIdUrl}?tutor_ID=${this.user.id}`))
     );
   }
 
   clickStudent(eachStudent) {
     this.closeDiv = null;
     this.eachStudent = eachStudent;
-    const indexEvent = this.events.length - 1
+    const indexEvent = this.events.length - 1;
     this.events[indexEvent].invite = eachStudent.name;
   }
+
+  /*getAllSchedule(): void {
+    this.scheduleService.getScheduleEvent(this.user.id).subscribe(
+      scheduleRecieve => {
+        this.events = scheduleRecieve;
+        this.events.forEach(obj => {
+          obj.actions = this.actions;
+          obj.start = new Date(obj.start);
+          obj.end = new Date(obj.end);
+        });
+      }
+
+    );
+  }*/
 
   getAllSchedule(): void {
     this.scheduleService.getScheduleEvent().subscribe(

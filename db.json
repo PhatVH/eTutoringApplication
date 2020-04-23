@@ -22,6 +22,7 @@
       "email": "tambt@gmail.com",
       "pass": "1234",
       "type": "student",
+      "tutor_name": "Tutor1",
       "selected": false
     }
   ],
@@ -712,6 +713,7 @@
   ],
   "schedule": [
     {
+      "id": 1,
       "host": "Nguyen A",
       "start": "2020-04-23T18:25:43.511Z",
       "end": "2020-04-23T18:25:43.511Z",
@@ -719,18 +721,20 @@
       "invite": "Nguyen B"
     },
     {
+      "id": 2,
       "start": "2020-04-23T18:25:43.511Z",
       "end": "2020-04-23T18:25:43.511Z",
       "title": "A 3 day event",
       "invite": "Nguyen C"
     },
-    {
+    {"id": 3,
       "start": "2020-04-23T18:25:43.511Z",
       "end": "2020-04-23T18:25:43.511Z",
       "title": "A 3 day event",
       "invite": "Nguyen D"
     },
     {
+      "id": 4,
       "start": "2020-04-23T18:25:43.511Z",
       "end": "2020-04-23T18:25:43.511Z",
       "title": "A 3 day event",

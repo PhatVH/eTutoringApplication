@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/login']);
         } else {
           this.user = userRecieve;
-          console.log(this.user)
           sessionStorage.setItem('user', JSON.stringify(userRecieve));
           this.router.navigate(['/home']);
         }

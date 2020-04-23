@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChatService} from '../../../service/chat.service';
 import {Router} from '@angular/router';
 import {LoginComponent} from '../../login/login.component';
 import {Student} from '../../../models/Student';
 import {TutorService} from '../../../service/tutor.service';
 import {Tutor} from '../../../models/Tutor';
+
 @Component({
   selector: 'app-chat-student',
   templateUrl: './chat-student.component.html',
@@ -33,12 +34,13 @@ export class ChatStudentComponent implements OnInit {
       this.getTutorOfStudent(this.sessionStudent.id);
     }
   }
+
   getTutorOfStudent(studentID) {
     this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
       if (result === []) {
         this.haveTutor = null;
       }
-      this.haveTutor = 'value'
+      this.haveTutor = 'value';
       this.tutor = result[0];
     });
   }

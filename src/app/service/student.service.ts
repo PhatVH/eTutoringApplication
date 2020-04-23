@@ -24,6 +24,13 @@ export class StudentService {
     // @ts-ignore
     return this.http.get<any>(`${url}&name_like=${typeString}`, Constant.headers);
   }
+  searchStudentInvite(typeString: string, url): Observable<Student[]> {
+    if (!typeString.trim()) {
+      return null;
+    }
+    // @ts-ignore
+    return this.http.get<any>(`${url}&name_like=${typeString}`, Constant.headers);
+  }
 
   getListStudentOfTutor(tutorID): Observable<Student[]> {
     const url = `${Constant.getStudentsByTutorIdUrl}?tutor_ID=${tutorID}`
