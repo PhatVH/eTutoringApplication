@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ChatService} from '../../../service/chat.service';
+import {ChatService} from '../../../service/chat/chat.service';
 import {Router} from '@angular/router';
 import {LoginComponent} from '../../login/login.component';
 import {Tutor} from '../../../models/Tutor';
-import {StudentService} from '../../../service/student.service';
+import {StudentService} from '../../../service/manage-student/student.service';
 import {Student} from '../../../models/Student';
 
 @Component({

@@ -1,10 +1,10 @@
 import {Injectable, PipeTransform} from '@angular/core';
-import {Tutor} from '../models/Tutor';
-import {SortColumn, SortDirection} from '../sortable.directive';
+import {Tutor} from '../../models/Tutor';
+import {SortColumn, SortDirection} from '../sortable/sortable.directive';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
-import {Constant} from '../models/Constant';
+import {Constant} from '../../models/Constant';
 import {catchError, debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 
 interface SearchResult {

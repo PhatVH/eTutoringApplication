@@ -200,10 +200,13 @@
   </div>
   <div *ngIf="user.type == 'tutor'">
     <div *ngIf="closeDiv">
-      <div class="container" *ngFor="let eachStudent of students$|async">
-        <ul>
-          <li class="styleLi" (click)="clickStudent(eachStudent)">{{eachStudent.student_ID}} - {{eachStudent.name}}</li>
-        </ul>
+      <div *ngFor="let eachStudent of students$|async">
+        <div class="container darker" (click)="clickStudent(eachStudent)">
+          <img src="https://pbs.twimg.com/profile_images/842694189125124096/ymxRo9A8_400x400.jpg" alt="Avatar"
+               class="left" style="width:100%;">
+          <p>{{eachStudent.student_ID}} - {{eachStudent.name}}</p>
+          <span class="time-left">{{eachStudent.email}}</span>
+        </div>
       </div>
     </div>
   </div>

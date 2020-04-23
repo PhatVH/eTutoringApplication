@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentService} from '../../service/student.service';
+import {StudentService} from '../../service/manage-student/student.service';
 import {Student} from '../../models/Student';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {Class} from '../../models/Class';
 import {Tutor} from '../../models/Tutor';
-import {TutorService} from '../../service/tutor.service';
+import {TutorService} from '../../service/manage-tutor/tutor.service';
 import {Observable, Subject} from 'rxjs';
 import {Constant} from '../../models/Constant';
 
@@ -113,10 +113,18 @@ export class AllocateComponent implements OnInit {
   }
 
   postAllocateBtn() {
+    if (this.openDivTutor == null) {
+      alert('You must select Tutor to allocate');
+    } else if (this.openDivStudent == null) {
+      alert('You must select Student to allocate');
+    }
     const tutorID = this.selectTutor[0].id;
     const arrStudentID = [];
     this.selectStudent.forEach(student => arrStudentID.push(student.id));
-    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => console.log(result));
+    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => {
+      alert(result.message);
+      this.selectStudent = [];
+    });
     this.openDivTutor = null;
     this.openDivStudent = null;
   }

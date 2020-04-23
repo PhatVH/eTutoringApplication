@@ -24,12 +24,12 @@ import {
 } from 'angular-calendar';
 import {AllocateComponent} from '../allocate/allocate.component';
 import {Student} from '../../models/Student';
-import {StudentService} from '../../service/student.service';
+import {StudentService} from '../../service/manage-student/student.service';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
-import {ScheduleService} from '../../service/schedule.service';
+import {ScheduleService} from '../../service/schedule/schedule.service';
 import {LoginComponent} from '../login/login.component';
 import {Tutor} from '../../models/Tutor';
-import {TutorService} from '../../service/tutor.service';
+import {TutorService} from '../../service/manage-tutor/tutor.service';
 import {Constant} from '../../models/Constant';
 
 @Component({
@@ -44,7 +44,7 @@ export class ArrangeMeetingComponent implements OnInit {
   closeDiv;
   private eachStudent: Student;
   invite: string;
-  studentInvitedID: any
+  studentInvitedID: any;
   private searchStudent = new Subject<string>();
   @ViewChild('modalContent', {static: true}) modalContent: TemplateRef<any>;
 
@@ -72,7 +72,8 @@ export class ArrangeMeetingComponent implements OnInit {
       a11yLabel: 'Delete',
       onClick: ({event}: { event: CalendarEvent }): void => {
         this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        this.scheduleService.deleteMeeting(event.id).subscribe(result => alert(result.message));
+
       },
     },
   ];
@@ -82,6 +83,7 @@ export class ArrangeMeetingComponent implements OnInit {
   events: CalendarEvent[];
 
   activeDayIsOpen = false;
+  divAlert: any = null;
 
   constructor(private modal: NgbModal,
               private studentService: StudentService,
@@ -131,9 +133,10 @@ export class ArrangeMeetingComponent implements OnInit {
   }
 
   addEvent(type): void {
+    console.log(`add new`)
     if (type === 'student') {
       this.invite = this.user.tutor_name;
-      console.log(this.user.tutor_name)
+      console.log(this.user.tutor_name);
     }
     this.events = [
       ...this.events,
@@ -161,32 +164,6 @@ export class ArrangeMeetingComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
-  InviteEventBtn(event: CalendarEvent<any>) {
-    if (event.invite == null || event.host == null || event.title == null) {
-      console.log(`thông báo yêu cầu nhập`);
-    } else {
-      if (this.user.type === 'student') {
-        console.log(`this.user.tutor_ID`)
-        console.log(this.user.tutor_ID)
-        this.scheduleService.createMeeting(this.user.user_ID, this.user.tutor_ID, event.start, event.end, event.title).subscribe(
-          result => console.log(result)
-        );
-      } else {
-        console.log(`this.studentInvitedID`)
-        console.log(this.studentInvitedID)
-        this.scheduleService.createMeeting(this.user.user_ID, this.studentInvitedID, event.start, event.end, event.title).subscribe(
-          result => console.log(result)
-        );
-      }
-    }
-  }
-  deleteEventBtn(eventDelete: CalendarEvent) {
-    console.log(`eventDelete`)
-    console.log(eventDelete)
-    this.events = this.events.filter((event) => event !== eventDelete);
-    this.scheduleService.deleteMeeting(eventDelete).subscribe(result => console.log(result));
-  }
-
   searchStudentSchedule(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
     this.closeDiv = 'value';
@@ -209,8 +186,8 @@ export class ArrangeMeetingComponent implements OnInit {
     this.studentInvitedID = eachStudent.id;
   }
 
-  /*getAllSchedule(): void {
-    this.scheduleService.getScheduleEvent(this.user.id).subscribe(
+  getAllSchedule(): void {
+    this.scheduleService.getScheduleEvent(this.user.user_ID).subscribe(
       scheduleRecieve => {
         this.events = scheduleRecieve;
         this.events.forEach(obj => {
@@ -219,10 +196,34 @@ export class ArrangeMeetingComponent implements OnInit {
           obj.end = new Date(obj.end);
         });
       }
-
     );
-  }*/
+  }
 
+  deleteEventBtn(eventDelete: CalendarEvent) {
+    console.log(`eventDelete`);
+    console.log(eventDelete);
+    this.events = this.events.filter((event) => event !== eventDelete);
+    this.scheduleService.deleteMeeting(eventDelete.id).subscribe(result => alert(result.message));
+  }
+
+  InviteEventBtn(event: CalendarEvent<any>) {
+    if (event.invite == null || event.host == null || event.title == null) {
+      alert('You need fill in all information');
+      this.divAlert = 'value';
+    } else {
+      this.divAlert = null;
+      if (this.user.type === 'student') {
+        this.scheduleService.createMeeting(this.user.user_ID, this.user.tutor_ID, event.start, event.end, event.title).subscribe(
+          result => alert(result.message)
+        );
+      } else {
+        this.scheduleService.createMeeting(this.user.user_ID, this.studentInvitedID, event.start, event.end, event.title).subscribe(
+          result => alert(result.message)
+        );
+      }
+    }
+  }
+/*
   getAllSchedule(): void {
     this.scheduleService.getScheduleEvent().subscribe(
       scheduleRecieve => {
@@ -235,5 +236,5 @@ export class ArrangeMeetingComponent implements OnInit {
       }
 
     );
-  }
+  }*/
 }

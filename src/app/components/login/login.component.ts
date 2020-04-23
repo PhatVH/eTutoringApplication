@@ -4,9 +4,9 @@ import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {faUnlock} from '@fortawesome/free-solid-svg-icons';
-import {StudentService} from '../../service/student.service';
-import {TutorService} from '../../service/tutor.service';
-import {ClassService} from '../../service/class.service';
+import {StudentService} from '../../service/manage-student/student.service';
+import {TutorService} from '../../service/manage-tutor/tutor.service';
+import {ClassService} from '../../service/login/class.service';
 
 @Component({
   selector: 'app-login',

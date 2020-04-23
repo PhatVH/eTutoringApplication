@@ -7,8 +7,7 @@ import {AllocateRemoveComponent} from './components/allocate-remove/allocate-rem
 import {EventComponent} from './components/event/event.component';
 import {AboutUsComponent} from './components/about-us/about-us.component';
 import {ContactComponent} from './components/contact/contact.component';
-import {ReportComponent} from './components/report/report.component';
-import {AuthGaurdService} from './service/auth-gaurd.service';
+import {AuthGaurdService} from './service/auth-gaurd/auth-gaurd.service';
 import {ArrangeMeetingComponent} from './components/arrange-meeting/arrange-meeting.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { BlogComponent } from './components/blog/blog.component';
@@ -17,6 +16,7 @@ import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.compo
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 import {AllocateComponent} from './components/allocate/allocate.component';
 import {DashboardTutorComponent} from './components/dashboard-tutor/dashboard-tutor.component';
+import {EmailComponent} from './components/email/email.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
@@ -29,12 +29,12 @@ const routes: Routes = [
   {path: 'event', component: EventComponent},
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'report', component: ReportComponent},
   {path: 'schedule', component: ArrangeMeetingComponent},
   {path: 'blog', component: BlogComponent, canActivate: [AuthGaurdService]},
   {path: 'home', component: HomepageComponent},
   {path: 'manageStudent', component: ManageStudentComponent},
-  {path: 'manageTutor', component: ManageTutorComponent}
+  {path: 'manageTutor', component: ManageTutorComponent},
+  {path: 'email', component: EmailComponent}
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Observable} from 'rxjs';
-import {SortableDirective, SortEvent} from '../../sortable.directive';
+import {SortableDirective, SortEvent} from '../../service/sortable/sortable.directive';
 import {DecimalPipe} from '@angular/common';
 import {Student} from '../../models/Student';
-import {CountryService} from '../../service/country.service';
+import {CountryService} from '../../service/manage-student/country.service';
 import {Router} from '@angular/router';
 import {Constant} from '../../models/Constant';
 

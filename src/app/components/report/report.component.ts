@@ -1,13 +1,13 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {CountryService} from '../../service/country.service';
+import {CountryService} from '../../service/manage-student/country.service';
 import {Constant} from '../../models/Constant';
 import {Observable} from 'rxjs';
 import {Student} from '../../models/Student';
-import {SortableDirective, SortEvent} from '../../sortable.directive';
+import {SortableDirective, SortEvent} from '../../service/sortable/sortable.directive';
 import {Router} from '@angular/router';
 import {DecimalPipe} from '@angular/common';
-import {StudentService} from '../../service/student.service';
-import {TutorService} from '../../service/tutor.service';
+import {StudentService} from '../../service/manage-student/student.service';
+import {TutorService} from '../../service/manage-tutor/tutor.service';
 
 @Component({
   selector: 'app-report',

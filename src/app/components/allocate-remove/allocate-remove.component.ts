@@ -3,8 +3,8 @@ import {Student} from '../../models/Student';
 import {Tutor} from '../../models/Tutor';
 import {Class} from '../../models/Class';
 import {Subject} from 'rxjs';
-import {StudentService} from '../../service/student.service';
-import {TutorService} from '../../service/tutor.service';
+import {StudentService} from '../../service/manage-student/student.service';
+import {TutorService} from '../../service/manage-tutor/tutor.service';
 import {Constant} from '../../models/Constant';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
@@ -118,10 +118,15 @@ export class AllocateRemoveComponent implements OnInit {
   }
 
   postReallocateBtn() {
+    if (this.openDivTutor == null) {
+      alert('You must select Tutor to reallocate');
+    } else if (this.openDivStudent == null) {
+      alert('You must select Student to reallocate');
+    }
     const tutorID = this.selectTutor[0].id;
     const arrStudentID = [];
     this.selectStudent.forEach(student => arrStudentID.push(student.id))
-    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.reallocateTutorToStudentUrl).subscribe(result => console.log(result));
+    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.reallocateTutorToStudentUrl).subscribe(result => alert(result.message));
     this.openDivTutor = null;
     this.openDivStudent = null;
   }

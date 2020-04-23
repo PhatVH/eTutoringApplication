@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthGaurdService} from '../../service/auth-gaurd.service';
 import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
-import {ReportComponent} from '../report/report.component';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import {ReportComponent} from '../report/report.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  faEnvelope = faEnvelope
   constructor(private router: Router, public loginComponent: LoginComponent) { }
   user: User = this.loginComponent.getUser();
   ngOnInit(): void {

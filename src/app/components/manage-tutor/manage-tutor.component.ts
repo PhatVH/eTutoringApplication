@@ -2,8 +2,8 @@ import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DecimalPipe} from '@angular/common';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {SortableDirective, SortEvent} from '../../sortable.directive';
-import {ManageTutorService} from '../../service/manage-tutor.service';
+import {SortableDirective, SortEvent} from '../../service/sortable/sortable.directive';
+import {ManageTutorService} from '../../service/manage-tutor/manage-tutor.service';
 import {Tutor} from '../../models/Tutor';
 
 @Component({

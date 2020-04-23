@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
 <!--Header-->
 <div class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
@@ -63,10 +70,15 @@
             <a href="" class="dropdown-item" (click)="logout()">Logout</a>
           </div>
         </li>
-
+        <li class="nav-item">
+          <a href="" class="nav-link" routerLink="/email"><fa-icon [icon]="faEnvelope" aria-hidden="true"></fa-icon></a>
+        </li>
 
       </ul>
     </div>
 
   </div>
 </div>
+
+</body>
+</html>
