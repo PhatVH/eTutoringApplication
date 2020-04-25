@@ -16,7 +16,6 @@ import {Observable} from 'rxjs';
 export class ChatTutorComponent implements OnInit {
   content;
   user;
-  $chat: Observable<any>;
   students: Student[] = [];
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
@@ -71,7 +70,7 @@ export class ChatTutorComponent implements OnInit {
   getAllMessage() {
     this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
       result => {
-        this.$chat = result;
+        this.chat.push(result);
       }
     );
   }
@@ -79,12 +78,11 @@ export class ChatTutorComponent implements OnInit {
   sendMessage(value: string) {
     this.chatService.sendMessage(this.user.user_ID, value).subscribe(
       result => {
-        this.$chat = result;
         console.log(`chat`);
-        console.log(this.$chat);
+        console.log(this.chat);
         this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
           result1 => {
-            this.$chat = result1;
+            this.chat.push(result1);
           }
         );
       }

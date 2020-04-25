@@ -45,7 +45,7 @@
       <p>{{studentClick.name}}</p>
     </div>
     <div class="messages">
-      <ul *ngFor="let eachContentChat of $chat|async">
+      <ul *ngFor="let eachContentChat of chat">
         <li class="sent" *ngIf="eachContentChat.user_id === user.user_ID">
           <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
           <p>{{eachContentChat.content}}</p>
