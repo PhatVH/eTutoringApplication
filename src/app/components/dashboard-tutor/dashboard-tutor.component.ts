@@ -25,6 +25,14 @@ export class DashboardTutorComponent implements OnInit {
   students$: Observable<Student[]>;
   total$: Observable<number>;
   user: User;
+
+  listMenu: any[] = [
+    {id : 1, name: 'Tutees', selected: true},
+    {id : 2, name: 'Message', selected: false},
+    {id : 3, name: 'Meeting', selected: false},
+    {id : 4, name: 'Document', selected: false},
+    {id : 5, name: 'Storage', selected: false},
+  ]
   constructor(private documentTutor: DocumentTutorComponent,
               public service: CountryService,
               private loginComponent: LoginComponent) {
@@ -34,6 +42,27 @@ export class DashboardTutorComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.loginComponent.getUser();
     this.allStudentsOfTutor();
+  }
+  click(item) {
+    this.listMenu.map( r => {
+      r.selected = false;
+    });
+    item.selected = true;
+    if (item.id === 1) {
+      this.TuteesClick();
+    }
+    if (item.id === 2) {
+      this.messageClick();
+    }
+    if (item.id === 3) {
+      this.meetingClick();
+    }
+    if (item.id === 4) {
+      this.documentClick();
+    }
+    if (item.id === 5) {
+      this.storageClick();
+    }
   }
   allStudentsOfTutor() {
     this.service.getAllStudentsOfTutor(`${Constant.getStudentsByTutorIdUrl}?tutor_ID=${this.user.id}`);

@@ -12,9 +12,33 @@ export class DashboardStudentComponent implements OnInit {
   meeting: any;
   document: any;
   storage: any;
+  listMenu: any[] = [
+    {id : 1, name: 'Message', selected: true},
+    {id : 2, name: 'Meeting', selected: false},
+    {id : 3, name: 'Document', selected: false},
+    {id : 4, name: 'Storage', selected: false},
+  ]
   constructor(private documentStudent: DocumentStudentComponent ) { }
 
   ngOnInit(): void {
+  }
+  click(item) {
+    this.listMenu.map( r => {
+      r.selected = false;
+    });
+    item.selected = true;
+    if (item.id === 1) {
+      this.messageClick();
+    }
+    if (item.id === 2) {
+      this.meetingClick();
+    }
+    if (item.id === 3) {
+      this.documentClick();
+    }
+    if (item.id === 4) {
+      this.storageClick();
+    }
   }
 
   messageClick() {

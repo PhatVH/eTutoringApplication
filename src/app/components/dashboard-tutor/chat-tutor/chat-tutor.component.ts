@@ -6,6 +6,7 @@ import {Tutor} from '../../../models/Tutor';
 import {StudentService} from '../../../service/manage-student/student.service';
 import {Student} from '../../../models/Student';
 import {Chat} from '../../../models/Chat';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-chat-tutor',
@@ -15,6 +16,7 @@ import {Chat} from '../../../models/Chat';
 export class ChatTutorComponent implements OnInit {
   content;
   user;
+  $chat: Observable<any>;
   students: Student[] = [];
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
@@ -28,6 +30,7 @@ export class ChatTutorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getChat();
+    this.getAllMessage();
     console.log(this.sessionTutor);
     if (this.loginComponent.user.type === 'tutor') {
       this.user = this.loginComponent.getUser();
@@ -63,5 +66,28 @@ export class ChatTutorComponent implements OnInit {
       console.log(result);
       this.chat = result;
     });
+  }
+
+  getAllMessage() {
+    this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
+      result => {
+        this.$chat = result;
+      }
+    );
+  }
+
+  sendMessage(value: string) {
+    this.chatService.sendMessage(this.user.user_ID, value).subscribe(
+      result => {
+        this.$chat = result;
+        console.log(`chat`);
+        console.log(this.$chat);
+        this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
+          result1 => {
+            this.$chat = result1;
+          }
+        );
+      }
+    );
   }
 }

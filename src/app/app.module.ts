@@ -27,7 +27,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FlatpickrModule} from 'angularx-flatpickr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ListBlogComponent } from './components/list-blog/list-blog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClockComponent } from './components/clock/clock.component';
@@ -61,7 +60,6 @@ import { EmailComponent } from './components/email/email.component';
     ReportComponent,
     ContactComponent,
     OurServicesComponent,
-    ListBlogComponent,
     HeaderComponent,
     FooterComponent,
     ClockComponent,

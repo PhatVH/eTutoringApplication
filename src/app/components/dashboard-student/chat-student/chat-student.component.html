@@ -45,7 +45,7 @@
       <p>{{tutor.name}}</p>
     </div>
     <div class="messages">
-      <ul *ngFor="let eachContentChat of chat">
+      <ul *ngFor="let eachContentChat of $chat|async">
         <li class="sent" *ngIf="eachContentChat.user_id === user.user_ID">
           <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
           <p>{{eachContentChat.content}}</p>
@@ -59,9 +59,9 @@
     </div>
     <div class="message-input">
       <div class="wrap">
-        <input type="text" placeholder="Write your message..." />
+        <input type="text" placeholder="Write your message..." #contentChat/>
         <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-        <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button class="submit" (click)="sendMessage(contentChat.value)"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>

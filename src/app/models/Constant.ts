@@ -27,6 +27,9 @@ export class Constant {
 
   /*chat*/
   public static chatURL = 'http://localhost:3000/chat';
+  static sendMessageURL = 'https://agile-reaches-44577.herokuapp.com/api/sendMessage';
+  static getAllMessageURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllMessage';
+
   public static scheduleURL = 'http://localhost:3000/schedule';
 
 }

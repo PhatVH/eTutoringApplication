@@ -1,0 +1,74 @@
+.games {
+  padding: 4em 0 2em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+h3.page-header {
+  font-size: 1.2em;
+  color: #ff7105;
+  font-weight: 500;
+  margin: 0.5em 0 1em;
+  text-transform: uppercase;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid none;
+}
+
+
+.blog-post {
+  margin: 0.5em 0 2em;
+}
+
+.blog-post h3,
+.blog-post h3 a {
+  text-transform: uppercase;
+  color: #3c3a3e;
+  font-weight: 700;
+  margin: 0;
+}
+
+.blog-post img {
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.blog-post h4 {
+  font-size: 1em;
+  color: #3c3a3e;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0.5em 0;
+  line-height: 1.6em;
+}
+
+.blog-post p {
+  color: #3c3a3e;
+  font-weight: 100;
+  line-height: 1.6em;
+  text-align: justify;
+  margin: 0.5em 0;
+}
+
+.blog-post nav a {
+  color: #000;
+  font-weight: 500;
+  padding-bottom: 0;
+}
+
+
+.post-details {
+  margin: 0.5em 0;
+}
+
+.post-details p a {
+  font-weight: 500;
+  color: #4fbfa8
+}
+
+.post-details p span {
+  color: #4fbfa8
+}
