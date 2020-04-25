@@ -5,6 +5,7 @@ import {LoginComponent} from '../../login/login.component';
 import {Student} from '../../../models/Student';
 import {TutorService} from '../../../service/manage-tutor/tutor.service';
 import {Tutor} from '../../../models/Tutor';
+import {Chat} from '../../../models/Chat';
 
 @Component({
   selector: 'app-chat-student',
@@ -20,11 +21,13 @@ export class ChatStudentComponent implements OnInit {
 
   content;
   user;
+  chat: Chat[];
   tutor: Tutor;
   sessionStudent: Student = JSON.parse(sessionStorage.getItem('studentSession'));
   haveTutor: any;
 
   ngOnInit(): void {
+    this.getChat();
     console.log(this.sessionStudent);
     if (this.loginComponent.user.type === 'student') {
       this.user = this.loginComponent.getUser();
@@ -42,9 +45,15 @@ export class ChatStudentComponent implements OnInit {
       } else {
         this.haveTutor = 'value';
         this.tutor = result[0];
+        console.log(`this.tutor`)
+        console.log(this.tutor)
       }
     });
   }
-
+  getChat() {
+    this.chatService.getChat().subscribe(result => {console.log(result);
+      this.chat = result;
+    });
+  }
 
 }

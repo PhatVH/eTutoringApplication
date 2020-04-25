@@ -5,6 +5,7 @@ import {LoginComponent} from '../../login/login.component';
 import {Tutor} from '../../../models/Tutor';
 import {StudentService} from '../../../service/manage-student/student.service';
 import {Student} from '../../../models/Student';
+import {Chat} from '../../../models/Chat';
 
 @Component({
   selector: 'app-chat-tutor',
@@ -18,20 +19,24 @@ export class ChatTutorComponent implements OnInit {
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
   haveStudent: any = null;
+  chat: Chat[];
+
   constructor(private chatService: ChatService, private router: Router,
               private loginComponent: LoginComponent,
               private studentService: StudentService) {
   }
 
   ngOnInit(): void {
+    this.getChat();
     console.log(this.sessionTutor);
     if (this.loginComponent.user.type === 'tutor') {
       this.user = this.loginComponent.getUser();
+      console.log(this.user);
+      console.log(this.user.user_ID);
       this.getStudentOfTutor(this.loginComponent.user.id);
     } else {
       console.log(`haha`);
       this.user = this.sessionTutor;
-      /*this.getChat(this.sessionTutor.name);*/
       this.getStudentOfTutor(this.sessionTutor.id);
       console.log(this.students);
     }
@@ -39,18 +44,24 @@ export class ChatTutorComponent implements OnInit {
 
   getStudentOfTutor(tutorID) {
     this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
-      console.log(`result`)
-      console.log(result)
       if (result === []) {
-      this.haveStudent = null;
+        this.haveStudent = null;
       } else {
         this.haveStudent = 'value';
-        this.studentClick = result[0]
+        this.studentClick = result[0];
         this.students = result;
       }
     });
   }
+
   studentClicked(eachStudent: Student) {
     this.studentClick = eachStudent;
+  }
+
+  getChat() {
+    this.chatService.getChat().subscribe(result => {
+      console.log(result);
+      this.chat = result;
+    });
   }
 }

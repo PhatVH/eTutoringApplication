@@ -746,22 +746,28 @@
   ],
   "chat": [
     {
-      "id": 1,
-      "studentName": "TamBT",
-      "tutorName": "tutor",
-      "content": "content 1 hahah"
+      "user_id": 2,
+      "content": "hi!!!"
     },
     {
-      "id": 3,
-      "studentName": "Trần Văn A",
-      "tutorName": "tutor",
-      "content": "content 2 hahah"
+      "user_id": 17,
+      "content": "haha"
     },
     {
-      "id": 2,
-      "studentName": "Ha nt",
-      "tutorName": "tutor",
-      "content": "content 3 hahah"
+      "user_id": 17,
+      "content": "lala"
+    },
+    {
+      "user_id": 2,
+      "content": "hehe"
+    },
+    {
+      "user_id": 17,
+      "content": "an"
+    }
+    ,{
+      "user_id": 2,
+      "content": "tam"
     }
   ]
 }

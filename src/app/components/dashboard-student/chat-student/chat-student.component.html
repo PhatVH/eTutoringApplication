@@ -45,15 +45,16 @@
       <p>{{tutor.name}}</p>
     </div>
     <div class="messages">
-      <ul>
-        <li class="sent">
+      <ul *ngFor="let eachContentChat of chat">
+        <li class="sent" *ngIf="eachContentChat.user_id === user.user_ID">
           <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-          <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+          <p>{{eachContentChat.content}}</p>
         </li>
-        <li class="replies">
+        <li class="replies" *ngIf="eachContentChat.user_id === tutor.user_ID ">
           <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-          <p>When you're backed against the wall, break the god damn thing down.</p>
+          <p>{{eachContentChat.content}}</p>
         </li>
+
       </ul>
     </div>
     <div class="message-input">
