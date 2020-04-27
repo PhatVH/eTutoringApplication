@@ -18,7 +18,6 @@ import {SortableDirective, SortEvent} from '../../service/sortable/sortable.dire
 export class DashboardTutorComponent implements OnInit {
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
   tutees: any = 'value';
-  message: any;
   meeting: any;
   document: any;
   storage: any;
@@ -28,10 +27,9 @@ export class DashboardTutorComponent implements OnInit {
 
   listMenu: any[] = [
     {id : 1, name: 'Tutees', selected: true},
-    {id : 2, name: 'Message', selected: false},
-    {id : 3, name: 'Meeting', selected: false},
-    {id : 4, name: 'Document', selected: false},
-    {id : 5, name: 'Storage', selected: false},
+    {id : 2, name: 'Meeting', selected: false},
+    {id : 3, name: 'Document', selected: false},
+    {id : 4, name: 'Storage', selected: false},
   ]
   constructor(private documentTutor: DocumentTutorComponent,
               public service: CountryService,
@@ -52,15 +50,12 @@ export class DashboardTutorComponent implements OnInit {
       this.TuteesClick();
     }
     if (item.id === 2) {
-      this.messageClick();
-    }
-    if (item.id === 3) {
       this.meetingClick();
     }
-    if (item.id === 4) {
+    if (item.id === 3) {
       this.documentClick();
     }
-    if (item.id === 5) {
+    if (item.id === 4) {
       this.storageClick();
     }
   }
@@ -78,17 +73,10 @@ export class DashboardTutorComponent implements OnInit {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-  messageClick() {
-    this.message = 'value';
-    this.tutees = null;
-    this.meeting = null;
-    this.document = null;
-    this.storage = null;
-  }
+
   meetingClick() {
     this.meeting = 'value';
     this.tutees = null;
-    this.message = null;
     this.document = null;
     this.storage = null;
 
@@ -96,7 +84,6 @@ export class DashboardTutorComponent implements OnInit {
   documentClick() {
     this.document = 'value';
     this.tutees = null;
-    this.message = null;
     this.meeting = null;
     this.storage = null;
     this.documentTutor.post = 'value';
@@ -106,7 +93,6 @@ export class DashboardTutorComponent implements OnInit {
   storageClick() {
     this.storage = 'value';
     this.tutees = null;
-    this.message = null;
     this.meeting = null;
     this.document = null;
 
@@ -115,7 +101,6 @@ export class DashboardTutorComponent implements OnInit {
   TuteesClick() {
     this.tutees = 'value'
     this.meeting = null;
-    this.message = null;
     this.document = null;
     this.storage = null;
   }

@@ -45,7 +45,7 @@ import { DocumentTutorComponent } from './components/dashboard-tutor/document-tu
 import { DocumentStudentComponent } from './components/dashboard-student/document-student/document-student.component';
 import { MeetingStudentComponent } from './components/dashboard-student/meeting-student/meeting-student.component';
 import { ChatStudentComponent } from './components/dashboard-student/chat-student/chat-student.component';
-import { EmailComponent } from './components/email/email.component';
+import { EmailComponent } from './components/notifycation/email.component';
 
 @NgModule({
   declarations: [

@@ -16,7 +16,9 @@ import {ManageTutorComponent} from './components/manage-tutor/manage-tutor.compo
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 import {AllocateComponent} from './components/allocate/allocate.component';
 import {DashboardTutorComponent} from './components/dashboard-tutor/dashboard-tutor.component';
-import {EmailComponent} from './components/email/email.component';
+import {EmailComponent} from './components/notifycation/email.component';
+import {ChatStudentComponent} from './components/dashboard-student/chat-student/chat-student.component';
+import {ChatTutorComponent} from './components/dashboard-tutor/chat-tutor/chat-tutor.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
@@ -34,7 +36,9 @@ const routes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'manageStudent', component: ManageStudentComponent},
   {path: 'manageTutor', component: ManageTutorComponent},
-  {path: 'email', component: EmailComponent}
+  {path: 'email', component: EmailComponent},
+  {path: 'chatStudent', component: ChatStudentComponent},
+  {path: 'chatTutor', component: ChatTutorComponent}
 ];
 
 @NgModule({

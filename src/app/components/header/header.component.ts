@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import {faCommentAlt} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,6 +13,7 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faEnvelope = faEnvelope
+  faCommentAlt = faCommentAlt
   constructor(private router: Router, public loginComponent: LoginComponent) { }
   user: User = this.loginComponent.getUser();
   ngOnInit(): void {

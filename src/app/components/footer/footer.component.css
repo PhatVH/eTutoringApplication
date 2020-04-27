@@ -54,3 +54,9 @@ a.navbar-brand  span {
     height: 70vw;
   }
 }
+.teamDevelop a {
+  color: #858796;
+}
+.teamDevelop a:hover {
+  color: #4e73df;
+}
