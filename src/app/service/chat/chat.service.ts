@@ -19,17 +19,12 @@ export class ChatService {
     return this.http.get<any>(Constant.chatURL);
   }
 
-  getAllMessage(userID1, userID2): Observable<any> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    const params = new HttpParams().set('user_id1', userID1).set('user_id2', userID2);
-    // @ts-ignore
-    return this.http.get<any>(Constant.getAllMessageURL, params, headers);
+  getAllMessage(studentUserId, tutorUserId): Observable<any> {
+    return this.http.get<any>(`${Constant.getAllMessageURL}?student_user_id=${studentUserId}&tutor_user_id=${tutorUserId}`);
   }
 
-  sendMessage(userID, contentChat): Observable<any> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    const params = new HttpParams().set('user_id', userID).set('content', contentChat);
+  sendMessage(chatID, userID, contentChat): Observable<any> {
     // @ts-ignore
-    return this.http.post<any>(Constant.sendMessageURL, params, headers);
+    return this.http.post<any>(`${Constant.sendMessageURL}?chat_id=${chatID}&user_id=${userID}&content=${contentChat}`);
   }
 }

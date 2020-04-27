@@ -45,14 +45,14 @@
       <p>{{studentClick.name}}</p>
     </div>
     <div class="messages">
-      <ul *ngFor="let eachContentChat of chat">
-        <li class="sent" *ngIf="eachContentChat.user_id === user.user_ID">
+      <ul *ngFor="let chat of chats">
+        <li class="replies" *ngIf="chat.user_id === user.user_ID">
           <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-          <p>{{eachContentChat.content}}</p>
+          <p>{{chat.content}}</p>
         </li>
-        <li class="replies" *ngIf="eachContentChat.user_id === studentClick.user_ID ">
+        <li class="sent" *ngIf="chat.user_id === studentClick.user_ID ">
           <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-          <p>{{eachContentChat.content}}</p>
+          <p>{{chat.content}}</p>
         </li>
 
       </ul>
@@ -61,7 +61,7 @@
       <div class="wrap">
         <input type="text" placeholder="Write your message..." #contentChat/>
         <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-        <button class="submit" (click)="sendMessage(contentChat.value)"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button class="submit" (click)="sendMessage(contentChat.value); contentChat.value=''"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>

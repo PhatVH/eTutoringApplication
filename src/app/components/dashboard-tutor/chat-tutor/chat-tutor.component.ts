@@ -20,7 +20,8 @@ export class ChatTutorComponent implements OnInit {
   sessionTutor: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
   studentClick: Student;
   haveStudent: any = null;
-  chat: Chat[];
+  chats: Chat[];
+  chatId: any;
 
   constructor(private chatService: ChatService, private router: Router,
               private loginComponent: LoginComponent,
@@ -28,19 +29,12 @@ export class ChatTutorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getChat();
-    this.getAllMessage();
-    console.log(this.sessionTutor);
     if (this.loginComponent.user.type === 'tutor') {
       this.user = this.loginComponent.getUser();
-      console.log(this.user);
-      console.log(this.user.user_ID);
       this.getStudentOfTutor(this.loginComponent.user.id);
     } else {
-      console.log(`haha`);
       this.user = this.sessionTutor;
       this.getStudentOfTutor(this.sessionTutor.id);
-      console.log(this.students);
     }
   }
 
@@ -52,37 +46,42 @@ export class ChatTutorComponent implements OnInit {
         this.haveStudent = 'value';
         this.studentClick = result[0];
         this.students = result;
+        this.getAllMessage();
       }
     });
   }
 
   studentClicked(eachStudent: Student) {
     this.studentClick = eachStudent;
+    this.getAllMessage();
   }
-
-  getChat() {
-    this.chatService.getChat().subscribe(result => {
-      console.log(result);
-      this.chat = result;
-    });
-  }
-
   getAllMessage() {
-    this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
+    console.log(`this.studentClick.user_ID`);
+    console.log(this.studentClick.user_ID);
+    console.log(`this.user.user_ID`);
+    console.log(this.user.user_ID);
+    this.chatService.getAllMessage(this.studentClick.user_ID, this.user.user_ID).subscribe(
       result => {
-        this.chat.push(result);
+        console.log(`JSON.stringify(result)`)
+        console.log(result.chat)
+        console.log(`result.chat_id`)
+        console.log(result.chat_id)
+        this.chats = result.chat;
+        this.chatId = result.chat_id;
       }
     );
   }
 
   sendMessage(value: string) {
-    this.chatService.sendMessage(this.user.user_ID, value).subscribe(
+    console.log(this.chatId)
+    console.log(this.user.user_ID)
+    console.log(`value`)
+    console.log(value)
+    this.chatService.sendMessage(this.chatId, this.user.user_ID, value).subscribe(
       result => {
-        console.log(`chat`);
-        console.log(this.chat);
-        this.chatService.getAllMessage(this.user.user_ID, this.studentClick.user_ID).subscribe(
+        this.chatService.getAllMessage(this.studentClick.user_ID, this.user.user_ID).subscribe(
           result1 => {
-            this.chat.push(result1);
+            this.chats = result1.chat;
           }
         );
       }
