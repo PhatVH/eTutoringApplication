@@ -19,7 +19,7 @@ export class DashboardStudentComponent implements OnInit {
   storage: any;
   user;
   tutor: Tutor;
-  haveTutor: any;
+  haveTutor: any = null;
   sessionStudent: Student = JSON.parse(sessionStorage.getItem('studentSession'));
   listMenu: any[] = [
     {id : 1, name: 'Tutor', selected: true},
@@ -46,8 +46,8 @@ export class DashboardStudentComponent implements OnInit {
       if (result === []) {
         this.haveTutor = null;
       } else {
-        this.haveTutor = 'value';
         this.tutor = result[0];
+        this.haveTutor = 'value';
       }
     });
   }

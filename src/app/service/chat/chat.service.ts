@@ -14,11 +14,7 @@ export class ChatService {
 
   constructor(private http: HttpClient) {
   }
-
-  getChat(): Observable<any> {
-    return this.http.get<any>(Constant.chatURL);
-  }
-
+  
   getAllMessage(studentUserId, tutorUserId): Observable<any> {
     return this.http.get<any>(`${Constant.getAllMessageURL}?student_user_id=${studentUserId}&tutor_user_id=${tutorUserId}`);
   }

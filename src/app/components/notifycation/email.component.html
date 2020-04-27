@@ -6,68 +6,13 @@
 <body>
 <h2 class="mt-3 ml-5">- Notification -</h2>
 <div class="notification m-5">
-  <div class="contain darker">
+  <div class="contain darker" *ngFor="let eachNotifycation of notyfications">
     <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
          style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
+    <p>{{eachNotifycation.content}}</p>
+    <span class="time-left">{{eachNotifycation.time}}</span>
   </div>
 
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
-
-  <div class="contain darker">
-    <img src="https://stagewp.sharethis.com/wp-content/uploads/2017/05/Email.png" alt="Avatar" class="left"
-         style="width:100%;">
-    <p>Hey! First Notification</p>
-    <span class="time-left">11:01</span>
-  </div>
 </div>
 </body>
 </html>
