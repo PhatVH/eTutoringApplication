@@ -32,13 +32,12 @@ export class ManageTutorComponent implements OnInit {
         header.direction = '';
       }
     });
-
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
 
   onDashboadTutor(tutor) {
-    sessionStorage.removeItem('tutorSession')
+    sessionStorage.removeItem('tutorSession');
     sessionStorage.setItem('tutorSession', JSON.stringify(tutor));
     this.router.navigate(['/dashboardTutor']);
   }

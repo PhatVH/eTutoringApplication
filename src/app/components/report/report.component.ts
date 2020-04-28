@@ -19,9 +19,8 @@ export class ReportComponent implements OnInit {
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
   students$: Observable<Student[]>;
   total$: Observable<number>;
-  numberOfChatStudent: [];
-  numberOfChatTutor: [];
-  numberOfChat: [];
+  lineChartReady: any = null;
+  tableChartReady: any = null;
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -37,31 +36,21 @@ export class ReportComponent implements OnInit {
     borderWidth: 1
   };
   // bar chart
-  public barChartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   public barChartType = 'bar';
   public barChartLegend = true;
 
-  public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Tutor Messages'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Student Messages'}
-  ];
-/*  public barChartData = [
-    {data: this.numberOfChatTutor, label: 'Tutor Messages'},
-    {data: this.numberOfChatStudent, label: 'Student Messages'}
-  ];*/
-  // donut chart
+  public barChartData;
   // tslint:disable-next-line:max-line-length
-  public doughnutChartLabels = ['Students with no interaction for 7 days', 'Students without a personal tutor', 'Students with interaction'];
+  public doughnutChartLabels = ['Students with no interaction in 7 days', 'Students without a personal tutor', 'Students with interaction'];
   public doughnutChartData = [120, 150, 180];
   public doughnutChartType = 'doughnut';
   totalStudent;
   totalTutor;
   // line chart
-  public lineChartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  /*public lineChartData = this.numberOfChat;*/
-  public lineChartData = [120, 150, 140, 90, 70, 143, 80];
+  public lineChartLabels;
+  public lineChartData;
+  public days: Array<any> = [];
   public lineChartType = 'line';
-
   constructor(public service: CountryService,
               private router: Router,
               private studentService: StudentService,
@@ -74,33 +63,44 @@ export class ReportComponent implements OnInit {
     this.studentWithoutTutor();
     this.getTotalStudent();
     this.getTotalTutor();
-    this.getNumberOfChat();
-    this.getNumberOfChatStudent();
-    this.getNumberOfChatTutor();
+    this.getNumberOfChat(Constant.getNumberOfChatURL);
+    this.getNumberOfChatStudent(Constant.getNumberOfChatStudentURL);
+    this.getDateLabel();
   }
-  getNumberOfChat() {
-    this.studentService.getDataChat(Constant.getNumberOfChatURL).subscribe(
+  getDateLabel() {
+    const dte = new Date();
+    let i = 0;
+    this.days.unshift(`${dte.getDate()}/${dte.getMonth() + 1}`);
+    while (i < 6) {
+      dte.setDate(dte.getDate() - 1);
+      this.days.unshift(`${dte.getDate()}/${dte.getMonth() + 1}`);
+      i += 1;
+    }
+
+    this.lineChartLabels = this.days;
+    console.log(this.days);
+  }
+  getNumberOfChat(url) {
+    this.studentService.getDataChat(url).subscribe(
       result => {
-        this.numberOfChat = result
-        console.log(this.numberOfChat);
+        this.lineChartData = result.numberMess;
+        this.lineChartReady = 'value';
       }
     );
   }
 
-  getNumberOfChatStudent() {
-    this.studentService.getDataChat(Constant.getNumberOfChatStudentURL).subscribe(
+  getNumberOfChatStudent(url) {
+    this.studentService.getDataChat(url).subscribe(
       result => {
-        this.numberOfChatStudent = result
-        console.log(this.numberOfChatStudent);
-      }
-    );
-  }
-
-  getNumberOfChatTutor() {
-    this.studentService.getDataChat(Constant.getNumberOfChatTutorURL).subscribe(
-      result => {
-        this.numberOfChatTutor = result
-        console.log(this.numberOfChatTutor);
+        this.studentService.getDataChat(Constant.getNumberOfChatTutorURL).subscribe(
+          result1 => {
+            this.barChartData = [
+              {data: result1.numberMess, label: 'Tutor Messages'},
+              {data: result.numberMess, label: 'Student Messages'}
+            ];
+            this.tableChartReady = 'value';
+          }
+        );
       }
     );
   }
@@ -134,10 +134,8 @@ export class ReportComponent implements OnInit {
   }
 
   onDashboadStudent(student) {
-    console.log(`click dashboard student`);
     sessionStorage.removeItem('dashboard');
     sessionStorage.setItem('dashboard', JSON.stringify(student));
-    console.log(student);
     this.router.navigate(['/dashboardStudent']);
   }
 

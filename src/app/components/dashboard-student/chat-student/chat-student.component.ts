@@ -26,7 +26,7 @@ export class ChatStudentComponent implements OnInit {
   tutor: Tutor;
   chatId: any;
   sessionStudent: Student = JSON.parse(sessionStorage.getItem('studentSession'));
-  haveTutor: any;
+  haveTutor: any = null;
 
   ngOnInit(): void {
     console.log(this.sessionStudent);
@@ -41,13 +41,11 @@ export class ChatStudentComponent implements OnInit {
 
   getTutorOfStudent(studentID) {
     this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
-      if (result === []) {
+      if (result.length === 0) {
         this.haveTutor = null;
       } else {
         this.haveTutor = 'value';
         this.tutor = result[0];
-        console.log(`this.tutor`);
-        console.log(this.tutor);
         this.getAllMessage();
       }
     });

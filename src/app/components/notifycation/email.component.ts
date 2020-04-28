@@ -19,14 +19,12 @@ export class EmailComponent implements OnInit {
   user: User;
 
   constructor(private emailService: EmailService,
-              private loginComponent: LoginComponent,
-              private studentService: StudentService) {
+              private loginComponent: LoginComponent) {
   }
 
   ngOnInit(): void {
     this.user = this.loginComponent.getUser();
     this.getNotification(this.user.user_ID);
-    this.getNumberOfChat();
   }
 
   getNotification(userID) {
@@ -36,17 +34,6 @@ export class EmailComponent implements OnInit {
         console.log(this.notyfications);
       }
     );
-  }
-
-  getNumberOfChat() {
-    console.log(`getNumberOfChat`);
-    // @ts-ignore
-    this.emailService.getDataChat().subscribe(result => {
-        console.log(`result`);
-        console.log(result);
-      }
-    );
-    console.log(`getNumberOfChat`);
   }
 
 }

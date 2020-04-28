@@ -31,9 +31,9 @@
         <a class="nav-link" [style.background]="item.selected ? '#111111' : '#6e6e6e'">{{item.name}}</a></li>
     </ul>
 
-    <div *ngIf="tutorDetail" class="content-body">
-
-      <div *ngIf="haveTutor">
+    <div *ngIf="tutorDetail">
+      <div *ngIf="haveTutor==null" class="mt-3">No tutor found</div>
+      <div *ngIf="haveTutor" class="content-body">
         <!-- header section -->
         <header class="header2">
           <div class="container">

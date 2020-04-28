@@ -8,6 +8,7 @@ import {Constant} from '../../models/Constant';
 import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
 import {SortableDirective, SortEvent} from '../../service/sortable/sortable.directive';
+import {Tutor} from '../../models/Tutor';
 
 @Component({
   selector: 'app-dashboard-tutor',
@@ -23,7 +24,8 @@ export class DashboardTutorComponent implements OnInit {
   storage: any;
   students$: Observable<Student[]>;
   total$: Observable<number>;
-  user: User;
+  user: any;
+  tutorSession: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
 
   listMenu: any[] = [
     {id : 1, name: 'Tutees', selected: true},
@@ -38,8 +40,13 @@ export class DashboardTutorComponent implements OnInit {
     this.total$ = service.total$;
   }
   ngOnInit(): void {
-    this.user = this.loginComponent.getUser();
-    this.allStudentsOfTutor();
+    if (this.loginComponent.user.type === 'tutor') {
+      this.user = this.loginComponent.getUser();
+      this.allStudentsOfTutor();
+    } else {
+      this.user = this.tutorSession;
+      this.allStudentsOfTutor();
+    }
   }
   click(item) {
     this.listMenu.map( r => {

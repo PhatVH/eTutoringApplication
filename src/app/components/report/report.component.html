@@ -148,7 +148,7 @@
                 </div>
               </div>
               <!-- Card Body -->
-              <div class="card-body">
+              <div class="card-body" *ngIf="lineChartReady">
                 <canvas baseChart
                         [data]="lineChartData"
                         [labels]="lineChartLabels"
@@ -166,10 +166,10 @@
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Total message of student and tutor last week</h6>
               </div>
-              <div class="card-body">
+              <div class="card-body" *ngIf="tableChartReady">
                   <canvas baseChart
                           [datasets]="barChartData"
-                          [labels]="barChartLabels"
+                          [labels]="lineChartLabels"
                           [options]="barChartOptions"
                           [legend]="barChartLegend"
                           [chartType]="barChartType"></canvas>
@@ -183,8 +183,9 @@
         <div class="col-lg-8">
           <div class="container-fluid">
             <button class="btn btn-primary w-50"(click)="studentWithoutTutor()">Student without tutor</button>
-            <button class="btn btn-primary w-50" (click)="studentWithNoInteract()">Student with interaction for 7 days</button>
-            <form class="mt-5 ml-2 mr-2 mb-5" >
+            <button class="btn btn-primary w-50" (click)="studentWithNoInteract()">Student with no interaction in 7 days</button>
+            <div *ngIf="(students$ | async)?.length==0" class="mt-3"> No students found.</div>
+            <form class="mt-5 ml-2 mr-2 mb-5" *ngIf="(students$ | async)?.length>0">
               <div class="row">
                 <div class="col-md-6 m-0">
                   <div class="form-group form-inline">

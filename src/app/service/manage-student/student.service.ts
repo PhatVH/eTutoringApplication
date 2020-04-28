@@ -24,6 +24,15 @@ export class StudentService {
     // @ts-ignore
     return this.http.get<any>(`${url}&name_like=${typeString}`, Constant.headers);
   }
+
+  searchStudentAllocate(typeString: string, url): Observable<Student[]> {
+    if (!typeString.trim()) {
+      return this.getStudents(url);
+    }
+    // @ts-ignore
+    return this.http.get<any>(`${url}?name_like=${typeString}`, Constant.headers);
+  }
+
   searchStudentInvite(typeString: string, url): Observable<Student[]> {
     if (!typeString.trim()) {
       return null;

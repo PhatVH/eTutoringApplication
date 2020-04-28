@@ -55,7 +55,7 @@ export class AllocateComponent implements OnInit {
 
   searchStudentAllocate(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
-    this.studentService.searchStudent(searchStudent, Constant.studentWithoutTutorURL).subscribe(result => {
+    this.studentService.searchStudentAllocate(searchStudent, Constant.studentWithoutTutorURL).subscribe(result => {
       this.newStudents = this.checkSelected(result, this.selectStudent);
     });
   }
