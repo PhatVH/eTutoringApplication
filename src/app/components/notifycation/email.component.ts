@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EmailService} from '../../service/notifycation/email.service';
 import {Notifycation} from '../../models/Notifycation';
 import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
+import {Constant} from '../../models/Constant';
+import {Student} from '../../models/Student';
+import {StudentService} from '../../service/manage-student/student.service';
+import {catchError, map} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-email',
@@ -12,12 +17,16 @@ import {User} from '../../models/User';
 export class EmailComponent implements OnInit {
   notyfications: Notifycation[];
   user: User;
+
   constructor(private emailService: EmailService,
-              private loginComponent: LoginComponent) { }
+              private loginComponent: LoginComponent,
+              private studentService: StudentService) {
+  }
 
   ngOnInit(): void {
     this.user = this.loginComponent.getUser();
     this.getNotification(this.user.user_ID);
+    this.getNumberOfChat();
   }
 
   getNotification(userID) {
@@ -27,6 +36,17 @@ export class EmailComponent implements OnInit {
         console.log(this.notyfications);
       }
     );
+  }
+
+  getNumberOfChat() {
+    console.log(`getNumberOfChat`);
+    // @ts-ignore
+    this.emailService.getDataChat().subscribe(result => {
+        console.log(`result`);
+        console.log(result);
+      }
+    );
+    console.log(`getNumberOfChat`);
   }
 
 }

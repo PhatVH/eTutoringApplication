@@ -18,6 +18,9 @@ export class Constant {
   /*  report*/
   static studentWithoutTutorURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithoutTutor';
   static studentWithNoInteractionURL = 'https://agile-reaches-44577.herokuapp.com/api/studentsWithNoInteraction';
+  static getNumberOfChatStudentURL = 'https://agile-reaches-44577.herokuapp.com/api/getNumberOfChatStudent';
+  static getNumberOfChatTutorURL = 'https://agile-reaches-44577.herokuapp.com/api/getNumberOfChatTutor';
+  static getNumberOfChatURL = 'https://agile-reaches-44577.herokuapp.com/api/getNumberOfChat';
 
   /* meeting-schedule*/
   static getAllMeetingsByUserIdURL = 'https://agile-reaches-44577.herokuapp.com/api/getAllMeetingsByUserId';

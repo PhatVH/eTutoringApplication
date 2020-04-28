@@ -49,4 +49,10 @@ export class StudentService {
     });
     return this.http.post<any>(url, params);
   }
+
+  getDataChat(url): Observable<any> {
+    console.log(`check`)
+    // @ts-ignore
+    return this.http.get<any>(url, Constant.headers);
+  }
 }

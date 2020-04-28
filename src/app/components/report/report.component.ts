@@ -19,6 +19,9 @@ export class ReportComponent implements OnInit {
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
   students$: Observable<Student[]>;
   total$: Observable<number>;
+  numberOfChatStudent: [];
+  numberOfChatTutor: [];
+  numberOfChat: [];
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -42,6 +45,10 @@ export class ReportComponent implements OnInit {
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Tutor Messages'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Student Messages'}
   ];
+/*  public barChartData = [
+    {data: this.numberOfChatTutor, label: 'Tutor Messages'},
+    {data: this.numberOfChatStudent, label: 'Student Messages'}
+  ];*/
   // donut chart
   // tslint:disable-next-line:max-line-length
   public doughnutChartLabels = ['Students with no interaction for 7 days', 'Students without a personal tutor', 'Students with interaction'];
@@ -51,6 +58,7 @@ export class ReportComponent implements OnInit {
   totalTutor;
   // line chart
   public lineChartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  /*public lineChartData = this.numberOfChat;*/
   public lineChartData = [120, 150, 140, 90, 70, 143, 80];
   public lineChartType = 'line';
 
@@ -66,6 +74,35 @@ export class ReportComponent implements OnInit {
     this.studentWithoutTutor();
     this.getTotalStudent();
     this.getTotalTutor();
+    this.getNumberOfChat();
+    this.getNumberOfChatStudent();
+    this.getNumberOfChatTutor();
+  }
+  getNumberOfChat() {
+    this.studentService.getDataChat(Constant.getNumberOfChatURL).subscribe(
+      result => {
+        this.numberOfChat = result
+        console.log(this.numberOfChat);
+      }
+    );
+  }
+
+  getNumberOfChatStudent() {
+    this.studentService.getDataChat(Constant.getNumberOfChatStudentURL).subscribe(
+      result => {
+        this.numberOfChatStudent = result
+        console.log(this.numberOfChatStudent);
+      }
+    );
+  }
+
+  getNumberOfChatTutor() {
+    this.studentService.getDataChat(Constant.getNumberOfChatTutorURL).subscribe(
+      result => {
+        this.numberOfChatTutor = result
+        console.log(this.numberOfChatTutor);
+      }
+    );
   }
 
   studentWithoutTutor() {
@@ -79,7 +116,6 @@ export class ReportComponent implements OnInit {
       this.totalStudent = result.length;
     });
   }
-
   getTotalTutor() {
     this.tutorService.getTutors().subscribe(result => {
       this.totalTutor = result.length;

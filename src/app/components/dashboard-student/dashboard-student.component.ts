@@ -32,7 +32,6 @@ export class DashboardStudentComponent implements OnInit {
               private tutorService: TutorService) { }
 
   ngOnInit(): void {
-    console.log(this.sessionStudent);
     if (this.loginComponent.user.type === 'student') {
       this.user = this.loginComponent.getUser();
       this.getTutorOfStudent(this.loginComponent.user.id);
@@ -43,7 +42,7 @@ export class DashboardStudentComponent implements OnInit {
   }
   getTutorOfStudent(studentID) {
     this.tutorService.getTutorByStudentId(studentID).subscribe(result => {
-      if (result === []) {
+      if (result.length === 0) {
         this.haveTutor = null;
       } else {
         this.tutor = result[0];
