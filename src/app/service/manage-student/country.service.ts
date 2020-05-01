@@ -38,6 +38,8 @@ function sort(students: Student[], column: SortColumn, direction: string): Stude
 function matches(student: Student, term: string, pipe: PipeTransform) {
   return student.name.toLowerCase().includes(term.toLowerCase())
     || student.email.toLowerCase().includes(term.toLowerCase())
+    || student.country.toLowerCase().includes(term.toLowerCase())
+    || student.phone.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(student.id).includes(term);
 }
 

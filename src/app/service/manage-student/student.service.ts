@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {catchError, tap, map} from 'rxjs/operators';
 import {Student} from '../../models/Student';
-import {Tutor} from '../../models/Tutor';
 import {Constant} from '../../models/Constant';
 
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};

@@ -143,30 +143,19 @@
       <div style="float: left;" class="mb-3">
         <h4 style="color:#000; font-weight: bold">All documents</h4>
       </div>
-      <div class="eachDocument">
-        <div style="float: left;">Document 1</div>
-        <div class="DeleteDocument" style="float: right; margin-right: 5px"><i class="fa fa-ellipsis-v"></i>
-          <div class="filterDeltete">
-            <button class="btn">Delete</button>
+      <div *ngFor="let eachNote of notes">
+        <div class="eachDocument">
+          <div style="float: left; width: 95%" (click)="openNote(eachNote)">{{eachNote.title}}</div>
+          <div class="DeleteDocument" style="float: right; margin-right: 5px"(click)="deleteNote(eachNote.id)"><i class="fas fa-trash-alt"></i>
           </div>
         </div>
       </div>
-
-      <div class="eachDocument">
-        <div style="float: left;">Document 1</div>
-        <div class="DeleteDocument" style="float: right; margin-right: 5px"><i class="fa fa-ellipsis-v"></i>
-          <div class="filterDeltete">
-            <button class="btn">Delete</button>
-          </div>
-        </div>
-      </div>
-      <div class="eachDocument">
-        <div style="float: left;">Document 1</div>
-        <div class="DeleteDocument" style="float: right; margin-right: 5px"><i class="fa fa-ellipsis-v"></i>
-          <div class="filterDeltete">
-            <button class="btn">Delete</button>
-          </div>
-        </div>
+      <div class="eachContentDocument" *ngIf="openDivNote">
+        <span>Content Meeting Note: {{noteSelected.title}}</span>
+        <br><br>
+        <span class="p-3">{{noteSelected.content}}</span>
+        <br><br>
+        <p>Created At: {{noteSelected.created_at}}</p>
       </div>
     </div>
   </div>

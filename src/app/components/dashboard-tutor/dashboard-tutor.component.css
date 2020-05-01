@@ -7,8 +7,20 @@
   width: 100%;
   border-style: groove;
   margin-bottom: 5px;
-  padding: 5px
+  padding: 5px;
+  color: black;
 }
+
+.eachContentDocument {
+  float: left;
+  color: black;
+  width: 100%;
+  border-style: groove;
+  margin-bottom: 5px;
+  padding: 5px;
+  background: rgba(121, 174, 244, 0.22);
+}
+
 .horizontal {
   list-style-type: none;
   margin: 0;

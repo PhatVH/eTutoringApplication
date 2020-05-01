@@ -1,7 +1,7 @@
 import {Injectable, PipeTransform} from '@angular/core';
 import {Tutor} from '../../models/Tutor';
 import {SortColumn, SortDirection} from '../sortable/sortable.directive';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {DecimalPipe} from '@angular/common';
 import {Constant} from '../../models/Constant';
@@ -35,6 +35,7 @@ function sort(tutors: Tutor[], column: SortColumn, direction: string): Tutor[] {
 
 function matches(tutor: Tutor, term: string, pipe: PipeTransform) {
   return tutor.name.toLowerCase().includes(term.toLowerCase())
+    || tutor.country.toLowerCase().includes(term.toLowerCase())
     || tutor.email.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(tutor.id).includes(term);
 }

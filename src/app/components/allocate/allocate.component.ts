@@ -75,7 +75,6 @@ export class AllocateComponent implements OnInit {
 
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
-    // tslint:disable-next-line:triple-equals
     console.log(index);
     if (index === -1) {
       student.selected = !student.selected;

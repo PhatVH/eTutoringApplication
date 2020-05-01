@@ -3,11 +3,6 @@ import {EmailService} from '../../service/notifycation/email.service';
 import {Notifycation} from '../../models/Notifycation';
 import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
-import {Constant} from '../../models/Constant';
-import {Student} from '../../models/Student';
-import {StudentService} from '../../service/manage-student/student.service';
-import {catchError, map} from 'rxjs/operators';
-import {of} from 'rxjs';
 
 @Component({
   selector: 'app-email',
@@ -15,7 +10,7 @@ import {of} from 'rxjs';
   styleUrls: ['./email.component.css']
 })
 export class EmailComponent implements OnInit {
-  notyfications: Notifycation[];
+  notyfications: Array<Notifycation> = [];
   user: User;
 
   constructor(private emailService: EmailService,
@@ -30,8 +25,7 @@ export class EmailComponent implements OnInit {
   getNotification(userID) {
     this.emailService.getNotification(userID).subscribe(
       result => {
-        this.notyfications = result;
-        console.log(this.notyfications);
+        result.forEach(data => this.notyfications.unshift(data));
       }
     );
   }

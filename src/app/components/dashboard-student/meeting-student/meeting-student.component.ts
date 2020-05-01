@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {NoteService} from '../../../service/note/note.service';
+import {LoginComponent} from '../../login/login.component';
+import {User} from '../../../models/User';
 
 @Component({
   selector: 'app-meeting-student',
@@ -8,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class MeetingStudentComponent implements OnInit {
   openMeetingNote = null;
   count = 0;
-  constructor() { }
-
+  constructor(private noteService: NoteService,
+              private loginComponent: LoginComponent) { }
+  user: User = this.loginComponent.getUser();
   ngOnInit(): void {
   }
 
@@ -17,8 +21,9 @@ export class MeetingStudentComponent implements OnInit {
     this.clickOpenMeetingNote();
   }
 
-  addMeetingNote() {
-
+  addMeetingNote(title, content) {
+    const userID = this.user.user_ID;
+    this.noteService.addNote(userID, title, content).subscribe(result => alert(result.message));
   }
 
   clickOpenMeetingNote() {

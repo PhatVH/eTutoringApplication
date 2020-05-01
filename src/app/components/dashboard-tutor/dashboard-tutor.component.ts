@@ -9,6 +9,7 @@ import {LoginComponent} from '../login/login.component';
 import {User} from '../../models/User';
 import {SortableDirective, SortEvent} from '../../service/sortable/sortable.directive';
 import {Tutor} from '../../models/Tutor';
+import {NoteService} from '../../service/note/note.service';
 
 @Component({
   selector: 'app-dashboard-tutor',
@@ -17,6 +18,14 @@ import {Tutor} from '../../models/Tutor';
   providers: [DocumentTutorComponent, CountryService, DecimalPipe]
 })
 export class DashboardTutorComponent implements OnInit {
+
+  constructor(private documentTutor: DocumentTutorComponent,
+              public service: CountryService,
+              private loginComponent: LoginComponent,
+              private noteService: NoteService) {
+    this.students$ = service.students$;
+    this.total$ = service.total$;
+  }
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
   tutees: any = 'value';
   meeting: any;
@@ -28,28 +37,30 @@ export class DashboardTutorComponent implements OnInit {
   tutorSession: Tutor = JSON.parse(sessionStorage.getItem('tutorSession'));
 
   listMenu: any[] = [
-    {id : 1, name: 'Tutees', selected: true},
-    {id : 2, name: 'Meeting', selected: false},
-    {id : 3, name: 'Document', selected: false},
-    {id : 4, name: 'Storage', selected: false},
-  ]
-  constructor(private documentTutor: DocumentTutorComponent,
-              public service: CountryService,
-              private loginComponent: LoginComponent) {
-    this.students$ = service.students$;
-    this.total$ = service.total$;
-  }
+    {id: 1, name: 'Tutees', selected: true},
+    {id: 2, name: 'Meeting', selected: false},
+    {id: 3, name: 'Document', selected: false},
+    {id: 4, name: 'Storage', selected: false},
+  ];
+  notes: any;
+  noteSelected: any;
+  openDivNote: any = null;
+  count: any = 0;
+
   ngOnInit(): void {
     if (this.loginComponent.user.type === 'tutor') {
       this.user = this.loginComponent.getUser();
       this.allStudentsOfTutor();
+      this.showNote(this.loginComponent.getUser().user_ID);
     } else {
       this.user = this.tutorSession;
       this.allStudentsOfTutor();
+      this.showNote(this.tutorSession.user_ID);
     }
   }
+
   click(item) {
-    this.listMenu.map( r => {
+    this.listMenu.map(r => {
       r.selected = false;
     });
     item.selected = true;
@@ -66,9 +77,25 @@ export class DashboardTutorComponent implements OnInit {
       this.storageClick();
     }
   }
+
+  showNote(userID) {
+    this.noteService.showNotes(userID).subscribe(result => {
+      this.notes = result;
+    });
+  }
+  deleteNote(noteId) {
+    this.noteService.deleteNote(noteId).subscribe(result => {
+      alert(result.message);
+      this.noteService.showNotes(this.user.user_ID).subscribe(result1 => {
+        this.notes = result1;
+      });
+    });
+  }
+
   allStudentsOfTutor() {
     this.service.getAllStudentsOfTutor(`${Constant.getStudentsByTutorIdUrl}?tutor_ID=${this.user.id}`);
   }
+
   onSort({column, direction}: SortEvent) {
     // resetting other headers
     this.headers.forEach(header => {
@@ -88,6 +115,7 @@ export class DashboardTutorComponent implements OnInit {
     this.storage = null;
 
   }
+
   documentClick() {
     this.document = 'value';
     this.tutees = null;
@@ -97,6 +125,7 @@ export class DashboardTutorComponent implements OnInit {
     this.documentTutor.afterPost = null;
 
   }
+
   storageClick() {
     this.storage = 'value';
     this.tutees = null;
@@ -106,9 +135,20 @@ export class DashboardTutorComponent implements OnInit {
   }
 
   TuteesClick() {
-    this.tutees = 'value'
+    this.tutees = 'value';
     this.meeting = null;
     this.document = null;
     this.storage = null;
   }
+  openNote(eachNote: any) {
+    this.noteSelected = eachNote;
+    if (this.count % 2 === 0) {
+      this.openDivNote = 'value';
+      this.count += 1;
+    } else {
+      this.count += 1;
+      this.openDivNote = null;
+    }
+  }
+
 }
