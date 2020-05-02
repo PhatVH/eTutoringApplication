@@ -117,6 +117,7 @@ export class DashboardStudentComponent implements OnInit {
     this.tutorDetail = null;
     this.meeting = null;
     this.document = null;
+    this.showNote(this.user.user_ID);
 
   }
   openNote(eachNote: any) {

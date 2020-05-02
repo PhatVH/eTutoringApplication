@@ -12,6 +12,6 @@
   <textarea placeholder="Share something..." rows="10" style=" width: 100%; height: auto;min-height: 350px" #content></textarea>
   <div class="float-right col-3 align">
     <button id="Cancel" class="btn btn-danger w-50" (click)="cancelMeetingNote()">Cancel</button>
-    <button id="Post" class="btn btn-primary w-50" (click)="addMeetingNote(title.value, content.value)">Add</button>
+    <button id="Post" class="btn btn-primary w-50" (click)="addMeetingNote(title.value, content.value); title.value=''; content.value=''">Add</button>
   </div>
 </div>

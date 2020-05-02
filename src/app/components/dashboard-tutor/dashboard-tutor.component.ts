@@ -131,7 +131,7 @@ export class DashboardTutorComponent implements OnInit {
     this.tutees = null;
     this.meeting = null;
     this.document = null;
-
+    this.showNote(this.user.user_ID);
   }
 
   TuteesClick() {
