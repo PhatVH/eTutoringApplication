@@ -36,6 +36,7 @@ export class AllocateRemoveComponent implements OnInit {
               private tutorService: TutorService) {
   }
 
+
   checkSelected(resultFromApi, selectedArr) {
     resultFromApi.forEach(obj => {
       selectedArr.forEach(obj2 => {
@@ -55,11 +56,10 @@ export class AllocateRemoveComponent implements OnInit {
 
   searchStudentAllocate(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
-    this.studentService.searchStudent(searchStudent,
-      `${Constant.getStudentsByTutorIdUrl}?tutor_ID=${this.selectTutor[0].id}`)
+    this.studentService.searchStudentAllocate(searchStudent, Constant.studentsURL)
       .subscribe(result => {
-      this.newStudents = this.checkSelected(result, this.selectStudent);
-    });
+        this.newStudents = this.checkSelected(result, this.selectStudent);
+      });
   }
 
   ngOnInit(): void {
@@ -77,7 +77,6 @@ export class AllocateRemoveComponent implements OnInit {
 
   studentChange(student) {
     const index = this.selectStudent.indexOf(student);
-    // tslint:disable-next-line:triple-equals
     console.log(index);
     if (index === -1) {
       student.selected = !student.selected;
@@ -102,6 +101,9 @@ export class AllocateRemoveComponent implements OnInit {
     }
   }
 
+  onClickBtnCancelStudent() {
+
+  }
 
   onClickBtnAcceptStudent() {
     this.openDivStudent = 'value';
@@ -109,28 +111,23 @@ export class AllocateRemoveComponent implements OnInit {
 
   onClickBtnAcceptTutor() {
     this.openDivTutor = 'value';
-    this.getListStudentOfTutor(this.selectTutor[0].id);
-  }
-
-  getListStudentOfTutor(tutorID): void {
-    this.studentService.getListStudentOfTutor(tutorID).subscribe(result => {
-      console.log(result);
-       });
   }
 
   postReallocateBtn() {
-    if (this.openDivTutor == null) {
-      alert('You must select Tutor to reallocate');
-    } else if (this.openDivStudent == null) {
-      alert('You must select Student to reallocate');
+      if (this.openDivTutor == null) {
+        alert('You must select Tutor to reallocate');
+      } else if (this.openDivStudent == null) {
+        alert('You must select Student to reallocate');
+      }
+      const tutorID = this.selectTutor[0].id;
+      const arrStudentID = [];
+      this.selectStudent.forEach(student => arrStudentID.push(student.id));
+      this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl)
+        .subscribe(result => {
+          alert(result.message);
+          this.selectStudent = [];
+        });
+      this.openDivTutor = null;
+      this.openDivStudent = null;
     }
-    const arrStudentID = [];
-    this.selectStudent.forEach(student => arrStudentID.push(student.id));
-    this.studentService.postAllocateAndReallocate('', arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => {
-      alert(`Reallocate successful`);
-      this.selectStudent = [];
-    });
-    this.openDivTutor = null;
-    this.openDivStudent = null;
   }
-}
