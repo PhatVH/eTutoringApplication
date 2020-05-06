@@ -13,7 +13,6 @@ import {faCommentAlt} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faEnvelope = faEnvelope
-  faCommentAlt = faCommentAlt
   constructor(private router: Router, public loginComponent: LoginComponent) { }
   user: User = this.loginComponent.getUser();
   ngOnInit(): void {

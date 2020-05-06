@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Student} from '../../models/Student';
 import {Constant} from '../../models/Constant';
+import {catchError} from "rxjs/operators";
 
 const httpOptions = {headers: new HttpHeaders({'Content-type': 'application/json'})};
 
@@ -61,5 +62,10 @@ export class StudentService {
     console.log(`check`)
     // @ts-ignore
     return this.http.get<any>(url, Constant.headers);
+  }
+  getMessStudentAndTutor(url): Observable<[]> {
+    console.log(`check`)
+    // @ts-ignore
+    return this.http.get<[]>(url, Constant.headers);
   }
 }

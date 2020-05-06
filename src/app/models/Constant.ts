@@ -21,6 +21,7 @@ export class Constant {
   static getNumberOfChatStudentURL = Constant.headerURL + 'getNumberOfChatStudent';
   static getNumberOfChatTutorURL = Constant.headerURL + 'getNumberOfChatTutor';
   static getNumberOfChatURL = Constant.headerURL + 'getNumberOfChat';
+  static getTotalNumberOfChatsUrl = Constant.headerURL + 'getTotalNumberOfChats';
 
   /* meeting-schedule*/
   static getAllMeetingsByUserIdURL = Constant.headerURL + 'getAllMeetingsByUserId';

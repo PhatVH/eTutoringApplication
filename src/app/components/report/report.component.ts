@@ -51,6 +51,8 @@ export class ReportComponent implements OnInit {
   public lineChartData;
   public days: Array<any> = [];
   public lineChartType = 'line';
+  public totalMessStudent;
+  public totalMessTutor;
   constructor(public service: CountryService,
               private router: Router,
               private studentService: StudentService,
@@ -64,6 +66,7 @@ export class ReportComponent implements OnInit {
     this.getTotalStudent();
     this.getTotalTutor();
     this.getNumberOfChat(Constant.getNumberOfChatURL);
+    this.getMessStudentAndTutor(Constant.getNumberOfChatURL);
     this.getNumberOfChatStudent(Constant.getNumberOfChatStudentURL);
     this.getDateLabel();
   }
@@ -88,7 +91,16 @@ export class ReportComponent implements OnInit {
       }
     );
   }
-
+  getMessStudentAndTutor(url) {
+    this.studentService.getMessStudentAndTutor(url).subscribe(
+      result => {
+        // @ts-ignore
+        this.totalMessStudent = result.totalMess[2];
+        // @ts-ignore
+        this.totalMessTutor = result.totalMess[1];
+      }
+    );
+  }
   getNumberOfChatStudent(url) {
     this.studentService.getDataChat(url).subscribe(
       result => {
@@ -121,14 +133,15 @@ export class ReportComponent implements OnInit {
       this.totalTutor = result.length;
     });
   }
-  onSort({column, direction}: SortEvent) {
+
+  onSort({column,
+           direction}: SortEvent) {
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
         header.direction = '';
       }
     });
-
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }

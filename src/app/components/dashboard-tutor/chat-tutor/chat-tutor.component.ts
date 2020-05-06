@@ -56,27 +56,14 @@ export class ChatTutorComponent implements OnInit {
     this.getAllMessage();
   }
   getAllMessage() {
-    console.log(`this.studentClick.user_ID`);
-    console.log(this.studentClick.user_ID);
-    console.log(`this.user.user_ID`);
-    console.log(this.user.user_ID);
     this.chatService.getAllMessage(this.studentClick.user_ID, this.user.user_ID).subscribe(
       result => {
-        console.log(`JSON.stringify(result)`)
-        console.log(result.chat)
-        console.log(`result.chat_id`)
-        console.log(result.chat_id)
         this.chats = result.chat;
         this.chatId = result.chat_id;
       }
     );
   }
-
   sendMessage(value: string) {
-    console.log(this.chatId)
-    console.log(this.user.user_ID)
-    console.log(`value`)
-    console.log(value)
     this.chatService.sendMessage(this.chatId, this.user.user_ID, value).subscribe(
       result => {
         this.chatService.getAllMessage(this.studentClick.user_ID, this.user.user_ID).subscribe(

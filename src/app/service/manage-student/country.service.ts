@@ -153,14 +153,11 @@ export class CountryService {
 
   private _search(): Observable<SearchResult> {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
-
     // 1. sort
     let students = sort(this.STUDENTS, sortColumn, sortDirection);
-
     // 2. filter
     students = students.filter(student => matches(student, searchTerm, this.pipe));
     const total = students.length;
-
     // 3. paginate
     students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
     return of({students, total});

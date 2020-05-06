@@ -209,13 +209,13 @@ export class ArrangeMeetingComponent implements OnInit {
     } else {
       this.divAlert = null;
       if (this.user.type === 'student') {
-        // tslint:disable-next-line:max-line-length
-        this.scheduleService.studentCreateMeeting(this.user.user_ID, JSON.stringify(event.start), JSON.stringify(event.end), event.title).subscribe(
+        this.scheduleService.studentCreateMeeting(this.user.user_ID, JSON.stringify(event.start),
+          JSON.stringify(event.end), event.title).subscribe(
           result => alert(result.message)
         );
       } else {
-        // tslint:disable-next-line:max-line-length
-        this.scheduleService.createMeeting(this.user.user_ID, this.eachStudent.user_ID, JSON.stringify(event.start), JSON.stringify(event.end), event.title).subscribe(
+        this.scheduleService.createMeeting(this.user.user_ID, this.eachStudent.user_ID,
+          JSON.stringify(event.start), JSON.stringify(event.end), event.title).subscribe(
           result => alert(result.message)
         );
       }

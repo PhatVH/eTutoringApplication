@@ -55,7 +55,8 @@ export class AllocateComponent implements OnInit {
 
   searchStudentAllocate(searchStudent: string): void {
     this.searchStudent.next(searchStudent);
-    this.studentService.searchStudentAllocate(searchStudent, Constant.studentWithoutTutorURL).subscribe(result => {
+    this.studentService.searchStudentAllocate(searchStudent, Constant.studentWithoutTutorURL)
+      .subscribe(result => {
       this.newStudents = this.checkSelected(result, this.selectStudent);
     });
   }
@@ -120,7 +121,8 @@ export class AllocateComponent implements OnInit {
     const tutorID = this.selectTutor[0].id;
     const arrStudentID = [];
     this.selectStudent.forEach(student => arrStudentID.push(student.id));
-    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl).subscribe(result => {
+    this.studentService.postAllocateAndReallocate(tutorID, arrStudentID, Constant.setTutorToStudentUrl)
+      .subscribe(result => {
       alert(result.message);
       this.selectStudent = [];
     });

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   faUser = faUser;
   faUnlock = faUnlock;
   user: User = null;
-  result: string = null;
+  notEnoughInfo: string = null;
   invalidAccount: any = null;
 
   ngOnInit(): void {
@@ -27,16 +27,14 @@ export class LoginComponent implements OnInit {
   onSubmitForm(user: string, pass: string) {
     if (user === '' || pass === '') {
       this.invalidAccount = null;
-      this.result = 'result';
+      this.notEnoughInfo = 'notEnoughInfo';
       return;
     }
-    this.result = null;
-    // @ts-ignore
+    this.notEnoughInfo = null;
     this.classService.login(user, pass).subscribe(
       (userRecieve) => {
-        // tslint:disable-next-line:triple-equals
         if (userRecieve == null) {
-          this.result = null;
+          this.notEnoughInfo = null;
           this.invalidAccount = 'invalidAccount';
           this.router.navigate(['/login']);
         } else {
